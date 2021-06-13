@@ -1,7 +1,9 @@
-export default function Home() {
+export default function TOMHome() {
   return (
     <>
-      <h1 style={{ margin: "50px" }}>tom rules</h1>
+      <div style={{ textAlign: "center", marginTop: "100px" }}>
+        <h1 style={{ fontSize: "40px" }}>TOM rules</h1>
+      </div>
     </>
   );
 }

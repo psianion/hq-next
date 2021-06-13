@@ -1,7 +1,9 @@
+import Hero from "../src/components/Home/Hero";
+
 export default function Home() {
   return (
     <>
-      <h1 style={{ margin: "50px" }}>Hello</h1>
+      <Hero />
     </>
   );
 }
