@@ -45,6 +45,13 @@ const HeroContent = styled(motion.div)`
   background-color: ${({ theme }) => theme.primary0};
   border-radius: 0.5rem;
   border-bottom: ${({ theme }) => theme.highlight0} 0.3rem solid;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    max-width: 100%;
+    margin-top: 0.8rem;
+    height: 30rem;
+  }
 `;
 
 const ButtonContainer = styled(motion.div)`
@@ -53,6 +60,10 @@ const ButtonContainer = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+
+  @media (max-width: 768px) {
+    max-width: 90%;
+  }
 `;
 
 const Button = styled(motion.button)`
@@ -71,6 +82,13 @@ const Button = styled(motion.button)`
   &:hover {
     background-color: ${({ theme }) => `${theme.primary0}`};
   }
+
+  @media (max-width: 768px) {
+    width: 95%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin-top: 1rem;
+  }
 `;
 
 const SolidButton = styled(motion.button)`
@@ -83,6 +101,13 @@ const SolidButton = styled(motion.button)`
   margin: 2rem 2rem 0 2rem;
   border: solid 2px ${({ theme }) => theme.highlight0};
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    margin: 1rem 0 0 0;
+  }
 `;
 
 export default Hero;

@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <HomeContainer>
       <Hero />
-      <LatestNews />
+      {/* <LatestNews /> */}
     </HomeContainer>
   );
 }
