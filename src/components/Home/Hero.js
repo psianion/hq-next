@@ -17,10 +17,9 @@ function Hero() {
 }
 
 const HeroContainer = styled(motion.div)`
-  height: 45rem;
+  height: 35rem;
   width: 100%;
   margin-top: 3rem;
-  position: absolute;
   background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
     url("/Images/Home.jpg");
   background-position: center;
@@ -29,13 +28,20 @@ const HeroContainer = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    height: 90vh;
+    background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
+      url("/Images/HomeMob.jpg");
+  }
 `;
 
 const HeroContent = styled(motion.div)`
   width: 80rem;
   max-width: 80%;
   height: 30rem;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
   background-color: ${({ theme }) => theme.primary0};
   border-radius: 0.5rem;
   border-bottom: ${({ theme }) => theme.highlight0} 0.3rem solid;
@@ -43,10 +49,10 @@ const HeroContent = styled(motion.div)`
 
 const ButtonContainer = styled(motion.div)`
   width: 60rem;
-  max-width: 60%;
+  max-width: 80%;
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: center;
 `;
 
 const Button = styled(motion.button)`
@@ -71,10 +77,10 @@ const SolidButton = styled(motion.button)`
   color: ${({ theme }) => theme.primary0};
   background-color: ${({ theme }) => `${theme.highlight0}`};
   font-family: "Poppins", sans-serif;
-  width: 15rem;
+  width: 18rem;
   font-size: 1.2rem;
   padding: 0.75rem 1.5rem;
-  margin-top: 2rem;
+  margin: 2rem 2rem 0 2rem;
   border: solid 2px ${({ theme }) => theme.highlight0};
   cursor: pointer;
 `;
