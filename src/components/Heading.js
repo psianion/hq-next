@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-function LatestNews() {
+function Heading({ highhead, head }) {
   return (
     <>
       <HeadingContainer>
-        <Heading>
-          <Highlight>LATEST</Highlight> NEWS
-        </Heading>
+        <Head>
+          <Highlight>{highhead}</Highlight> {head}
+        </Head>
       </HeadingContainer>
     </>
   );
@@ -15,19 +15,23 @@ function LatestNews() {
 
 const HeadingContainer = styled(motion.div)`
   margin-top: 4rem;
-  width: 80rem;
+  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const Heading = styled(motion.h1)`
+const Head = styled(motion.h1)`
   font-size: 1.8rem;
   color: ${({ theme }) => theme.secondary1};
+
+  @media (max-width: 768px) {
+    font-size: 1.2rem;
+  }
 `;
 
 const Highlight = styled.span`
   color: ${({ theme }) => theme.highlight0};
 `;
 
-export default LatestNews;
+export default Heading;
