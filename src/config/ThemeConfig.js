@@ -2,12 +2,12 @@ import { createGlobalStyle } from "styled-components";
 
 export const darkTheme = {
   primary0: "#222629",
-  primary1: "#474b4f",
-  primary2: "#6b6e70",
+  primary1: "#303438",
+  primary2: "#474b4f",
   secondary0: "#efefef",
   secondary1: "#e0e0e0",
   secondary2: "#d4d4d4",
-  highlight0: "#86c232",
+  highlight0: "#9147FF",
 };
 
 export const lightTheme = {
@@ -15,9 +15,9 @@ export const lightTheme = {
   primary1: "#e0e0e0",
   primary2: "#d4d4d4",
   secondary0: "#222629",
-  secondary1: "#474b4f",
-  secondary2: "#6b6e70",
-  highlight0: "#86c232",
+  secondary1: "#303438",
+  secondary2: "#474b4f",
+  highlight0: "#9147FF",
 };
 
 export const GlobalStyles = createGlobalStyle`
@@ -37,16 +37,16 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   ::-webkit-scrollbar-track {
-  background: ${({ theme }) => theme.primary1};
+  background: ${({ theme }) => theme.primary0};
   }
 
   ::-webkit-scrollbar-thumb {
-  background: ${({ theme }) => theme.secondary2};
+  background: ${({ theme }) => theme.primary2};
   border-radius: 5px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-  background: ${({ theme }) => theme.secondary1};
+  background: ${({ theme }) => theme.primary1};
   }
 
   * {
