@@ -19,6 +19,10 @@ const HeadingContainer = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
+  @media (max-width: 768px) {
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+  }
 `;
 
 const Head = styled(motion.h1)`
