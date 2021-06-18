@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { keyframes } from "styled-components";
 
 function Hero() {
   return (

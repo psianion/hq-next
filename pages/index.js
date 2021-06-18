@@ -2,13 +2,15 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import Hero from "../src/components/Home/Hero";
-import LatestTournaments from "../src/components/Home/LatestTournaments";
+import Events from "../src/components/Home/Events";
+import Tournaments from "../src/components/Home/Tournaments";
 
 export default function Home() {
   return (
     <HomeContainer>
       <Hero />
-      <LatestTournaments />
+      <Tournaments />
+      <Events />
     </HomeContainer>
   );
 }

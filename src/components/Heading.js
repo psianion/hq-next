@@ -14,7 +14,7 @@ function Heading({ highhead, head }) {
 }
 
 const HeadingContainer = styled(motion.div)`
-  margin-top: 4rem;
+  margin-top: 3rem;
   margin-bottom: 2rem;
   display: flex;
   align-items: center;

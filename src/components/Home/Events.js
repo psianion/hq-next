@@ -7,21 +7,20 @@ import Heading from "../Heading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 
-const data = require("../../assets/data/LatestTournamentData");
+const data = require("../../assets/data/EventsData");
 
-function LatestTournaments({ theme }) {
+function Events() {
   const [isActive, setIsActive] = useState(1);
   const active = data.find(({ id }) => id === isActive);
 
   return (
     <>
-      <Heading head={"TOURNAMENTS"} highhead={"LATEST"} />
-      <TournamentsSection>
+      <Heading head={"EVENTS"} highhead={"UPCOMING"} />
+      <Container>
         <Section1>
           {data.map((i) => (
             <Box
               key={i.id}
-              style={i.id == isActive ? { backgroundColor: "#9147FF" } : {}}
               onClick={() => {
                 setIsActive(i.id);
               }}
@@ -55,12 +54,12 @@ function LatestTournaments({ theme }) {
             </Section2Footer>
           </ContentBox2>
         </Section2>
-      </TournamentsSection>
+      </Container>
     </>
   );
 }
 
-const TournamentsSection = styled(motion.div)`
+const Container = styled(motion.div)`
   width: 80rem;
   height: 30rem;
   border-radius: 0.5rem;
@@ -285,4 +284,4 @@ const Section2 = styled(motion.div)`
   }
 `;
 
-export default LatestTournaments;
+export default Events;
