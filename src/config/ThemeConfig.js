@@ -6,7 +6,7 @@ export const darkTheme = {
   primary2: "#474b4f",
   secondary0: "#efefef",
   secondary1: "#e0e0e0",
-  secondary2: "#d4d4d4",
+  secondary2: "#c0c0c0",
   highlight0: "#9147FF",
   logo: "/logo/hqlogo_white.png",
   logohq: "/logo/hqlogo.png",
@@ -15,7 +15,7 @@ export const darkTheme = {
 export const lightTheme = {
   primary0: "#efefef",
   primary1: "#e0e0e0",
-  primary2: "#d4d4d4",
+  primary2: "#c0c0c0",
   secondary0: "#222629",
   secondary1: "#303438",
   secondary2: "#474b4f",
