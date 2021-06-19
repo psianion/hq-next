@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { keyframes } from "styled-components";
 
 function Hero() {
   return (
@@ -10,7 +9,7 @@ function Hero() {
         <ButtonContainer>
           <Button>FIND TOURNAMENTS</Button>
           <SolidButton>JOIN THE DISCORD</SolidButton>
-          <Button>READ OUR BLOG</Button>
+          <Button>TOWER OF MASTERY</Button>
         </ButtonContainer>
       </HeroContainer>
     </>

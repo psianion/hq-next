@@ -8,6 +8,8 @@ export const darkTheme = {
   secondary1: "#e0e0e0",
   secondary2: "#d4d4d4",
   highlight0: "#9147FF",
+  logo: "/logo/hqlogo_white.png",
+  logohq: "/logo/hqlogo.png",
 };
 
 export const lightTheme = {
@@ -18,6 +20,8 @@ export const lightTheme = {
   secondary1: "#303438",
   secondary2: "#474b4f",
   highlight0: "#9147FF",
+  logo: "/logo/hqlogo_black.png",
+  logohq: "/logo/hqlogob.png",
 };
 
 export const GlobalStyles = createGlobalStyle`

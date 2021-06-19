@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Hero from "../src/components/Home/Hero";
 import Events from "../src/components/Home/Events";
 import Tournaments from "../src/components/Home/Tournaments";
+import Footer from "../src/components/Home/Footer";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       <Hero />
       <Tournaments />
       <Events />
+      <Footer />
     </HomeContainer>
   );
 }
