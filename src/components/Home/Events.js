@@ -105,6 +105,7 @@ const Box = styled(motion.div)`
 
   &:hover {
     background-color: ${({ theme }) => theme.primary2};
+    border-left: ${({ theme }) => theme.highlight0} 0.5rem solid;
   }
 
   @media (max-width: 768px) {

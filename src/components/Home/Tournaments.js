@@ -75,6 +75,7 @@ const ContentBox = styled(motion.div)`
   width: 19.25%;
   display: flex;
   flex-direction: column;
+  transition: all 0.2s ease-in-out;
   align-items: center;
 
   &:hover {
@@ -160,7 +161,7 @@ const Button = styled(motion.button)`
   border: none;
   border-radius: 0.2rem;
   cursor: pointer;
-  transition: all 0.1s ease-in-out;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
     background-color: ${({ theme }) => `${theme.highlight0}`};

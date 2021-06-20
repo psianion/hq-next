@@ -12,7 +12,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Footer() {
   return (
-    <>
+    <FooterDiv>
       <LogoDiv></LogoDiv>
       <SocialFooter>
         <IconSection>
@@ -33,9 +33,16 @@ function Footer() {
         trademarks © 1995-2021 Nintendo / Creatures Inc. / GAME FREAK inc.
         Pokémon GO © 2016-2021 Niantic, Inc.
       </Copyrights>
-    </>
+    </FooterDiv>
   );
 }
+
+const FooterDiv = styled(motion.div)`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const SocialFooter = styled(motion.div)`
   height: 4rem;
