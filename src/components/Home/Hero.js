@@ -16,7 +16,6 @@ function Hero() {
         initial="initial"
         animate="animate"
       >
-        <HeroContent variants={fadeInRight}></HeroContent>
         <ButtonContainer variants={stagger2}>
           <Button variants={fadeInTop}>FIND TOURNAMENTS</Button>
           <SolidButton variants={fadeInTop}>JOIN THE DISCORD</SolidButton>
@@ -32,7 +31,7 @@ const HeroContainer = styled(motion.div)`
   width: 100%;
   margin-top: 3rem;
   background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-    url("/Images/Home.jpg");
+    url("/bgloop.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -43,8 +42,6 @@ const HeroContainer = styled(motion.div)`
 
   @media (max-width: 768px) {
     height: 90vh;
-    background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-      url("/Images/HomeMob.jpg");
   }
 `;
 
@@ -71,8 +68,10 @@ const ButtonContainer = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin-top: 30rem;
 
   @media (max-width: 768px) {
+    margin-top: 20rem;
     max-width: 90%;
   }
 `;
