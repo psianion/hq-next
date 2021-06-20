@@ -28,6 +28,21 @@ export const fadeInBottom = {
   },
 };
 
+export const fadeInTop = {
+  initial: {
+    y: 60,
+    opacity: 0,
+  },
+  animate: {
+    y: 0,
+    opacity: 1,
+    trasition: {
+      duration: 0.3,
+      ease: "ease-in-out",
+    },
+  },
+};
+
 export const fadeInRight = {
   initial: {
     x: -60,

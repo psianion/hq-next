@@ -1,15 +1,26 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import {
+  fadeInRight,
+  fadeInTop,
+  stagger2,
+  stagger3,
+} from "../../animations/animations";
 
 function Hero() {
   return (
     <>
-      <HeroContainer>
-        <HeroContent></HeroContent>
-        <ButtonContainer>
-          <Button>FIND TOURNAMENTS</Button>
-          <SolidButton>JOIN THE DISCORD</SolidButton>
-          <Button>TOWER OF MASTERY</Button>
+      <HeroContainer
+        variants={stagger3}
+        exit={{ opacity: 0 }}
+        initial="initial"
+        animate="animate"
+      >
+        <HeroContent variants={fadeInRight}></HeroContent>
+        <ButtonContainer variants={stagger2}>
+          <Button variants={fadeInTop}>FIND TOURNAMENTS</Button>
+          <SolidButton variants={fadeInTop}>JOIN THE DISCORD</SolidButton>
+          <Button variants={fadeInTop}>TOWER OF MASTERY</Button>
         </ButtonContainer>
       </HeroContainer>
     </>
