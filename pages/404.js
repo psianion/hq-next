@@ -20,7 +20,7 @@ export default function FourOFour() {
       <ImageDiv></ImageDiv>
       <ContentDiv>
         <h1>Look like you're lost</h1>
-        <p>the page you are looking for not avaible!</p>
+        <p>the page you are looking for not available!</p>
         <button onClick={() => router.back()}>Go Back</button>
       </ContentDiv>
     </Container>

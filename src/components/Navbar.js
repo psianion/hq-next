@@ -59,7 +59,7 @@ function Navbar({ toggleTheme }) {
                 HOME
               </SideBarItem>
             </Link>
-            <Link href="/toournaments">
+            <Link href="/tournaments">
               <SideBarItem
                 variants={fadeInRight}
                 whileHover={{ scale: 1.2 }}
