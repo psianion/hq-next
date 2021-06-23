@@ -18,7 +18,7 @@ export default function FourOFour() {
       <TextDiv>404</TextDiv>
       <ImageDiv></ImageDiv>
       <ContentDiv>
-        <h1>Look like you're lost...</h1>
+        <h1>Looks like you're lost...</h1>
         <p>Gengar hid the page you're looking for!</p>
         <button onClick={() => router.back()}>Go Back</button>
       </ContentDiv>

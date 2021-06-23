@@ -36,7 +36,7 @@ function Hero() {
           <h1>H</h1>
           <h1>Q</h1>
         </span>
-        <h5>INDIA'S LARGEST POKÉMON GO COMMUNITY</h5>
+        <h5>INDIA'S LARGEST POKÉMON GO PVP COMMUNITY</h5>
         <ButtonContainer variants={stagger2}>
           <Link href="/tournaments">
             <Button
@@ -133,9 +133,9 @@ const HeroContainer = styled(motion.div)`
     }
 
     h5 {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: ${({ theme }) => theme.secondary1};
-      font-weight: 600;
+      font-weight: 400;
     }
 
     span h1 {
