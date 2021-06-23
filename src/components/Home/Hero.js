@@ -129,7 +129,7 @@ const HeroContainer = styled(motion.div)`
 
     p {
       font-size: 0.8rem;
-      margin-top: 10rem;
+      margin-top: 20rem;
     }
 
     h5 {
