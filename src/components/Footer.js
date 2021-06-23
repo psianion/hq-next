@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   faDiscord,
@@ -9,6 +8,7 @@ import {
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSkull } from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
@@ -16,15 +16,34 @@ function Footer() {
       <LogoDiv></LogoDiv>
       <SocialFooter>
         <IconSection>
-          {[faTwitter, faDiscord, faInstagram, faTwitch, faYoutube].map(
-            (i, o) => (
-              <IconDiv key={o}>
-                <FontAwesomeIcon icon={i} />
+          {[
+            { name: faTwitter, link: "https://twitter.com/pvphqin" },
+            { name: faDiscord, link: "https://discord.gg/QEFTu9J" },
+            { name: faInstagram, link: "https://www.instagram.com/pvphq/" },
+            { name: faTwitch, link: "https://www.twitch.tv/pvphqin" },
+            {
+              name: faYoutube,
+              link: "https://www.youtube.com/channel/UC88lOkn6vzd3dzeRbShjcCw",
+            },
+          ].map((i, o) => (
+            <a target="_blank" rel="noopener noreferrer" key={o} href={i.link}>
+              <IconDiv>
+                <FontAwesomeIcon icon={i.name} />
               </IconDiv>
-            )
-          )}
+            </a>
+          ))}
         </IconSection>
       </SocialFooter>
+      <a
+        target="_blank"
+        rel="noopener noreferrer"
+        href="https://www.buymeacoffee.com/pvphq"
+      >
+        <DonateLink>
+          BUY US A
+          <FontAwesomeIcon icon={faSkull} style={{ marginLeft: "0.5rem" }} />
+        </DonateLink>
+      </a>
       <Copyrights>
         ©2021 by PvP HQ. All Rights Reserved By Their Respective Owners.
         <br /> PVP HQ is NOT affiliated with Niantic Inc., The Pokémon Company,
@@ -51,6 +70,7 @@ const SocialFooter = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 1rem;
 `;
 
 const IconSection = styled(motion.div)`
@@ -63,6 +83,21 @@ const IconSection = styled(motion.div)`
   @media (max-width: 768px) {
     width: 15rem;
     font-size: 1rem;
+  }
+`;
+
+const DonateLink = styled(motion.h1)`
+  color: ${({ theme }) => theme.secondary2};
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  font-size: 1.1rem;
+
+  @media (max-width: 768px) {
+    font-size: 0.8rem;
+  }
+
+  &:hover {
+    color: ${({ theme }) => theme.highlight0};
   }
 `;
 
@@ -95,7 +130,7 @@ const Copyrights = styled(motion.div)`
   text-transform: uppercase;
   text-align: center;
   margin-bottom: 2rem;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 
   @media (max-width: 768px) {
     max-width: 85%;

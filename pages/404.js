@@ -18,8 +18,8 @@ export default function FourOFour() {
       <TextDiv>404</TextDiv>
       <ImageDiv></ImageDiv>
       <ContentDiv>
-        <h1>Look like you're lost</h1>
-        <p>gengar hid the page you're looking for!</p>
+        <h1>Look like you're lost...</h1>
+        <p>Gengar hid the page you're looking for!</p>
         <button onClick={() => router.back()}>Go Back</button>
       </ContentDiv>
     </Container>
@@ -93,15 +93,15 @@ const ContentDiv = styled(motion.div)`
   }
 `;
 const ImageDiv = styled(motion.div)`
-  width: 30rem;
-  height: 25rem;
+  width: 20rem;
+  height: 18rem;
   background: url("/gengar2.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   @media (max-width: 768px) {
-    width: 20rem;
-    height: 18rem;
+    width: 15rem;
+    height: 12rem;
   }
 `;

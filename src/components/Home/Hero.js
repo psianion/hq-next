@@ -1,25 +1,74 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import {
-  fadeInRight,
-  fadeInTop,
-  stagger2,
-  stagger3,
-} from "../../animations/animations";
+import { fadeInTop, stagger2, stagger3 } from "../../animations/animations";
+import Head from "next/head";
+import Link from "next/link";
 
 function Hero() {
   return (
     <>
+      <Head>
+        <title>404 | PvP HQ</title>
+        <link
+          rel="preconnect"
+          href="/fonts/Prototype.ttf"
+          as="font"
+          crossOrigin=""
+        />
+        <link
+          rel="preconnect"
+          href="/fonts/Aaargh.ttf"
+          as="font"
+          crossOrigin=""
+        />
+      </Head>
       <HeroContainer
         variants={stagger3}
         exit={{ opacity: 0 }}
         initial="initial"
         animate="animate"
       >
+        <p>WELCOME TO</p>
+        <span style={{ display: "flex", alignItems: "center" }}>
+          <h1>P</h1>
+          <h1>V</h1>
+          <h1 style={{ marginRight: "30px" }}>P</h1>
+          <h1>H</h1>
+          <h1>Q</h1>
+        </span>
+        <h5>INDIA'S LARGEST POKÉMON GO COMMUNITY</h5>
         <ButtonContainer variants={stagger2}>
-          <Button variants={fadeInTop}>FIND TOURNAMENTS</Button>
-          <SolidButton variants={fadeInTop}>JOIN THE DISCORD</SolidButton>
-          <Button variants={fadeInTop}>TOWER OF MASTERY</Button>
+          <Link href="/tournaments">
+            <Button
+              variants={fadeInTop}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              FIND TOURNAMENTS
+            </Button>
+          </Link>
+          <a
+            target="_blank"
+            href="https://discord.gg/QEFTu9J"
+            rel="noopener noreferrer"
+          >
+            <SolidButton
+              variants={fadeInTop}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              JOIN THE DISCORD
+            </SolidButton>
+          </a>
+          <Link href="/tom">
+            <Button
+              variants={fadeInTop}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              TOWER OF MASTERY
+            </Button>
+          </Link>
         </ButtonContainer>
       </HeroContainer>
     </>
@@ -39,25 +88,64 @@ const HeroContainer = styled(motion.div)`
   align-items: center;
   justify-content: center;
 
+  p {
+    font-weight: 200;
+    font-size: 2rem;
+    color: ${({ theme }) => theme.secondary0};
+    font-family: "Aaargh";
+    letter-spacing: 4px;
+    margin-top: 15rem;
+  }
+
+  h5 {
+    font-weight: 200;
+    color: ${({ theme }) => theme.highlight0};
+    transition: all 0.2s ease-in-out;
+    font-size: 2rem;
+    cursor: default;
+  }
+
+  h5:hover {
+    color: ${({ theme }) => theme.secondary1};
+  }
+
+  span h1 {
+    font-size: 8rem;
+    font-family: "Prototype";
+    font-weight: 400;
+    color: ${({ theme }) => theme.secondary0};
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  span h1:hover {
+    font-size: 7rem;
+    font-family: "Prototype";
+    color: ${({ theme }) => theme.highlight0};
+    font-weight: 400;
+  }
+
   @media (max-width: 768px) {
     height: 90vh;
-  }
-`;
 
-const HeroContent = styled(motion.div)`
-  width: 80rem;
-  max-width: 80%;
-  height: 30rem;
-  margin-top: 1.5rem;
-  background-color: ${({ theme }) => theme.primary0};
-  border-radius: 0.5rem;
-  border-bottom: ${({ theme }) => theme.highlight0} 0.3rem solid;
+    p {
+      font-size: 0.7rem;
+      margin-top: 10rem;
+    }
 
-  @media (max-width: 768px) {
-    width: 95%;
-    max-width: 100%;
-    margin-top: 0.8rem;
-    height: 30rem;
+    h5 {
+      font-size: 0.8rem;
+      color: ${({ theme }) => theme.secondary1};
+      font-weight: 600;
+    }
+
+    span h1 {
+      font-size: 4rem;
+    }
+
+    span h1:hover {
+      font-size: 5rem;
+    }
   }
 `;
 
@@ -67,10 +155,8 @@ const ButtonContainer = styled(motion.div)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top: 30rem;
 
   @media (max-width: 768px) {
-    margin-top: 20rem;
     max-width: 90%;
   }
 `;

@@ -67,4 +67,20 @@ export const GlobalStyles = createGlobalStyle`
   text-decoration: none;
   color: ${({ theme }) => theme.highlight0};
   }
+
+  @font-face {
+    font-family: "Prototype";
+    src: url("/fonts/Prototype.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: "Aaargh";
+    src: url("/fonts/Aaargh.ttf");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
 `;
