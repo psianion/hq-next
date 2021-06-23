@@ -10,7 +10,6 @@ export default function FourOFour() {
       <Head>
         <title>404 | PvP HQ</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
           href="https://fonts.googleapis.com/css2?family=Arvo&display=swap"
           rel="stylesheet"
@@ -20,7 +19,7 @@ export default function FourOFour() {
       <ImageDiv></ImageDiv>
       <ContentDiv>
         <h1>Look like you're lost</h1>
-        <p>the page you are looking for not available!</p>
+        <p>gengar hid the page you're looking for!</p>
         <button onClick={() => router.back()}>Go Back</button>
       </ContentDiv>
     </Container>
@@ -32,14 +31,14 @@ const Container = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #5d366d;
+  background-color: ${({ theme }) => theme.primary0};
   height: 100vh;
 `;
 
 const TextDiv = styled(motion.div)`
   font-size: 7rem;
   font-family: "Arvo", serif;
-  color: #eee;
+  color: ${({ theme }) => theme.secondary1};
 
   @media (max-width: 768px) {
     font-size: 4rem;
@@ -50,7 +49,7 @@ const ContentDiv = styled(motion.div)`
   font-family: "Arvo", serif;
   display: flex;
   flex-direction: column;
-  color: #eee;
+  color: ${({ theme }) => theme.secondary1};
   align-items: center;
 
   h1 {
@@ -69,8 +68,8 @@ const ContentDiv = styled(motion.div)`
     transition: all 0.2s ease-in-out;
     font-family: "Arvo", serif;
     cursor: pointer;
-    color: #eee;
-    background-color: #ff5a45;
+    color: ${({ theme }) => theme.secondary1};
+    background-color: ${({ theme }) => theme.highlight0};
     margin-top: 1rem;
   }
 
@@ -95,14 +94,14 @@ const ContentDiv = styled(motion.div)`
 `;
 const ImageDiv = styled(motion.div)`
   width: 30rem;
-  height: 20rem;
-  background: url("/gengar.gif");
+  height: 25rem;
+  background: url("/gengar2.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 
   @media (max-width: 768px) {
     width: 20rem;
-    height: 12rem;
+    height: 18rem;
   }
 `;
