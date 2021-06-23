@@ -59,7 +59,7 @@ function Navbar({ toggleTheme }) {
                 HOME
               </SideBarItem>
             </Link>
-            <Link href="/tom/rules">
+            <Link href="/toournaments">
               <SideBarItem
                 variants={fadeInRight}
                 whileHover={{ scale: 1.2 }}
@@ -68,7 +68,7 @@ function Navbar({ toggleTheme }) {
                 TOURNAMENTS
               </SideBarItem>
             </Link>
-            <Link href="/tom/">
+            <Link href="/tom">
               <SideBarItem
                 variants={fadeInRight}
                 whileHover={{ scale: 1.2 }}
@@ -77,20 +77,24 @@ function Navbar({ toggleTheme }) {
                 TOWER OF MASTERY
               </SideBarItem>
             </Link>
-            <SideBarItem
-              variants={fadeInRight}
-              whileHover={{ scale: 1.2 }}
-              onClick={toggleMenu}
-            >
-              BATTLE FRONTIER
-            </SideBarItem>
-            <SideBarItem
-              variants={fadeInRight}
-              whileHover={{ scale: 1.2 }}
-              onClick={toggleMenu}
-            >
-              ABOUT
-            </SideBarItem>
+            <Link href="/frontier">
+              <SideBarItem
+                variants={fadeInRight}
+                whileHover={{ scale: 1.2 }}
+                onClick={toggleMenu}
+              >
+                BATTLE FRONTIER
+              </SideBarItem>
+            </Link>
+            <Link href="/about">
+              <SideBarItem
+                variants={fadeInRight}
+                whileHover={{ scale: 1.2 }}
+                onClick={toggleMenu}
+              >
+                ABOUT
+              </SideBarItem>
+            </Link>
           </SideBarItems>
         </Sidebar>
       ) : (

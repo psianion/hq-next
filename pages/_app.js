@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../src/config/ThemeConfig";
 import Navbar from "../src/components/Navbar";
-import Footer from "../src/components/Footer";
 import Head from "next/head";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
@@ -27,7 +26,6 @@ function MyApp({ Component, pageProps }) {
       <GlobalStyles />
       <Navbar toggleTheme={toggleTheme} />
       <Component {...pageProps} />
-      <Footer />
     </ThemeProvider>
   );
 }
