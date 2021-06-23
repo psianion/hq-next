@@ -8,7 +8,7 @@ function Hero() {
   return (
     <>
       <Head>
-        <title>404 | PvP HQ</title>
+        <title>Home | PvP HQ</title>
         <link
           rel="preconnect"
           href="/fonts/Prototype.ttf"
@@ -47,19 +47,18 @@ function Hero() {
               FIND TOURNAMENTS
             </Button>
           </Link>
-          <a
-            target="_blank"
-            href="https://discord.gg/QEFTu9J"
-            rel="noopener noreferrer"
+
+          <SolidButton
+            variants={fadeInTop}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() =>
+              window.open("https://discord.gg/QEFTu9J", "_blank").focus()
+            }
           >
-            <SolidButton
-              variants={fadeInTop}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              JOIN THE DISCORD
-            </SolidButton>
-          </a>
+            JOIN THE DISCORD
+          </SolidButton>
+
           <Link href="/tom">
             <Button
               variants={fadeInTop}
@@ -92,7 +91,7 @@ const HeroContainer = styled(motion.div)`
     font-weight: 200;
     font-size: 2rem;
     color: ${({ theme }) => theme.secondary0};
-    font-family: "Aaargh";
+    font-family: "Aaargh", "Roboto", sans-serif;
     letter-spacing: 4px;
     margin-top: 15rem;
   }
@@ -111,7 +110,7 @@ const HeroContainer = styled(motion.div)`
 
   span h1 {
     font-size: 8rem;
-    font-family: "Prototype";
+    font-family: "Prototype", "Open Sans", sans-serif;
     font-weight: 400;
     color: ${({ theme }) => theme.secondary0};
     transition: all 0.2s ease-in-out;
@@ -129,12 +128,12 @@ const HeroContainer = styled(motion.div)`
     height: 90vh;
 
     p {
-      font-size: 0.7rem;
+      font-size: 0.8rem;
       margin-top: 10rem;
     }
 
     h5 {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: ${({ theme }) => theme.secondary1};
       font-weight: 600;
     }

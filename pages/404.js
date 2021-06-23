@@ -37,7 +37,7 @@ const Container = styled(motion.div)`
 
 const TextDiv = styled(motion.div)`
   font-size: 7rem;
-  font-family: "Arvo", serif;
+  font-family: "Arvo", "Open Sans", serif;
   color: ${({ theme }) => theme.secondary1};
 
   @media (max-width: 768px) {
@@ -46,7 +46,7 @@ const TextDiv = styled(motion.div)`
 `;
 
 const ContentDiv = styled(motion.div)`
-  font-family: "Arvo", serif;
+  font-family: "Arvo", "Open Sans", serif;
   display: flex;
   flex-direction: column;
   color: ${({ theme }) => theme.secondary1};
@@ -66,7 +66,7 @@ const ContentDiv = styled(motion.div)`
     border: none;
     border-radius: 0.2rem;
     transition: all 0.2s ease-in-out;
-    font-family: "Arvo", serif;
+    font-family: "Arvo", "Open Sans", serif;
     cursor: pointer;
     color: ${({ theme }) => theme.secondary1};
     background-color: ${({ theme }) => theme.highlight0};
@@ -95,7 +95,7 @@ const ContentDiv = styled(motion.div)`
 const ImageDiv = styled(motion.div)`
   width: 20rem;
   height: 18rem;
-  background: url("/gengar2.gif");
+  background: url("/gengar.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
