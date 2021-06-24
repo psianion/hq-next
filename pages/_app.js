@@ -24,8 +24,8 @@ function MyApp({ Component, pageProps }) {
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
       <GlobalStyles />
-      <Navbar toggleTheme={toggleTheme} />
-      <Component {...pageProps} />
+      <Navbar toggleTheme={toggleTheme} theme={theme} />
+      <Component theme={theme} {...pageProps} />
     </ThemeProvider>
   );
 }

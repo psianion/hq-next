@@ -19,7 +19,7 @@ export const fadeInBottom = {
     opacity: 0,
   },
   animate: {
-    y: 60,
+    y: 40,
     opacity: 1,
     trasition: {
       duration: 0.3,

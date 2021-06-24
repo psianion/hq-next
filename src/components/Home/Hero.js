@@ -77,8 +77,9 @@ function Hero() {
 const HeroContainer = styled(motion.div)`
   height: 35rem;
   width: 100%;
+  margin-top: 3rem;
   background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-    url("/bg.gif");
+    url("/gif/bg.gif");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
