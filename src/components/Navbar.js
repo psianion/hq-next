@@ -85,11 +85,7 @@ function Navbar({ toggleTheme, theme }) {
               {theme == "light" ? "Dark Mode" : "Light Mode"}
             </ThemeSetting>
             <Link href="/login">
-              <SideBarItem
-                variants={fadeInRight}
-                whileHover={{ scale: 1.2 }}
-                onClick={toggleMenu}
-              >
+              <SideBarItem variants={fadeInRight} whileHover={{ scale: 1.2 }}>
                 Login
               </SideBarItem>
             </Link>
