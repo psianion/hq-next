@@ -3,8 +3,56 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
+import { useState, useEffect } from "react";
+import axios from "axios";
+// import { useSignIn } from "../hooks/auth/login";
 
 export default function Login() {
+  // const { isLoading, userInfo, discordLogin } = useSignIn();
+  const [isAuth, setIsAuth] = useState(false);
+  const [user, setUser] = useState({});
+  const [error, setError] = useState(null);
+
+  async function fetchData() {
+    let response = await axios.get("http://localhost:3001/auth/login/success", {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    });
+    let user = await response.data;
+    console.log(user);
+  }
+
+  useEffect(() => {
+    fetchData();
+    {
+      /*axios
+      .get("http://localhost:3001/auth/login/success", {
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) return response.json();
+        throw new Error("failed to authenticate user");
+      })
+      .then((responseJson) => {
+        console.log(responseJson);
+        isAuth(true);
+        setUser(responseJson.user);
+      })
+      .catch((error) => {
+        setError(error);
+      });*/
+    }
+  }, []);
+
   return (
     <Container>
       <Head>
@@ -16,12 +64,34 @@ export default function Login() {
       </Head>
       <ImageDiv></ImageDiv>
       <ContentDiv>
-        <h1>Authorize yourself to join HQ</h1>
+        {!isAuth ? (
+          <h1>Authorize yourself to join HQ</h1>
+        ) : (
+          <h1>AuthorizeD yourself to join HQ</h1>
+        )}
         <p>Squirtle welcomes you to the squad!</p>
-        <button>
-          Login thorugh Discord{" "}
-          <FontAwesomeIcon icon={faDiscord} style={{ marginLeft: "0.5rem" }} />
-        </button>
+        {!isAuth ? (
+          <button
+            onClick={() => {
+              window.open("http://localhost:3001/auth", "_self");
+            }}
+          >
+            Login thorugh Discord{" "}
+            <FontAwesomeIcon
+              icon={faDiscord}
+              style={{ marginLeft: "0.5rem" }}
+            />
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              window.open("http://localhost:3001/auth/logout", "_self");
+              setIsAuth(false);
+            }}
+          >
+            Logout
+          </button>
+        )}
       </ContentDiv>
     </Container>
   );
