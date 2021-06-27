@@ -210,6 +210,7 @@ const RightSidebar = styled(motion.div)`
   @media (max-width: 768px) {
     padding: 0.7rem 0.7rem;
     width: 100%;
+    height: 100vh;
   }
 `;
 
