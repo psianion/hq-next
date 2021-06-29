@@ -1,5 +1,5 @@
 module.exports = {
   env: {
-    PROXY_URL: "http://localhost:3001",
+    PROXY_URL: "https://pvphq-server.herokuapp.com",
   },
 };
