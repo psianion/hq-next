@@ -63,34 +63,72 @@ function Navbar({ toggleTheme, theme }) {
             <FontAwesomeIcon icon={faBars} />
           )}
         </NavButton>
-        <NavButton
-          onClick={toggleSettings}
-          title="Dark Mode"
-          variants={fadeInLeft}
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-        >
-          {openSettings ? (
-            <FontAwesomeIcon icon={faChevronUp} />
-          ) : (
-            <FontAwesomeIcon icon={faUserCircle} />
-          )}
-        </NavButton>
+        {isAuth ? (
+          <NavButton
+            onClick={toggleSettings}
+            title="Dark Mode"
+            variants={fadeInLeft}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            {openSettings ? (
+              <FontAwesomeIcon icon={faChevronUp} />
+            ) : (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  fontFamily: "Poppins",
+                  fontSize: "1rem",
+                }}
+              >
+                {user.discordName}{" "}
+                <FontAwesomeIcon
+                  icon={faUserCircle}
+                  style={{ marginLeft: "0.5rem", fontSize: "1.5rem" }}
+                />
+              </div>
+            )}
+          </NavButton>
+        ) : (
+          <NavButton
+            onClick={toggleSettings}
+            title="Dark Mode"
+            variants={fadeInLeft}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+          >
+            {openSettings ? (
+              <FontAwesomeIcon icon={faChevronUp} />
+            ) : (
+              <FontAwesomeIcon icon={faUserCircle} />
+            )}
+          </NavButton>
+        )}
       </Nav>
       {openSettings ? (
         <RightSidebar variants={fadeInBottom}>
           <RightSideBarItems variants={stagger1}>
-            <ProfileSec>
-              <Picture></Picture>
-              <ProfileContent>
-                <h5>{user.discordName}</h5>
-                <p>
-                  {user.totalWins}/{user.totalMatches} Match Wins
-                </p>
-              </ProfileContent>
-            </ProfileSec>
+            {isAuth && (
+              <ProfileSec
+                variants={fadeInBottom}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => {
+                  router.push("/profile");
+                  toggleSettings();
+                }}
+              >
+                <Picture></Picture>
+                <ProfileContent>
+                  <h5>{user.discordName}</h5>
+                  <p>
+                    {user.totalWins}/{user.totalMatches} Match Wins
+                  </p>
+                </ProfileContent>
+              </ProfileSec>
+            )}
             <RightSideBarItem
-              variants={fadeInRight}
+              variants={fadeInBottom}
               whileHover={{ scale: 1.05 }}
               onClick={() => {
                 toggleSettings();
@@ -101,15 +139,15 @@ function Navbar({ toggleTheme, theme }) {
                 icon={faAdjust}
                 style={{
                   marginRight: "1rem",
-                  fontSize: "1.75rem",
-                  width: "2rem",
+                  fontSize: "1.5rem",
+                  width: "1.5rem",
                 }}
               />
               {theme == "light" ? "Dark Mode" : "Light Mode"}
             </RightSideBarItem>
             {isAuth ? (
               <RightSideBarItem
-                variants={fadeInRight}
+                variants={fadeInBottom}
                 whileHover={{ scale: 1.05 }}
                 onClick={() => {
                   toggleSettings();
@@ -121,15 +159,15 @@ function Navbar({ toggleTheme, theme }) {
                   icon={faPowerOff}
                   style={{
                     marginRight: "1rem",
-                    fontSize: "1.75rem",
-                    width: "2rem",
+                    fontSize: "1.5rem",
+                    width: "1.5rem",
                   }}
                 />
                 Logout
               </RightSideBarItem>
             ) : (
               <RightSideBarItem
-                variants={fadeInRight}
+                variants={fadeInBottom}
                 whileHover={{ scale: 1.05 }}
                 onClick={() => {
                   toggleSettings();
@@ -140,8 +178,8 @@ function Navbar({ toggleTheme, theme }) {
                   icon={faUser}
                   style={{
                     marginRight: "1rem",
-                    fontSize: "1.75rem",
-                    width: "2rem",
+                    fontSize: "1.5rem",
+                    width: "1.5rem",
                   }}
                 />
                 Login
@@ -273,7 +311,6 @@ const RightSidebar = styled(motion.div)`
 const NavButton = styled(motion.button)`
   background-color: ${({ theme }) => theme.primary0};
   color: ${({ theme }) => theme.secondary1};
-  width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;
   border: none;
@@ -284,7 +321,6 @@ const NavButton = styled(motion.button)`
   align-items: center;
 
   @media (max-width: 768px) {
-    width: 1.75rem;
     height: 1.75rem;
     font-size: 1.25rem;
   }
@@ -299,6 +335,11 @@ const RightSideBarItems = styled(motion.div)`
   width: 28rem;
   text-align: center;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    height: 80vh;
+    width: 100%;
+  }
 `;
 
 const SideBarItems = styled(motion.div)`
@@ -361,13 +402,17 @@ const ProfileContent = styled(motion.div)`
     font-weight: 400;
     color: ${({ theme }) => theme.secondary2};
   }
+
+  @media (max-width: 768px) {
+    width: 70%;
+  }
 `;
 
 const RightSideBarItem = styled(motion.h1)`
-  width: 90%;
-  height: 3rem;
+  width: 95%;
+  height: 2.5rem;
   color: ${({ theme }) => theme.secondary1};
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-family: "Open Sans", sans-serif;
   text-transform: uppercase;
   display: flex;
@@ -375,11 +420,21 @@ const RightSideBarItem = styled(motion.h1)`
   justify-content: flex-start;
   font-weight: 600;
   border-radius: 0.25rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  background-color: ${({ theme }) => theme.primary1};
   padding: 0.5rem;
+  transition: all 0.2s ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme.primary1};
+    background-color: ${({ theme }) => theme.primary2};
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 2.25rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    padding: 1rem;
   }
 `;
 

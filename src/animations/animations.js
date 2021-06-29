@@ -15,11 +15,11 @@ export const fadeInLeft = {
 
 export const fadeInBottom = {
   initial: {
-    y: 0,
+    y: -40,
     opacity: 0,
   },
   animate: {
-    y: 40,
+    y: 0,
     opacity: 1,
     trasition: {
       duration: 0.3,
