@@ -7,6 +7,7 @@ import { useSignIn } from "../hooks/auth/login";
 
 export default function Login() {
   const { isAuth, user, setIsAuth } = useSignIn();
+  const url = process.env.PROXY_URL;
   return (
     <Container>
       <Head>
@@ -27,7 +28,7 @@ export default function Login() {
         {isAuth == false ? (
           <button
             onClick={() => {
-              window.open(`${process.env.PROXY_URL}` + "/auth", "_self");
+              window.open(url + "/auth", "_self");
             }}
           >
             Login thorugh Discord{" "}
@@ -39,7 +40,7 @@ export default function Login() {
         ) : (
           <button
             onClick={() => {
-              window.open(`${process.env.PROXY_URL}` + "/auth/logout", "_self");
+              window.open(url + "/auth/logout", "_self");
               setIsAuth(false);
             }}
           >

@@ -7,17 +7,16 @@ export const useSignIn = () => {
   const [error, setError] = useState(null);
 
   async function fetchData() {
-    let response = await axios.get(
-      `${process.env.PROXY_URL}` + "/auth/login/success",
-      {
-        withCredentials: true,
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true,
-        },
-      }
-    );
+    const url = process.env.PROXY_URL + "/auth/login/success";
+    console.log(url);
+    let response = await axios.get(url, {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    });
     try {
       let data = await response.data;
       setIsAuth(true);
