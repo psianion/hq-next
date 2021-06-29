@@ -1,6 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { useSignIn } from "../../hooks/auth/login";
 
 import {
   fadeInLeft,
@@ -15,14 +16,20 @@ import {
   faBars,
   faChevronUp,
   faCog,
+  faPowerOff,
+  faSignOutAlt,
   faTimes,
+  faUser,
   faUserCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 function Navbar({ toggleTheme, theme }) {
+  const router = useRouter();
+  const { isAuth, setIsAuth, user } = useSignIn();
   const [openMenu, setOpenMenu] = useState(false);
   const [openSettings, setOpenSettings] = useState(false);
 
@@ -73,26 +80,73 @@ function Navbar({ toggleTheme, theme }) {
       {openSettings ? (
         <RightSidebar variants={fadeInBottom}>
           <RightSideBarItems variants={stagger1}>
-            <ThemeSetting
-              onClick={toggleTheme}
-              variants={fadeInBottom}
+            <ProfileSec>
+              <Picture></Picture>
+              <ProfileContent>
+                <h5>{user.discordName}</h5>
+                <p>
+                  {user.totalWins}/{user.totalMatches} Match Wins
+                </p>
+              </ProfileContent>
+            </ProfileSec>
+            <RightSideBarItem
+              variants={fadeInRight}
               whileHover={{ scale: 1.05 }}
+              onClick={() => {
+                toggleSettings();
+                toggleTheme();
+              }}
             >
               <FontAwesomeIcon
                 icon={faAdjust}
-                style={{ marginRight: "0.5rem" }}
+                style={{
+                  marginRight: "1rem",
+                  fontSize: "1.75rem",
+                  width: "2rem",
+                }}
               />
               {theme == "light" ? "Dark Mode" : "Light Mode"}
-            </ThemeSetting>
-            <Link href="/login">
-              <SideBarItem
+            </RightSideBarItem>
+            {isAuth ? (
+              <RightSideBarItem
                 variants={fadeInRight}
-                whileHover={{ scale: 1.2 }}
-                onClick={toggleSettings}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => {
+                  toggleSettings();
+                  window.open("http://localhost:3001/auth/logout", "_self");
+                  setIsAuth(false);
+                }}
               >
+                <FontAwesomeIcon
+                  icon={faPowerOff}
+                  style={{
+                    marginRight: "1rem",
+                    fontSize: "1.75rem",
+                    width: "2rem",
+                  }}
+                />
+                Logout
+              </RightSideBarItem>
+            ) : (
+              <RightSideBarItem
+                variants={fadeInRight}
+                whileHover={{ scale: 1.05 }}
+                onClick={() => {
+                  toggleSettings();
+                  router.push("/login");
+                }}
+              >
+                <FontAwesomeIcon
+                  icon={faUser}
+                  style={{
+                    marginRight: "1rem",
+                    fontSize: "1.75rem",
+                    width: "2rem",
+                  }}
+                />
                 Login
-              </SideBarItem>
-            </Link>
+              </RightSideBarItem>
+            )}
           </RightSideBarItems>
         </RightSidebar>
       ) : (
@@ -197,14 +251,16 @@ const Sidebar = styled(motion.div)`
 const RightSidebar = styled(motion.div)`
   position: fixed;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
   top: 0;
   right: 0;
-  height: 40rem;
+  height: 100vh;
   width: 20rem;
   background-color: ${({ theme }) => theme.primary0};
-  z-index: 1;
   padding: 0rem 1rem;
+  z-index: 1;
   box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.3);
 
   @media (max-width: 768px) {
@@ -238,9 +294,11 @@ const RightSideBarItems = styled(motion.div)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  cursor: pointer;
+  justify-content: flex-start;
+  height: 90vh;
+  width: 28rem;
   text-align: center;
+  cursor: pointer;
 `;
 
 const SideBarItems = styled(motion.div)`
@@ -262,18 +320,67 @@ const SideBarItem = styled(motion.h1)`
   margin-bottom: 1rem;
 `;
 
-const ThemeSetting = styled(motion.div)`
+const ProfileSec = styled(motion.div)`
+  width: 100%;
+  height: 6rem;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex: row;
+`;
+
+const Picture = styled(motion.div)`
+  width: 5rem;
+  height: 5rem;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.primary1};
+`;
+
+const ProfileContent = styled(motion.div)`
+  width: 12rem;
+  height: 5rem;
+  background-color: ${({ theme }) => theme.primary1};
+  border-radius: 0.25rem;
+  margin-left: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 1rem;
+
+  h5 {
+    font-size: 1.2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+  }
+
+  p {
+    font-size: 0.9rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: ${({ theme }) => theme.secondary2};
+  }
+`;
+
+const RightSideBarItem = styled(motion.h1)`
   width: 90%;
-  height: 2.5rem;
+  height: 3rem;
+  color: ${({ theme }) => theme.secondary1};
+  font-size: 1.5rem;
+  font-family: "Open Sans", sans-serif;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  font-family: "Open Sans", sans-serif;
+  justify-content: flex-start;
   font-weight: 600;
-  border-radius: 0.5rem;
-  border: 1px solid ${({ theme }) => theme.secondary1};
-  margin-bottom: 3rem;
-  text-transform: uppercase;
+  border-radius: 0.25rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.primary1};
+  }
 `;
+
 export default Navbar;

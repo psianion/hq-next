@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useSignIn } from "../hooks/auth/login";
 
 export default function Profile() {
+  const { isAuth, user } = useSignIn();
+
   const router = useRouter();
   return (
     <Container>
@@ -18,6 +21,11 @@ export default function Profile() {
 
       <Content>
         <Cover></Cover>
+        <FlexBox>
+          <Avatar></Avatar>
+          <IGN>{user.discordName}</IGN>
+          <Role>{user.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
+        </FlexBox>
       </Content>
     </Container>
   );
@@ -44,4 +52,36 @@ const Cover = styled(motion.div)`
   border-radius: 0.5rem 0.5rem 0 0;
   width: 100%;
   height: 10rem;
+`;
+
+const FlexBox = styled(motion.div)`
+  display: flex;
+  transform: translateY(-6rem);
+  margin-left: 2rem;
+  align-items: center;
+`;
+
+const Avatar = styled(motion.div)`
+  border: solid 0.5rem ${({ theme }) => theme.primary0};
+  background-color: ${({ theme }) => theme.primary1};
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+`;
+
+const IGN = styled(motion.h1)`
+  margin-left: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 400;
+  transform: translateY(-1.5rem);
+`;
+
+const Role = styled(motion.p)`
+  margin-left: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  color: ${({ theme }) => theme.primary2};
+  font-weight: 400;
+  transform: translateY(-1rem);
 `;
