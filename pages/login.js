@@ -27,7 +27,7 @@ export default function Login() {
         {isAuth == false ? (
           <button
             onClick={() => {
-              window.open("http://localhost:3001/auth", "_self");
+              window.open(`${process.env.PROXY_URL}` + "/auth", "_self");
             }}
           >
             Login thorugh Discord{" "}
@@ -39,7 +39,7 @@ export default function Login() {
         ) : (
           <button
             onClick={() => {
-              window.open("http://localhost:3001/auth/logout", "_self");
+              window.open(`${process.env.PROXY_URL}` + "/auth/logout", "_self");
               setIsAuth(false);
             }}
           >
