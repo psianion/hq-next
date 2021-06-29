@@ -151,7 +151,10 @@ function Navbar({ toggleTheme, theme }) {
                 whileHover={{ scale: 1.05 }}
                 onClick={() => {
                   toggleSettings();
-                  window.open("http://localhost:3001/auth/logout", "_self");
+                  window.open(
+                    `${process.env.PROXY_URL}` + "/auth/logout",
+                    "_self"
+                  );
                   setIsAuth(false);
                 }}
               >
