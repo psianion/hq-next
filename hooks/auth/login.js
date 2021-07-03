@@ -19,8 +19,13 @@ export const useSignIn = () => {
         },
       })
       .then((response) => {
-        setIsAuth(true);
-        setUser(response.data.user);
+        if (response.data.success) {
+          setIsAuth(true);
+          setUser(response.data.user);
+        } else {
+          setIsAuth(false);
+          return;
+        }
       });
   }
   useEffect(() => {
