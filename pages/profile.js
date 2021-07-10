@@ -3,11 +3,23 @@ import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useSignIn } from "../hooks/auth/login";
+import { useForm } from "react-hook-form";
+import { useEffect, useState } from "react";
 
 export default function Profile() {
+  const { register, handleSubmit, errors } = useForm();
   const { isAuth, user } = useSignIn();
-
+  const [stage, setStage] = useState("IGN-NOT-SET");
   const router = useRouter();
+
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
+  useEffect(() => {
+    user.ign ? setStage("IGN-SET") : setStage("IGN-NOT-SET");
+  }, []);
+
   return (
     <Container>
       <Head>
@@ -19,14 +31,34 @@ export default function Profile() {
         />
       </Head>
 
-      <Content>
-        <Cover></Cover>
-        <FlexBox>
-          <Avatar></Avatar>
-          <IGN>{user.discordName}</IGN>
-          <Role>{user.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
-        </FlexBox>
-      </Content>
+      {stage === "IGN-SET" && (
+        <Content>
+          <Cover></Cover>
+          <FlexBox>
+            <Avatar></Avatar>
+            <IGN>{user.discordName}</IGN>
+            <Role>{user.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
+          </FlexBox>
+        </Content>
+      )}
+      {stage === "IGN-NOT-SET" && (
+        <Content>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="form-control">
+              <label>Email</label>
+              <input type="text" {...register("email")} />
+            </div>
+            <div className="form-control">
+              <label>Password</label>
+              <input type="password" {...register("password")} />
+            </div>
+            <div className="form-control">
+              <label></label>
+              <button type="submit">Login</button>
+            </div>
+          </form>
+        </Content>
+      )}
     </Container>
   );
 }

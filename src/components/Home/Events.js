@@ -1,9 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
-
 import Heading from "../Heading";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 
