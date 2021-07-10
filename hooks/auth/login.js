@@ -8,7 +8,6 @@ export const useSignIn = () => {
 
   async function fetchData() {
     const url = `${process.env.PROXY_URL}/auth/login/success`;
-    console.log(url);
     axios
       .get(url, {
         withCredentials: true,
@@ -26,6 +25,9 @@ export const useSignIn = () => {
           setIsAuth(false);
           return;
         }
+      })
+      .catch((e) => {
+        setError(e);
       });
   }
   useEffect(() => {
