@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { fadeInTop, stagger2, stagger3 } from "../../animations/animations";
+import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
 
@@ -48,9 +49,9 @@ function Hero() {
         <h1>
           TOWER <br /> OF <br /> MASTERY
         </h1>
-        <h5>INDIA'S LARGEST POKÉMON GO PVP COMMUNITY</h5>
+        <h5>WORLDWIDE POKÉMON GO PVP GYM FORMAT</h5>
         <h4>
-          INDIA'S LARGEST POKÉMON <br /> GO PVP COMMUNITY
+          WORLDWIDE POKÉMON GO <br /> PVP GYM FORMAT
         </h4>
       </HeroContainer>
     </>
@@ -77,6 +78,7 @@ const HeroContainer = styled(motion.div)`
     color: ${({ theme }) => theme.secondary0};
     font-family: "Aaargh", "Roboto", sans-serif;
     letter-spacing: 4px;
+    margin-top: 15rem;
   }
 
   h5 {
@@ -85,6 +87,7 @@ const HeroContainer = styled(motion.div)`
     transition: all 0.2s ease-in-out;
     font-size: 2rem;
     cursor: default;
+    margin-bottom: 5rem;
   }
 
   h4 {
@@ -108,7 +111,7 @@ const HeroContainer = styled(motion.div)`
   span h1:hover {
     font-size: 4.5rem;
     font-family: "Prototype";
-    color: #222831;
+    color: ${({ theme }) => theme.highlight0};
     font-weight: 400;
   }
 
@@ -122,7 +125,7 @@ const HeroContainer = styled(motion.div)`
 
     p {
       font-size: 0.8rem;
-      margin-top: 15rem;
+      margin-top: 10rem;
     }
 
     h5 {

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Footer from "../../src/components/Footer";
 import Hero from "../../src/components/ToM/Hero";
 import Links from "../../src/components/ToM/Content";
+import GymNews from "../../src/components/ToM/GymNews";
 
 export default function TOMHome() {
   return (
@@ -13,6 +14,7 @@ export default function TOMHome() {
       </Head>
       <Hero />
       <Links />
+      <GymNews />
       <Footer />
     </ToMContainer>
   );
