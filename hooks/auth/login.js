@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export const useSignIn = () => {
+export const useAuth = () => {
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState({});
   const [error, setError] = useState(null);
@@ -20,6 +20,7 @@ export const useSignIn = () => {
       .then((response) => {
         if (response.data.success) {
           setIsAuth(true);
+          localStorage.setItem("me", response.data.user._id);
           setUser(response.data.user);
         } else {
           setIsAuth(false);
