@@ -7,7 +7,7 @@ export const useAuth = () => {
   const [error, setError] = useState(null);
 
   async function fetchData() {
-    const url = `${process.env.PROXY_URL}/auth/login/success`;
+    const url = `/auth/login/success`;
     axios
       .get(url, {
         withCredentials: true,

@@ -5,7 +5,7 @@ export const useUser = () => {
   const id = typeof window !== "undefined" ? localStorage.getItem("me") : null;
 
   const meQuery = async () => {
-    const some = await axios.get(`${process.env.PROXY_URL}/user/${id}`);
+    const some = await axios.get(`/user/${id}`);
     return some.data.data;
   };
 
@@ -24,7 +24,7 @@ export const useSetupProfile = () => {
 
   const setupProfile = async (data) => {
     try {
-      await axios.post(`${process.env.PROXY_URL}/user/setup`, {
+      await axios.post(`/user/setup`, {
         id: id,
         data: data,
       });
