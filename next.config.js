@@ -2,6 +2,6 @@ require("dotenv").config();
 
 module.exports = {
   env: {
-    API_URL: "http://localhost:3001",
+    API_URL: "https://pvphq-server.herokuapp.com",
   },
 };

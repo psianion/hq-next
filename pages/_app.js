@@ -10,7 +10,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
 config.autoAddCss = false;
-axios.defaults.baseURL = process.env.PROXY_URL;
+axios.defaults.baseURL = process.env.API_URL;
 
 function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState("dark");
