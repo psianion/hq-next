@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Image from "next/image";
 import Heading from "../Heading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
@@ -36,14 +37,81 @@ function Links() {
           the <Highlight>Elite Fours</Highlight>.
         </h1>
       </TextContainer>
+      <Heading head={"NEAR YOU"} highhead={"LOCATE GYMS"} />
+      <Regions>
+        <Region>NORTH AMERICA</Region>
+        <Region>LATIN AMERICAN</Region>
+        <Region>EUROPE</Region>
+        <Region>ASIA-PACIFIC</Region>
+        <Region>INDIA</Region>
+      </Regions>
+      {/*<ImageContainer>
+        <Image width="300px" height="240px" src="/logo/tomlogo.png" />
+      </ImageContainer>*/}
     </>
   );
 }
 
+const Regions = styled(motion.div)`
+  width: 90%;
+  height: 5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    flex-direction: column;
+    align-items: center;
+    height: 12rem;
+    margin-top: 0rem;
+  }
+`;
+
+const Region = styled(motion.div)`
+  width: 18%;
+  text-align: center;
+  font-size: 1.8rem;
+  font-family: "Poppins", sans-serif;
+  border-radius: 0.2rem;
+  font-weight: 600;
+  background-color: ${({ theme }) => theme.primary1};
+  color: ${({ theme }) => theme.highlight0};
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: ${({ theme }) => theme.secondary1};
+    background-color: ${({ theme }) => theme.primary2};
+    border-right: 0.5rem solid ${({ theme }) => theme.highlight0};
+  }
+
+  @media (max-width: 768px) {
+    width: 15rem;
+    border-radius: 0.1rem;
+    font-size: 1.2rem;
+    color: ${({ theme }) => theme.highlight0};
+    border-right: 0.3rem solid ${({ theme }) => theme.highlight0};
+  }
+`;
+
+const ImageContainer = styled(motion.div)`
+  width: 300px;
+  opacity: 0.3;
+  height: 240px;
+  margin-top: 6rem;
+
+  @media (max-width: 760px) {
+    width: 150px;
+    height: 120px;
+  }
+`;
+
 const TextContainer = styled(motion.div)`
   width: 80rem;
   height: 22.5rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   display: flex;
   flex-direction: row;
   justify-content: center;

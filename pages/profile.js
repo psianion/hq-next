@@ -2,23 +2,31 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useSignIn } from "../hooks/auth/login";
+// import { useAuth } from "../hooks/auth/login";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useSetupProfile, useUser } from "../hooks/user/user";
 
 export default function Profile() {
   const { register, handleSubmit, errors } = useForm();
-  const { isAuth, user } = useSignIn();
+
+  const setupProfile = useSetupProfile();
   const [stage, setStage] = useState("IGN-NOT-SET");
   const router = useRouter();
+  const { me } = useUser();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+    const { isSuccess } = await setupProfile(data);
+    if (isSuccess) {
+      console.log("Success");
+    } else {
+      console.log("No");
+    }
   };
 
   useEffect(() => {
-    user.ign ? setStage("IGN-SET") : setStage("IGN-NOT-SET");
-  }, []);
+    me.ign && setStage("IGN-SET");
+  }, [me]);
 
   return (
     <Container>
@@ -31,32 +39,44 @@ export default function Profile() {
         />
       </Head>
 
-      {stage === "IGN-SET" && (
+      {stage === "IGN-SET" ? (
         <Content>
           <Cover></Cover>
           <FlexBox>
             <Avatar></Avatar>
-            <IGN>{user.discordName}</IGN>
-            <Role>{user.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
+            <IGN>{me.ign}</IGN>
+            <Role>{me.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
           </FlexBox>
         </Content>
-      )}
-      {stage === "IGN-NOT-SET" && (
+      ) : (
         <Content>
-          <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="form-control">
-              <label>Email</label>
-              <input type="text" {...register("email")} />
-            </div>
-            <div className="form-control">
-              <label>Password</label>
-              <input type="password" {...register("password")} />
-            </div>
-            <div className="form-control">
+          <ProfileForm onSubmit={handleSubmit(onSubmit)}>
+            <ProfileFormDiv className="form-control">
+              <label>In Game Name</label>
+              <input type="text" {...register("ign")} />
+            </ProfileFormDiv>
+            <ProfileDivHori>
+              <ProfileFormDiv className="form-control">
+                <label>Team</label>
+                <select {...register("trainerTeam")}>
+                  {["Valor", "Mystic", "Instinct"].map((value) => (
+                    <option key={value} value={value}>
+                      {value}
+                    </option>
+                  ))}
+                </select>
+              </ProfileFormDiv>
+              <ProfileFormDiv className="form-control">
+                <label>Trainer Code</label>
+                <input type="text" {...register("trainerCode")} />
+              </ProfileFormDiv>
+            </ProfileDivHori>
+
+            <ProfileFormDiv className="form-control">
               <label></label>
-              <button type="submit">Login</button>
-            </div>
-          </form>
+              <button type="submit">Set Up</button>
+            </ProfileFormDiv>
+          </ProfileForm>
         </Content>
       )}
     </Container>
@@ -77,6 +97,80 @@ const Content = styled(motion.div)`
   border-radius: 0.5rem;
   width: 90rem;
   height: 50rem;
+`;
+
+const ProfileForm = styled(motion.form)`
+  width: 90rem;
+  height: 50rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ProfileDivHori = styled(motion.div)`
+  display: flex;
+  width: 50rem;
+  align-items: center;
+  justify-content: space-around;
+`;
+
+const ProfileFormDiv = styled(motion.div)`
+  height: 6rem;
+  display: flex;
+  flex-direction: column;
+
+  label {
+    font-size: 1.5rem;
+    color: ${({ theme }) => theme.secondary2};
+    text-transform: uppercase;
+    font-family: "Poppins", sans-serif;
+  }
+
+  input {
+    height: 3rem;
+    width: 20rem;
+    background-color: ${({ theme }) => theme.primary1};
+    border: none;
+    color: ${({ theme }) => theme.secondary1};
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+
+    &:focus {
+      background-color: ${({ theme }) => theme.primary2};
+      outline: none;
+    }
+  }
+
+  button {
+    height: 3rem;
+    width: 15rem;
+    background-color: ${({ theme }) => theme.highlight0};
+    border: none;
+    color: ${({ theme }) => theme.secondary1};
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+    margin-top: 2rem;
+    cursor: pointer;
+  }
+
+  select {
+    height: 3rem;
+    width: 20rem;
+    background-color: ${({ theme }) => theme.primary1};
+    border: none;
+    color: ${({ theme }) => theme.secondary1};
+    font-family: "Poppins", sans-serif;
+    font-size: 1.5rem;
+    padding: 0 1rem;
+
+    &:focus {
+      background-color: ${({ theme }) => theme.primary2};
+      outline: none;
+    }
+  }
 `;
 
 const Cover = styled(motion.div)`

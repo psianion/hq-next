@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useSignIn } from "../../hooks/auth/login";
+import { useAuth } from "../../hooks/auth/login";
 
 import {
   fadeInLeft,
@@ -26,10 +26,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useUser } from "../../hooks/user/user";
 
 function Navbar({ toggleTheme, theme }) {
   const router = useRouter();
-  const { isAuth, setIsAuth, user } = useSignIn();
+  const { isAuth, setIsAuth } = useAuth();
+  const { me } = useUser();
   const [openMenu, setOpenMenu] = useState(false);
   const [openSettings, setOpenSettings] = useState(false);
 
@@ -82,7 +84,7 @@ function Navbar({ toggleTheme, theme }) {
                   fontSize: "1rem",
                 }}
               >
-                {user.discordName}{" "}
+                {me.discordName}{" "}
                 <FontAwesomeIcon
                   icon={faUserCircle}
                   style={{ marginLeft: "0.5rem", fontSize: "1.5rem" }}
@@ -120,9 +122,9 @@ function Navbar({ toggleTheme, theme }) {
               >
                 <Picture></Picture>
                 <ProfileContent>
-                  <h5>{user.discordName}</h5>
+                  <h5>{me.ign || "Not Set"}</h5>
                   <p>
-                    {user.totalWins}/{user.totalMatches} Match Wins
+                    {me.totalWins}/{me.totalMatches} Match Wins
                   </p>
                 </ProfileContent>
               </ProfileSec>
@@ -155,6 +157,7 @@ function Navbar({ toggleTheme, theme }) {
                     `${process.env.PROXY_URL}` + "/auth/logout",
                     "_self"
                   );
+                  localStorage.removeItem("me");
                   setIsAuth(false);
                 }}
               >

@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { useSignIn } from "../hooks/auth/login";
+import { useAuth } from "../hooks/auth/login";
 
 export default function Login() {
-  const { isAuth, user, setIsAuth } = useSignIn();
+  const { isAuth, user, setIsAuth } = useAuth();
   const url = process.env.PROXY_URL;
   return (
     <Container>
