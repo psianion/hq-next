@@ -3,7 +3,6 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../src/config/ThemeConfig";
 import Navbar from "../src/components/Navbar";
 import axios from "axios";
-require("dotenv").config();
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
 
