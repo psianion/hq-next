@@ -7,7 +7,7 @@ import { useAuth } from "../hooks/auth/login";
 
 export default function Login() {
   const { isAuth, user, setIsAuth } = useAuth();
-  const url = process.env.API_URL;
+  const LOGurl = process.env.API_URL;
   return (
     <Container>
       <Head>
@@ -28,7 +28,7 @@ export default function Login() {
         {isAuth == false ? (
           <button
             onClick={() => {
-              window.open(url + "/auth", "_self");
+              window.open(LOGurl + "/auth", "_self");
             }}
           >
             Login thorugh Discord{" "}
@@ -40,7 +40,7 @@ export default function Login() {
         ) : (
           <button
             onClick={() => {
-              window.open(url + "/auth/logout", "_self");
+              window.open(LOGurl + "/auth/logout", "_self");
               setIsAuth(false);
             }}
           >

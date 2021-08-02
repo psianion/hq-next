@@ -84,7 +84,7 @@ function Navbar({ toggleTheme, theme }) {
                   fontSize: "1rem",
                 }}
               >
-                {me.discordName}{" "}
+                {me.ign || "Not Set"}{" "}
                 <FontAwesomeIcon
                   icon={faUserCircle}
                   style={{ marginLeft: "0.5rem", fontSize: "1.5rem" }}
@@ -154,7 +154,7 @@ function Navbar({ toggleTheme, theme }) {
                 onClick={() => {
                   toggleSettings();
                   window.open(
-                    `${process.env.PROXY_URL}` + "/auth/logout",
+                    `${process.env.API_URL}` + "/auth/logout",
                     "_self"
                   );
                   localStorage.removeItem("me");
