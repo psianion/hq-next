@@ -18,6 +18,7 @@ export default function Profile() {
   const onSubmit = async (data) => {
     const { isSuccess } = await setupProfile(data);
     if (isSuccess) {
+      setStage("IGN-SET");
       console.log("Success");
     } else {
       console.log("No");
@@ -44,8 +45,10 @@ export default function Profile() {
           <Cover></Cover>
           <FlexBox>
             <Avatar></Avatar>
-            <IGN>{me.ign}</IGN>
-            <Role>{me.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
+            <FlexBox2>
+              <IGN>{me.ign}</IGN>
+              <Role>{me.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
+            </FlexBox2>
           </FlexBox>
         </Content>
       ) : (
@@ -97,6 +100,12 @@ const Content = styled(motion.div)`
   border-radius: 0.5rem;
   width: 90rem;
   height: 50rem;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    height: 98%;
+    margin-top: 3rem;
+  }
 `;
 
 const ProfileForm = styled(motion.form)`
@@ -106,6 +115,10 @@ const ProfileForm = styled(motion.form)`
   align-items: center;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: 768px) {
+    height: 98%;
+    width: 95%;
+  }
 `;
 
 const ProfileDivHori = styled(motion.div)`
@@ -113,12 +126,34 @@ const ProfileDivHori = styled(motion.div)`
   width: 50rem;
   align-items: center;
   justify-content: space-around;
+
+  @media (max-width: 768px) {
+    width: 50%;
+  }
 `;
 
 const ProfileFormDiv = styled(motion.div)`
   height: 6rem;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 768px) {
+    label {
+      font-size: 1rem;
+    }
+
+    input {
+      width: 10rem;
+    }
+
+    select {
+      width: 10rem;
+    }
+
+    button {
+      width: 7rem;
+    }
+  }
 
   label {
     font-size: 1.5rem;
@@ -184,7 +219,26 @@ const FlexBox = styled(motion.div)`
   display: flex;
   transform: translateY(-6rem);
   margin-left: 2rem;
+  flex-direction: row;
   align-items: center;
+  justify-content: flex-start;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    transform: translateY(-5rem);
+    margin-left: 0rem;
+  }
+`;
+
+const FlexBox2 = styled(motion.div)`
+  align-items: center;
+  display: flex;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+  }
 `;
 
 const Avatar = styled(motion.div)`
@@ -193,6 +247,12 @@ const Avatar = styled(motion.div)`
   width: 12rem;
   height: 12rem;
   border-radius: 50%;
+
+  @media (max-width: 768px) {
+    width: 7rem;
+    border: solid 0.3rem ${({ theme }) => theme.primary0};
+    height: 7rem;
+  }
 `;
 
 const IGN = styled(motion.h1)`
@@ -201,6 +261,11 @@ const IGN = styled(motion.h1)`
   font-size: 2.5rem;
   font-weight: 400;
   transform: translateY(-1.5rem);
+
+  @media (max-width: 768px) {
+    font-size: 1.5rem;
+    transform: translateY(0rem);
+  }
 `;
 
 const Role = styled(motion.p)`
@@ -210,4 +275,9 @@ const Role = styled(motion.p)`
   color: ${({ theme }) => theme.primary2};
   font-weight: 400;
   transform: translateY(-1rem);
+
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+    transform: translateY(-0.2rem);
+  }
 `;
