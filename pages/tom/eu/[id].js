@@ -10,9 +10,7 @@ import { useState, useEffect } from "react";
 export async function getServerSideProps({ query }) {
   // auth omitted...
 
-  const { privateKey } = JSON.parse(
-    process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }"
-  );
+  const { privateKey } = JSON.parse(process.env.GOOGLE_PRIVATE_KEY);
   const auth = await google.auth.getClient({
     scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     projectId: process.env.GOOGLE_PROJECTID,
