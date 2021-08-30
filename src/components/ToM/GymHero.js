@@ -1,9 +1,9 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { stagger3 } from "../../animations/animations";
+import { fadeInTop, stagger2, stagger3 } from "../../animations/animations";
 import Head from "next/head";
 
-function Hero() {
+function GymHero({ gymName, gymLocation }) {
   return (
     <>
       <Head>
@@ -26,41 +26,20 @@ function Hero() {
         initial="initial"
         animate="animate"
       >
-        <p>WELCOME TO THE</p>
-        <span style={{ display: "flex", alignItems: "center" }}>
-          <h1>T</h1>
-          <h1>O</h1>
-          <h1>W</h1>
-          <h1>E</h1>
-          <h1 style={{ marginRight: "30px" }}>R</h1>
-          <h1>O</h1>
-          <h1 style={{ marginRight: "30px" }}>F</h1>
-          <h1>M</h1>
-          <h1>A</h1>
-          <h1>S</h1>
-          <h1>T</h1>
-          <h1>E</h1>
-          <h1>R</h1>
-          <h1>Y</h1>
-        </span>
-        <h1>
-          TOWER <br /> OF <br /> MASTERY
-        </h1>
-        <h5>WORLDWIDE POKÉMON GO PVP GYM FORMAT</h5>
-        <h4>
-          WORLDWIDE POKÉMON GO <br /> PVP GYM FORMAT
-        </h4>
+        <p>WELCOME TO</p>
+        <h1>{gymName}</h1>
+        <h5>{gymLocation} Gym</h5>
       </HeroContainer>
     </>
   );
 }
 
 const HeroContainer = styled(motion.div)`
-  height: 50rem;
+  height: 30rem;
   width: 100%;
   margin-top: 3rem;
   background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-    url("/Images/ToMHome.jpg");
+    url("/Images/ToMGymHome.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -71,11 +50,11 @@ const HeroContainer = styled(motion.div)`
 
   p {
     font-weight: 600;
-    font-size: 2rem;
+    font-size: 1.5rem;
     color: ${({ theme }) => theme.secondary0};
     font-family: "Aaargh", "Roboto", sans-serif;
     letter-spacing: 4px;
-    margin-top: 15rem;
+    margin-top: 7rem;
   }
 
   h5 {
@@ -83,66 +62,53 @@ const HeroContainer = styled(motion.div)`
     color: ${({ theme }) => theme.secondary1};
     transition: all 0.2s ease-in-out;
     font-size: 2rem;
+    letter-spacing: 4px;
+    font-weight: 600;
+    font-family: "Aaargh", "Roboto", sans-serif;
     cursor: default;
+    text-transform: uppercase;
     margin-bottom: 5rem;
   }
 
-  h4 {
-    display: none;
-  }
-
   h1 {
-    display: none;
-  }
-
-  span h1 {
+    display: block;
     font-size: 5rem;
     font-family: "Prototype", "Open Sans", sans-serif;
     font-weight: 400;
-    color: ${({ theme }) => theme.secondary0};
+    text-align: center;
+    color: ${({ theme }) => theme.secondary1};
     transition: all 0.2s ease-in-out;
-    cursor: pointer;
-    display: block;
-  }
-
-  span h1:hover {
-    font-size: 4.5rem;
-    font-family: "Prototype";
-    color: ${({ theme }) => theme.highlight0};
-    font-weight: 400;
+    cursor: default;
+    text-transform: uppercase;
   }
 
   @media (max-width: 760px) {
     background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-      url("/Images/ToMHomeMob.jpg");
+      url("/Images/ToMGymHomeMob.jpg");
   }
 
   @media (max-width: 768px) {
-    height: 75vh;
+    height: 30vh;
 
     p {
       font-size: 0.8rem;
-      margin-top: 10rem;
+      margin-top: 5rem;
     }
 
     h5 {
-      display: none;
-    }
-
-    h4 {
-      font-weight: 200;
+      font-weight: 600;
       color: ${({ theme }) => theme.secondary1};
       transition: all 0.2s ease-in-out;
       font-size: 1rem;
       cursor: default;
       text-align: center;
       display: block;
-      margin-top: 1rem;
+      margin-top: 0.5rem;
     }
 
     h1 {
       display: block;
-      font-size: 3rem;
+      font-size: 2rem;
       font-family: "Prototype", "Open Sans", sans-serif;
       font-weight: 400;
       text-align: center;
@@ -150,11 +116,7 @@ const HeroContainer = styled(motion.div)`
       transition: all 0.2s ease-in-out;
       cursor: pointer;
     }
-
-    span h1 {
-      display: none;
-    }
   }
 `;
 
-export default Hero;
+export default GymHero;

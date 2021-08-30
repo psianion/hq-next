@@ -154,7 +154,7 @@ function Navbar({ toggleTheme, theme }) {
                 onClick={() => {
                   toggleSettings();
                   window.open(
-                    `${process.env.API_URL}` + "/auth/logout",
+                    `${process.env.NEXT_PUBLIC_API_URL}` + "/auth/logout",
                     "_self"
                   );
                   localStorage.removeItem("me");

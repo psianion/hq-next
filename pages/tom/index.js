@@ -3,7 +3,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import Footer from "../../src/components/Footer";
 import Hero from "../../src/components/ToM/Hero";
-import Links from "../../src/components/ToM/Content";
+import Links from "../../src/components/ToM/Links";
 import GymNews from "../../src/components/ToM/GymNews";
 
 export default function TOMHome() {

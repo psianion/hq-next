@@ -5,13 +5,11 @@ import Image from "next/image";
 import Heading from "../Heading";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
-const data = require("../../assets/data/EventsData");
+const regionData = require("../../assets/data/RegionData");
 
 function Links() {
-  const [isActive, setIsActive] = useState(1);
-  const active = data.find(({ id }) => id === isActive);
-
   return (
     <>
       <Heading head={"TOWER OF MASTERY"} highhead={""} />
@@ -39,11 +37,11 @@ function Links() {
       </TextContainer>
       <Heading head={"NEAR YOU"} highhead={"LOCATE GYMS"} />
       <Regions>
-        <Region>NORTH AMERICA</Region>
-        <Region>LATIN AMERICAN</Region>
-        <Region>EUROPE</Region>
-        <Region>ASIA-PACIFIC</Region>
-        <Region>INDIA</Region>
+        {regionData.map((region) => (
+          <Link href={`/tom/${region.id}`} key={region.name}>
+            <Region>{region.name}</Region>
+          </Link>
+        ))}
       </Regions>
       {/*<ImageContainer>
         <Image width="300px" height="240px" src="/logo/tomlogo.png" />

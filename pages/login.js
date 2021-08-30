@@ -7,7 +7,7 @@ import { useAuth } from "../hooks/auth/login";
 
 export default function Login() {
   const { isAuth, user, setIsAuth } = useAuth();
-  const LOGurl = process.env.API_URL;
+  const LOGurl = process.env.NEXT_PUBLIC_API_URL;
   return (
     <Container>
       <Head>
