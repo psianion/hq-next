@@ -23,6 +23,8 @@ export async function getServerSideProps({ query }) {
     range,
   });
 
+  console.log(id, process.env.SHEET_ID);
+
   const [
     gymLocation,
     gymName,
