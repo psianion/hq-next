@@ -10,8 +10,16 @@ import { useState, useEffect } from "react";
 export async function getServerSideProps({ query }) {
   // auth omitted...
 
+  const { privateKey } = JSON.parse(
+    process.env.GOOGLE_PRIVATE_KEY || "{ privateKey: null }"
+  );
   const auth = await google.auth.getClient({
     scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
+    projectId: process.env.GOOGLE_PROJECTID,
+    credentials: {
+      private_key: privateKey,
+      client_email: process.env.GOOGLE_CLIENT_EMAIL,
+    },
   });
 
   const sheets = google.sheets({ version: "v4", auth });
@@ -22,8 +30,6 @@ export async function getServerSideProps({ query }) {
     spreadsheetId: process.env.SHEET_ID,
     range,
   });
-
-  console.log(id, process.env.SHEET_ID);
 
   const [
     gymLocation,
