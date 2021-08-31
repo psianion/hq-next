@@ -51,11 +51,14 @@ function GymLeaders({
           The <Highlight>Gym Leaders </Highlight>defending this gym will be :
         </h1>
       </TextContainer>
+      {/*
+          <Link href={`/tom/${leader.name}`} key={leader.code}>
+            <Region >{leader.name}</Region>
+          </Link>
+         */}
       <Regions>
         {leadersData.map((leader) => (
-          <Link href={`/tom/${leader.name}`} key={leader.code}>
-            <Region>{leader.name}</Region>
-          </Link>
+            <Region key={leader.code}>{leader.name}</Region>
         ))}
       </Regions>
       <TextContainer>
@@ -166,12 +169,13 @@ const Region = styled(motion.div)`
   width: 20%;
   text-align: center;
   font-size: 1.8rem;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   border-radius: 0.2rem;
   background-color: ${({ theme }) => `${theme.primary1}80`};
   color: ${({ theme }) => theme.highlight0};
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  padding: 0.2rem 0.5rem;
 
   &:hover {
     color: ${({ theme }) => theme.secondary1};

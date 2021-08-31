@@ -4,6 +4,7 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import GymHero from "../../../src/components/ToM/GymHero";
 import GymLeaders from "../../../src/components/ToM/GymLeaders";
+import Footer from "../../../src/components/Footer"
 import axios from "axios";
 import { useState, useEffect } from "react";
 
@@ -20,6 +21,7 @@ export async function getServerSideProps({ query }) {
   });
 
   const sheets = google.sheets({ version: "v4", auth });
+
   const { id } = query;
   const range = `EU!A${id}:V${id}`;
 
@@ -129,6 +131,7 @@ function RegionName({
         typings={typings}
         leaderMonsImage={leaderMonsImage}
       />
+      <Footer />
     </Container>
   );
 }

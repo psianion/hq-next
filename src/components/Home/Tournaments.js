@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 import Heading from "../Heading";
+import { useState, useEffect } from "react";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -13,20 +14,20 @@ import {
 
 const data = require("../../assets/data/TournamentData");
 
+
 function Tournaments() {
+  
   return (
     <>
       <Heading head={"TOURNAMENTS"} highhead={"FEATURED"} />
       <Container>
         {data.map((i) => (
           <ContentBox key={i.id}>
-            <ImageBox></ImageBox>
+            <ImageBox>
+              <img src={i.image} />
+            </ImageBox>
             <InfoBox>
               <Name>{i.name}</Name>
-              <Org>
-                {i.org}{" "}
-                <FontAwesomeIcon icon={faExternalLinkAlt} color="#9147FF" />
-              </Org>
               <FlexBox>
                 <div>
                   <FontAwesomeIcon icon={faCalendarAlt} /> {i.date}
@@ -39,7 +40,7 @@ function Tournaments() {
                 </div>
               </FlexBox>
               <h5></h5>
-              <Button>PARTICIPATE!</Button>
+              <Button>{i.status}!</Button>
             </InfoBox>
           </ContentBox>
         ))}
@@ -70,9 +71,10 @@ const Container = styled(motion.div)`
 
 const ContentBox = styled(motion.div)`
   border-radius: 0.5rem;
-  height: 23rem;
+  height: fit-content;
   background-color: ${({ theme }) => theme.primary1};
   width: 19.25%;
+  padding-bottom: 0.75rem;
   display: flex;
   flex-direction: column;
   transition: all 0.2s ease-in-out;
@@ -94,12 +96,18 @@ const ImageBox = styled(motion.div)`
   border-radius: 0.5rem;
   margin-top: 0.33rem;
   background-color: ${({ theme }) => theme.primary2};
+
+  img {
+    width: 100%;
+    height: 16rem;
+    border-radius: 0.5rem;
+  }
 `;
 
 const InfoBox = styled(motion.div)`
   width: calc(100% - 0.66rem);
-  height: 11rem;
   margin-top: 0.33rem;
+  padding-bottom: 0.5Irem;
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
@@ -113,8 +121,8 @@ const FlexBox = styled(motion.div)`
   align-items: center;
   justify-content: space-between;
   font-size: 0.9rem;
-  margin-top: 0.5rem;
-  margin-bottom: 1rem;
+  margin-top: 0.33rem;
+  margin-bottom: 0.33rem;
   padding: 0.25rem 0.5rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => `${theme.secondary0}20`};
@@ -162,6 +170,7 @@ const Button = styled(motion.button)`
   border-radius: 0.2rem;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
 
   &:hover {
     background-color: ${({ theme }) => `${theme.highlight0}`};

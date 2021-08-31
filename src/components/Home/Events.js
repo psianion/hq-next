@@ -23,7 +23,9 @@ function Events() {
                 setIsActive(i.id);
               }}
             >
-              <ImageBox1></ImageBox1>
+              <ImageBox1>
+                <img src='https://i.imgur.com/iI4cuP1.png' />
+              </ImageBox1>
               <ContentBox1>
                 <h1>{i.name}</h1>
                 <h5>{i.snippet}</h5>
@@ -35,7 +37,9 @@ function Events() {
           ))}
         </Section1>
         <Section2>
-          <ImageBox2></ImageBox2>
+          <ImageBox2>
+            <img src={active.image}/>
+          </ImageBox2>
           <ContentBox2>
             <div>
               <h1>{active.name}</h1>
@@ -129,6 +133,12 @@ const ImageBox1 = styled(motion.div)`
   margin: 0.5rem;
   border-radius: 0.5rem;
 
+  img {
+    width: 100%;
+  border-radius: 0.5rem;
+    height: 100%;
+  }
+
   @media (max-width: 768px) {
     width: 2.5rem;
     height: 2.5rem;
@@ -138,10 +148,16 @@ const ImageBox1 = styled(motion.div)`
 
 const ImageBox2 = styled(motion.div)`
   width: 97.5%;
-  height: 18rem;
+  height: 20rem;
   background-color: ${({ theme }) => theme.primary2};
   margin: 0.5rem;
   border-radius: 0.5rem;
+
+  img {
+  border-radius: 0.5rem;
+    width: 100%;
+    height: 100%;
+  }
 
   @media (max-width: 768px) {
     width: 96%;
@@ -218,8 +234,8 @@ const ContentBox2 = styled(motion.div)`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 10rem;
-  margin-top: 1rem;
+  height: 8rem;
+  margin-top: 0.5rem;
 
   h1 {
     font-size: 1.5rem;
