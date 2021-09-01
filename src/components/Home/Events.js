@@ -62,7 +62,7 @@ function Events() {
 }
 
 const Container = styled(motion.div)`
-  width: 80rem;
+  width: 70rem;
   height: 30rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.primary1};

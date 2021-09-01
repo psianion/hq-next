@@ -19,7 +19,6 @@ export default function Profile() {
     const { isSuccess } = await setupProfile(data);
     if (isSuccess) {
       setStage("IGN-SET");
-      console.log("Success");
     } else {
       console.log("No");
     }

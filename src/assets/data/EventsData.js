@@ -20,7 +20,7 @@ module.exports = [
   {
     id: 3,
     name: "okay VENTURE CUP",
-    image: 'https://i.imgur.com/HagWjyf.png',
+    image: 'https://i.imgur.com/2iFJW3N.png',
     time: "Aug 01, 2021",
     link: "www.pvphq.in",
     snippet: "A city vs city team tournament with each player playing..",

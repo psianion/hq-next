@@ -78,6 +78,7 @@ const Region = styled(motion.div)`
   color: ${({ theme }) => theme.highlight0};
   transition: all 0.2s ease-in-out;
   cursor: pointer;
+  padding: 0.5rem;
 
   &:hover {
     color: ${({ theme }) => theme.secondary1};

@@ -14,7 +14,6 @@ export default function TOMHome() {
       </Head>
       <Hero />
       <Links />
-      <GymNews />
       <Footer />
     </ToMContainer>
   );
