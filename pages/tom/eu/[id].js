@@ -4,9 +4,10 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import GymHero from "../../../src/components/ToM/GymHero";
 import GymLeaders from "../../../src/components/ToM/GymLeaders";
-import Footer from "../../../src/components/Footer"
+import Footer from "../../../src/components/Footer";
 import axios from "axios";
 import { useState, useEffect } from "react";
+import BackButton from "../../../src/components/BackButton";
 
 export async function getServerSideProps({ query }) {
   // auth omitted...
@@ -123,6 +124,7 @@ function RegionName({
         <title>{gymName} | PvP HQ</title>
       </Head>
       <GymHero gymName={gymName} gymLocation={gymLocation} />
+      <BackButton text={"All EU Gyms"} path={"/tom/eu"} />
       <GymLeaders
         gymLeaders={gymLeaders}
         gymLocation={gymLocation}

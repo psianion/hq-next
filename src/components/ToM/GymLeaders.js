@@ -58,7 +58,7 @@ function GymLeaders({
          */}
       <Regions>
         {leadersData.map((leader) => (
-            <Region key={leader.code}>{leader.name}</Region>
+          <Region key={leader.code}>{leader.name}</Region>
         ))}
       </Regions>
       <TextContainer>
@@ -119,6 +119,11 @@ const Bans = styled(motion.div)`
   align-items: center;
   justify-content: center;
   margin: 2rem 0;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    margin: 1rem 0;
+  }
 `;
 
 const BanText = styled(motion.h2)`
@@ -126,6 +131,9 @@ const BanText = styled(motion.h2)`
   font-size: 0.8rem;
   display: flex;
   align-items: center;
+  @media (max-width: 768px) {
+    font-size: 0.7rem;
+  }
 `;
 
 const Ban = styled(motion.h1)`
@@ -135,6 +143,9 @@ const Ban = styled(motion.h1)`
   margin-bottom: 0.2rem;
   border-radius: 0.2rem;
   font-weight: 400;
+  @media (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;
 
 const Banned = styled(motion.span)`

@@ -7,7 +7,7 @@ function GymLeaderPokemon({ leaderMonsImage }) {
       <Container>
         {leaderMonsImage.map((i) => (
           <Pokemon key={i}>
-            <img width="150px" height="150px" src={i} />
+            <img src={i} />
           </Pokemon>
         ))}
       </Container>
@@ -41,8 +41,24 @@ const Pokemon = styled(motion.div)`
   background-color: ${({ theme }) => `${theme.primary1}80`};
   transition: all 0.2s ease-in-out;
 
+  img {
+    width: 150px;
+    height: 150px;
+  }
+
   & :hover {
     background-color: ${({ theme }) => `${theme.highlight0}`};
+  }
+
+  @media (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem;
+
+    img {
+      width: 80px;
+      height: 80px;
+    }
   }
 `;
 
