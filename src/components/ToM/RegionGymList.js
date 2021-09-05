@@ -1,16 +1,20 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import data from "../../assets/data/RegionData"
+import data from "../../assets/data/RegionData";
 import Link from "next/link";
 
-
-function RegionGymList() {
+function RegionGymList({ id, region }) {
   return (
     <>
       <Container>
-        {data[2].gyms.map((i) => <Link href={`/tom/eu/${i.number}`} key={i.number}><Gym>
-        <img src={i.flag} />
-        <p>{i.location}</p></Gym></Link>)}
+        {data[id].gyms.map((i) => (
+          <Link href={`/tom/${region}/${i.number}`} key={i.number}>
+            <Gym>
+              <img src={i.flag} />
+              <p>{i.location}</p>
+            </Gym>
+          </Link>
+        ))}
       </Container>
     </>
   );
@@ -28,7 +32,7 @@ const Container = styled(motion.div)`
 
   @media (max-width: 768px) {
     width: 90%;
-  margin: 1rem 0;
+    margin: 1rem 0;
   }
 `;
 
@@ -44,33 +48,33 @@ const Gym = styled(motion.div)`
   background-color: ${({ theme }) => theme.primary1};
 
   p {
-      font-size: 1.25rem;
-      font-family: "Poppins", sans-serif;
-      font-weight: 500;
-      margin-bottom: 1rem;
-      text-transform: uppercase;
+    font-size: 1.25rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
   }
   img {
-      width: 7rem;
-      height:auto;
+    width: 7rem;
+    height: auto;
   }
 
   @media (max-width: 768px) {
-      width: 9rem;
-      margin: 0.5rem;
-      p{
+    width: 9rem;
+    margin: 0.5rem;
+    p {
       margin-bottom: 0.5rem;
       font-size: 0.9rem;
-      }
-      img {
-          width: 4rem;
-      }
+    }
+    img {
+      width: 4rem;
+    }
   }
 
-& :hover {
-  background-color: ${({ theme }) => theme.highlight0};
-  cursor: pointer;
-}
+  & :hover {
+    background-color: ${({ theme }) => theme.highlight0};
+    cursor: pointer;
+  }
 `;
 
 export default RegionGymList;

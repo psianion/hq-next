@@ -45,9 +45,13 @@ const Button = styled(motion.div)`
   background-color: transparent;
   color: ${({ theme }) => theme.highlight0};
   font-family: Poppins;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
 
   & :hover {
     cursor: pointer;
+    background-color: ${({ theme }) => theme.highlight0};
+    color: ${({ theme }) => theme.primary0};
   }
 
   @media (max-width: 768px) {

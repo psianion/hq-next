@@ -179,8 +179,9 @@ const Regions = styled(motion.div)`
 const Region = styled(motion.div)`
   width: 20%;
   text-align: center;
-  font-size: 1.8rem;
-  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
   border-radius: 0.2rem;
   background-color: ${({ theme }) => `${theme.primary1}80`};
   color: ${({ theme }) => theme.highlight0};
