@@ -79,7 +79,8 @@ const HeroContainer = styled(motion.div)`
   }
 
   h5 {
-    font-weight: 200;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
     color: ${({ theme }) => theme.secondary1};
     transition: all 0.2s ease-in-out;
     font-size: 2rem;

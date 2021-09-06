@@ -58,13 +58,12 @@ const HeroContainer = styled(motion.div)`
   }
 
   h5 {
-    font-weight: 200;
     color: ${({ theme }) => theme.secondary1};
     transition: all 0.2s ease-in-out;
     font-size: 2rem;
     letter-spacing: 4px;
-    font-weight: 600;
-    font-family: "Aaargh", "Roboto", sans-serif;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
     cursor: default;
     text-transform: uppercase;
     margin-bottom: 5rem;
