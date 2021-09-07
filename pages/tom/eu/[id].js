@@ -97,19 +97,11 @@ function RegionName({
   const [leaderMonsImage, setLeaderMonsImage] = useState([]);
 
   const sendPokemonImage = async (name) => {
-    if (name === "cherrim-sunshine") {
-      try {
-        await axios
-          .get(`https://pokeapi.co/api/v2/pokemon-form/${name}`)
-          .then((response) => {
-            setLeaderMonsImage((leaderMonsImage) => [
-              ...leaderMonsImage,
-              response.data.sprites.front_default,
-            ]);
-          });
-      } catch (err) {
-        console.log(err);
-      }
+    if (name === "cherrim-sunny") {
+      setLeaderMonsImage((leaderMonsImage) => [
+        ...leaderMonsImage,
+        "https://i.imgur.com/DrwGClJ.png",
+      ]);
     } else {
       try {
         await axios
