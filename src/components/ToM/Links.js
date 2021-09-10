@@ -62,7 +62,7 @@ const Regions = styled(motion.div)`
     width: 95%;
     flex-direction: column;
     align-items: center;
-    height: 12rem;
+    height: 18rem;
     margin-top: 0rem;
   }
 `;
@@ -110,7 +110,7 @@ const ImageContainer = styled(motion.div)`
 const TextContainer = styled(motion.div)`
   width: 80rem;
   height: 22.5rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -126,6 +126,7 @@ const TextContainer = styled(motion.div)`
   @media (max-width: 768px) {
     width: 90%;
     flex-direction: column-reverse;
+    margin-bottom: 1rem;
     align-items: center;
     height: fit-content;
 

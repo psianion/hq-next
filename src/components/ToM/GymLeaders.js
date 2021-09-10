@@ -2,7 +2,9 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Heading from "../Heading";
 import Link from "next/link";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import GymLeaderPokemon from "./GLPokemon";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
 function GymLeaders({
   gymLeaders,
@@ -58,7 +60,21 @@ function GymLeaders({
          */}
       <Regions>
         {leadersData.map((leader) => (
-          <Region key={leader.code}>{leader.name}</Region>
+          <Region
+            key={leader.code}
+            onClick={() => {
+              navigator.clipboard.writeText(leader.code);
+            }}
+          >
+            <div>{leader.name}</div>
+            <LeaderCode>
+              <div>{leader.code}</div>
+              <FontAwesomeIcon
+                style={{ marginLeft: "0.5rem", fontSize: "1rem" }}
+                icon={faCopy}
+              />
+            </LeaderCode>
+          </Region>
         ))}
       </Regions>
       <TextContainer>
@@ -144,7 +160,7 @@ const Ban = styled(motion.h1)`
   border-radius: 0.2rem;
   font-weight: 400;
   @media (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 `;
 
@@ -164,21 +180,40 @@ const Regions = styled(motion.div)`
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  margin: 2rem 0;
+  margin: 3rem 0rem;
   align-items: center;
 
   @media (max-width: 768px) {
     width: 95%;
     flex-direction: column;
     align-items: center;
-    height: 12rem;
-    margin-top: 0rem;
+    height: 20rem;
+    margin: 1rem 0rem;
+  }
+`;
+
+const LeaderCode = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: ${({ theme }) => `${theme.primary0}`};
+  padding: 0rem 1rem;
+  margin-bottom: 0.2rem;
+  transition: all 0.2s ease-in-out;
+  color: ${({ theme }) => theme.secondary1};
+
+  &:hover {
+    color: ${({ theme }) => theme.highlight0};
   }
 `;
 
 const Region = styled(motion.div)`
   width: 20%;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
   font-weight: 500;
   font-family: "Poppins", sans-serif;
@@ -190,7 +225,6 @@ const Region = styled(motion.div)`
   padding: 0.2rem 0.5rem;
 
   &:hover {
-    color: ${({ theme }) => theme.secondary1};
     background-color: ${({ theme }) => theme.primary1};
     border-right: 0.5rem solid ${({ theme }) => theme.highlight0};
   }
