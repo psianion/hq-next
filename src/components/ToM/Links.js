@@ -70,7 +70,7 @@ const Regions = styled(motion.div)`
 const Region = styled(motion.div)`
   width: 18%;
   text-align: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-family: "Poppins", sans-serif;
   border-radius: 0.2rem;
   font-weight: 600;
@@ -78,7 +78,7 @@ const Region = styled(motion.div)`
   color: ${({ theme }) => theme.highlight0};
   transition: all 0.2s ease-in-out;
   cursor: pointer;
-  padding: 0.5rem;
+  padding: 0.2rem;
 
   &:hover {
     color: ${({ theme }) => theme.secondary1};

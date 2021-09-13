@@ -208,7 +208,7 @@ const LeaderCode = styled(motion.div)`
 `;
 
 const Region = styled(motion.div)`
-  width: 20%;
+  width: 23%;
   text-align: center;
   display: flex;
   flex-direction: column;
