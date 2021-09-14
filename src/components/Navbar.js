@@ -84,7 +84,7 @@ function Navbar({ toggleTheme, theme }) {
                   fontSize: "1rem",
                 }}
               >
-                {me.ign || "Not Set"}{" "}
+                {me.ign || "Profile"}{" "}
                 <FontAwesomeIcon
                   icon={faUserCircle}
                   style={{ marginLeft: "0.5rem", fontSize: "1.5rem" }}
@@ -122,11 +122,16 @@ function Navbar({ toggleTheme, theme }) {
               >
                 <Picture></Picture>
                 <ProfileContent>
-                  <h5>{me.ign || "Not Set"}</h5>
-                  <p>
-                    {me.towerOfMastery.gymWins}/{me.towerOfMastery.gymMatches}{" "}
-                    Match Wins
-                  </p>
+                  <h5>{me.ign || "Profile Page"}</h5>
+                  {me.ign ? (
+                    <p>
+                      {me.towerOfMastery ? me.towerOfMastery.gymWins : 0}/
+                      {me.towerOfMastery ? me.towerOfMastery.gymMatches : 0}{" "}
+                      Match Wins
+                    </p>
+                  ) : (
+                    <></>
+                  )}
                 </ProfileContent>
               </ProfileSec>
             )}
@@ -340,6 +345,7 @@ const RightSideBarItems = styled(motion.div)`
   justify-content: flex-start;
   height: 90vh;
   width: 28rem;
+  margin-top: 2rem;
   text-align: center;
   cursor: pointer;
 

@@ -6,9 +6,11 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
 import { useSetupProfile, useUser } from "../hooks/user/user";
+import { useQuery, useQueryClient } from "react-query";
 
 export default function Profile() {
   const { register, handleSubmit, errors } = useForm();
+  const queryClient = useQueryClient();
 
   const setupProfile = useSetupProfile();
   const [stage, setStage] = useState("IGN-NOT-SET");
@@ -26,6 +28,7 @@ export default function Profile() {
 
   useEffect(() => {
     me.ign && setStage("IGN-SET");
+    queryClient.invalidateQueries("me");
   }, [me]);
 
   return (
@@ -124,6 +127,7 @@ const ProfileDivHori = styled(motion.div)`
   display: flex;
   width: 50rem;
   align-items: center;
+  flex-wrap: wrap;
   justify-content: space-around;
 
   @media (max-width: 768px) {
