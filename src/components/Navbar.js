@@ -124,7 +124,8 @@ function Navbar({ toggleTheme, theme }) {
                 <ProfileContent>
                   <h5>{me.ign || "Not Set"}</h5>
                   <p>
-                    {me.totalWins}/{me.totalMatches} Match Wins
+                    {me.towerOfMastery.gymWins}/{me.towerOfMastery.gymMatches}{" "}
+                    Match Wins
                   </p>
                 </ProfileContent>
               </ProfileSec>
