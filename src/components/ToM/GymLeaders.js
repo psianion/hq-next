@@ -83,8 +83,8 @@ function GymLeaders({
         </h1>
       </TextContainer>
       <Bans>
-        <BanText>BANNED TYPING</BanText>
-        <Ban>{bans.banTyping} Type</Ban>
+        <BanText>BANNED</BanText>
+        <Ban>{bans.banTyping}</Ban>
         <BanText>BANNED POKEMON</BanText>
         <Ban>
           {bans.banPokemon1}, {bans.banPokemon2}, and {bans.banPokemon3}

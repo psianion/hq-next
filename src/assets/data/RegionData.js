@@ -2,6 +2,48 @@ module.exports = [
   {
     name: "NORTH AMERICA",
     id: "na",
+    gyms: [
+      {
+        number: 1,
+        location: "Phoenix",
+        flag: "https://www.countryflags.io/US/flat/64.png",
+      },
+      {
+        number: 2,
+        location: "Canada",
+        flag: "https://www.countryflags.io/CA/flat/64.png",
+      },
+      {
+        number: 3,
+        location: "New York City",
+        flag: "https://www.countryflags.io/US/flat/64.png",
+      },
+      {
+        number: 4,
+        location: "Washington",
+        flag: "https://www.countryflags.io/US/flat/64.png",
+      },
+      {
+        number: 5,
+        location: "Montana",
+        flag: "https://www.countryflags.io/US/flat/64.png",
+      },
+      {
+        number: 6,
+        location: "Minneapolis",
+        flag: "https://www.countryflags.io/US/flat/64.png",
+      },
+      {
+        number: 7,
+        location: "Mexico",
+        flag: "https://www.countryflags.io/MX/flat/64.png",
+      },
+      {
+        number: 8,
+        location: "Boston",
+        flag: "https://www.countryflags.io/US/flat/64.png",
+      },
+    ],
   },
   {
     name: "LATIN AMERICA",
