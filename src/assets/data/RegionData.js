@@ -85,8 +85,8 @@ module.exports = [
       },
       {
         number: 7,
-        location: "Italy",
-        flag: "https://www.countryflags.io/IT/flat/64.png",
+        location: "West Netherlands",
+        flag: "https://www.countryflags.io/NL/flat/64.png",
       },
       {
         number: 8,

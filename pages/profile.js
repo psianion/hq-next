@@ -93,7 +93,13 @@ const Container = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 90vh;
+  margin-top: 3.5rem;
+
+  @media (max-width: 768px) {
+    height: 95vh;
+    margin-top: 1rem;
+  }
 `;
 
 const Content = styled(motion.div)`
@@ -215,7 +221,11 @@ const Cover = styled(motion.div)`
   background-color: ${({ theme }) => theme.primary1};
   border-radius: 0.5rem 0.5rem 0 0;
   width: 100%;
-  height: 10rem;
+  height: 15rem;
+
+  @media (max-width: 768px) {
+    height: 10rem;
+  }
 `;
 
 const FlexBox = styled(motion.div)`
