@@ -15,8 +15,8 @@ function EUregion() {
       </Head>
       <RegionHero gymName={"Europe Region"} gymLocation={"TOWER OF MASTERY"} />
       <BackButton text={"Tower of Mastery"} path={"/tom/"} />
-      <RegionGymList id={2} region={"eu"} />
       <E4Button region={"eu"}></E4Button>
+      <RegionGymList id={2} region={"eu"} />
       <Footer />
     </Container>
   );

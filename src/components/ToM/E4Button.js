@@ -8,7 +8,7 @@ function E4Button({ region }) {
       <Container>
         <Link href={`/tom/${region}/e4`}>
           <Gym>
-            <p>SEX BOMB</p>
+            <p>{region} ELITE 4</p>
           </Gym>
         </Link>
       </Container>
@@ -24,7 +24,7 @@ const Container = styled(motion.div)`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 2rem 0;
+  margin-top: 2rem;
 
   @media (max-width: 768px) {
     width: 90%;
@@ -40,19 +40,16 @@ const Gym = styled(motion.div)`
   align-items: center;
   transition: all 0.2s ease-in-out;
   border-radius: 0.5rem;
-  width: 15rem;
-  background-color: ${({ theme }) => theme.primary1};
+  background-color: transparent;
+  padding: 0.5rem 2rem;
+  border: 1px solid ${({ theme }) => theme.highlight0};
 
   p {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     font-family: "Poppins", sans-serif;
     font-weight: 500;
-    margin-bottom: 1rem;
     text-transform: uppercase;
-  }
-  img {
-    width: 7rem;
-    height: auto;
+    color: ${({ theme }) => theme.highlight0};
   }
 
   @media (max-width: 768px) {
@@ -62,13 +59,9 @@ const Gym = styled(motion.div)`
       margin-bottom: 0.5rem;
       font-size: 0.9rem;
     }
-    img {
-      width: 4rem;
-    }
   }
 
   & :hover {
-    background-color: ${({ theme }) => theme.highlight0};
     cursor: pointer;
   }
 `;
