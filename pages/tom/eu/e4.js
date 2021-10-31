@@ -5,11 +5,8 @@ import GymHero from "../../../src/components/ToM/GymHero";
 import Footer from "../../../src/components/Footer";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import axios from "axios";
-import { useState, useEffect } from "react";
 import BackButton from "../../../src/components/BackButton";
 import EUE4 from "../../../src/assets/data/EUE4";
-import GymLeaderPokemon from "../../../src/components/ToM/GLPokemon";
 import PokemonTeam from "../../../src/components/ToM/PokemonTeam";
 
 function EliteFour() {
@@ -27,18 +24,23 @@ function EliteFour() {
       </TextContainer>
       {EUE4.map((E4) => (
         <Region key={E4.id}>
-          <h4>{E4.name}</h4>
           <h5>
-            {E4.typing1} and {E4.typing2}
+            {E4.typing1} & {E4.typing2} Elite
           </h5>
-          <PokemonTeam pokemon={E4.pokemon} />
-          <LeaderCode>
+          <h3>{E4.name}</h3>
+          <p>CLICK TO COPY TRAINER CODE!</p>
+          <LeaderCode
+            onClick={() => {
+              navigator.clipboard.writeText(E4.trainerCode);
+            }}
+          >
             <div>{E4.trainerCode}</div>
             <FontAwesomeIcon
               style={{ marginLeft: "0.5rem", fontSize: "1rem" }}
               icon={faCopy}
             />
           </LeaderCode>
+          <PokemonTeam pokemon={E4.pokemon} />
         </Region>
       ))}
       <Footer />
@@ -57,9 +59,10 @@ const LeaderCode = styled(motion.div)`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: ${({ theme }) => `${theme.primary0}`};
-  padding: 0rem 1rem;
-  margin-bottom: 0.2rem;
+  background-color: ${({ theme }) => `${theme.primary1}`};
+  padding: 0rem 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
   transition: all 0.2s ease-in-out;
   color: ${({ theme }) => theme.secondary1};
 
@@ -69,28 +72,56 @@ const LeaderCode = styled(motion.div)`
 `;
 
 const Region = styled(motion.div)`
-  width: 80%;
-  text-align: center;
+  width: 70%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-  font-weight: 500;
+  font-size: 2rem;
   font-family: "Poppins", sans-serif;
-  border-radius: 0.2rem;
-  background-color: ${({ theme }) => `${theme.primary1}80`};
-  color: ${({ theme }) => theme.highlight0};
+  border-bottom: 0.3rem solid ${({ theme }) => theme.primary1};
+  background-color: ${({ theme }) => `${theme.primary1}20`};
+
   transition: all 0.2s ease-in-out;
   cursor: pointer;
   padding: 0.2rem 0.5rem;
-  margin-top: 0.5rem;
+  margin-top: 1rem;
+
+  h3 {
+    font-size: 2rem;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 0.3rem;
+    font-weight: 500;
+  }
+
+  h5 {
+    font-size: 1.25rem;
+    letter-spacing: 0.2rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    color: ${({ theme }) => `${theme.secondary2}80`};
+  }
+
+  p {
+    font-size: 1rem;
+    letter-spacing: 0.1rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    color: ${({ theme }) => theme.primary2};
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    border-bottom: 0.3rem solid ${({ theme }) => theme.highlight0};
+    background-color: ${({ theme }) => `${theme.primary1}40`};
+  }
 
   @media (max-width: 768px) {
     width: 20rem;
     border-radius: 0.1rem;
     font-size: 1.2rem;
-    color: ${({ theme }) => theme.highlight0};
     border-right: 0.3rem solid ${({ theme }) => theme.highlight0};
   }
 `;
