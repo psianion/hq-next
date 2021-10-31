@@ -130,7 +130,7 @@ function RegionName({
       <Head>
         <title>{gymName} | PvP HQ</title>
       </Head>
-      <GymHero gymName={gymName} gymLocation={gymLocation} />
+      <GymHero gymName={gymName} gymLocation={`${gymLocation} Gym`} />
       <BackButton text={"All EU Gyms"} path={"/tom/eu"} />
       <GymLeaders
         gymLeaders={gymLeaders}

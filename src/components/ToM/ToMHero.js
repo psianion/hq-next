@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { fadeInTop, stagger2, stagger3 } from "../../animations/animations";
 import Head from "next/head";
 
-function GymHero({ gymName, gymLocation }) {
+function ToMHero({ secondLine, thirdLine, firstLine }) {
   return (
     <>
       <Head>
@@ -26,9 +26,9 @@ function GymHero({ gymName, gymLocation }) {
         initial="initial"
         animate="animate"
       >
-        <p>WELCOME TO</p>
-        <h1>{gymName}</h1>
-        <h5>{gymLocation}</h5>
+        <p>{firstLine}</p>
+        <h1>{secondLine}</h1>
+        <h5>{thirdLine}</h5>
       </HeroContainer>
     </>
   );
@@ -58,12 +58,12 @@ const HeroContainer = styled(motion.div)`
   }
 
   h5 {
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
     color: ${({ theme }) => theme.secondary1};
     transition: all 0.2s ease-in-out;
     font-size: 2rem;
     letter-spacing: 4px;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
     cursor: default;
     text-transform: uppercase;
     margin-bottom: 5rem;
@@ -118,4 +118,4 @@ const HeroContainer = styled(motion.div)`
   }
 `;
 
-export default GymHero;
+export default ToMHero;

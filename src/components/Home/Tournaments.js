@@ -17,14 +17,16 @@ function Tournaments() {
 
   const [tournamentData, setTournamentData] = useState([]);
 
-  fetch(TournamentURL)
-    .then((result) => result.text())
-    .then(function (csvtext) {
-      return csv().fromString(csvtext);
-    })
-    .then((csv) => {
-      setTournamentData(csv);
-    });
+  useEffect(() => {
+    fetch(TournamentURL)
+      .then((result) => result.text())
+      .then(function (csvtext) {
+        return csv().fromString(csvtext);
+      })
+      .then((csv) => {
+        setTournamentData(csv);
+      });
+  }, []);
 
   return (
     <>

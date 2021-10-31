@@ -5,6 +5,7 @@ import RegionHero from "../../../src/components/ToM/RegionHero";
 import Footer from "../../../src/components/Footer";
 import BackButton from "../../../src/components/BackButton";
 import RegionGymList from "../../../src/components/ToM/RegionGymList";
+import E4Button from "../../../src/components/ToM/E4Button";
 
 function EUregion() {
   return (
@@ -15,6 +16,7 @@ function EUregion() {
       <RegionHero gymName={"Europe Region"} gymLocation={"TOWER OF MASTERY"} />
       <BackButton text={"Tower of Mastery"} path={"/tom/"} />
       <RegionGymList id={2} region={"eu"} />
+      <E4Button region={"eu"}></E4Button>
       <Footer />
     </Container>
   );
