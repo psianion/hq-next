@@ -69,6 +69,12 @@ const LeaderCode = styled(motion.div)`
   &:hover {
     color: ${({ theme }) => theme.highlight0};
   }
+
+  @media (max-width: 768px) {
+    padding: 0.25rem 2rem;
+    font-weight: 600;
+    font-size: 1.5rem;
+  }
 `;
 
 const Region = styled(motion.div)`
@@ -122,7 +128,20 @@ const Region = styled(motion.div)`
     width: 20rem;
     border-radius: 0.1rem;
     font-size: 1.2rem;
-    border-right: 0.3rem solid ${({ theme }) => theme.highlight0};
+
+    h3 {
+      margin-bottom: 0rem;
+      font-size: 1.75rem;
+    }
+
+    h5 {
+      letter-spacing: 0.2rem;
+      font-size: 1rem;
+    }
+
+    p {
+      font-size: 0.9rem;
+    }
   }
 `;
 
