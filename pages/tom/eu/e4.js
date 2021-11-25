@@ -19,7 +19,8 @@ function EliteFour() {
       <BackButton text={"All EU Gyms"} path={"/tom/eu"} />
       <TextContainer>
         <h1>
-          The <Highlight>Elite Four </Highlight>defending Europe will be :
+          The <Highlight>Elite Four </Highlight>defending Europe Region will be
+          :
         </h1>
       </TextContainer>
       {EUE4.map((E4) => (
