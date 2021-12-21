@@ -269,7 +269,7 @@ const Nav = styled(motion.div)`
   align-items: center;
   justify-content: space-between;
   padding: 0rem 1rem;
-  background-color: ${({ theme }) => theme.primary0};
+  background-color: transparent;
   z-index: 2;
 
   @media (max-width: 768px) {
@@ -321,9 +321,10 @@ const RightSidebar = styled(motion.div)`
 `;
 
 const NavButton = styled(motion.button)`
-  background-color: ${({ theme }) => theme.primary0};
-  color: ${({ theme }) => theme.secondary1};
-  height: 2.5rem;
+  background-color: transparent;
+  color: ${({ theme }) => theme.secondary2};
+  height: 2rem;
+  width: 2rem;
   border-radius: 50%;
   border: none;
   font-size: 1.5rem;

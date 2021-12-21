@@ -15,28 +15,17 @@ function Hero() {
           as="font"
           crossOrigin=""
         />
-        <link
-          rel="preconnect"
-          href="/fonts/Aaargh.ttf"
-          as="font"
-          crossOrigin=""
-        />
       </Head>
+
       <HeroContainer
         variants={stagger3}
         exit={{ opacity: 0 }}
         initial="initial"
         animate="animate"
       >
-        <p>WELCOME TO</p>
-        <span style={{ display: "flex", alignItems: "center" }}>
-          <h1>P</h1>
-          <h1>V</h1>
-          <h1 style={{ marginRight: "30px" }}>P</h1>
-          <h1>H</h1>
-          <h1>Q</h1>
-        </span>
-        <h5>INDIA'S LARGEST POKÉMON GO PVP COMMUNITY</h5>
+        <h5>
+          India's largest <br /> Pokémon PvP community
+        </h5>
         <ButtonContainer variants={stagger2}>
           <Link href="/tournaments">
             <Button
@@ -77,9 +66,8 @@ function Hero() {
 const HeroContainer = styled(motion.div)`
   height: 35rem;
   width: 100%;
-  margin-top: 3rem;
   background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-    url("/gif/bg.gif");
+    url("/Images/hqbg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -87,77 +75,58 @@ const HeroContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
-  p {
-    font-weight: 200;
-    font-size: 2rem;
-    color: ${({ theme }) => theme.secondary0};
-    font-family: "Aaargh", "Roboto", sans-serif;
-    letter-spacing: 4px;
-    margin-top: 15rem;
-  }
+  text-align: center;
 
   h5 {
-    font-weight: 500;
+    margin-top: 20rem;
+    font-weight: 600;
     font-family: "Poppins", sans-serif;
     color: ${({ theme }) => theme.highlight0};
     transition: all 0.2s ease-in-out;
-    font-size: 2rem;
+    font-size: 3rem;
+    line-height: 3.5rem;
     cursor: default;
+
+    br {
+      display: none;
+    }
   }
 
   h5:hover {
     color: ${({ theme }) => theme.secondary1};
   }
 
-  span h1 {
-    font-size: 8rem;
-    font-family: "Prototype", "Open Sans", sans-serif;
-    font-weight: 400;
-    color: ${({ theme }) => theme.secondary0};
-    transition: all 0.2s ease-in-out;
-    cursor: pointer;
-  }
-
-  span h1:hover {
-    font-size: 7rem;
-    font-family: "Prototype";
-    color: ${({ theme }) => theme.highlight0};
-    font-weight: 400;
-  }
-
   @media (max-width: 768px) {
-    height: 90vh;
-
-    p {
-      font-size: 0.8rem;
-      margin-top: 20rem;
-    }
+    height: 80vh;
+    background-image: linear-gradient(
+        transparent,
+        ${({ theme }) => theme.primary0}
+      ),
+      url("/Images/hqbgmob.png");
 
     h5 {
-      font-size: 0.8rem;
-      color: ${({ theme }) => theme.secondary1};
-      font-weight: 400;
-    }
+      margin-top: 20rem;
+      font-size: 1.5rem;
+      color: ${({ theme }) => theme.highlight0};
+      line-height: 1.8rem;
+      font-weight: 600;
 
-    span h1 {
-      font-size: 4rem;
-    }
-
-    span h1:hover {
-      font-size: 5rem;
+      br {
+        display: block;
+      }
     }
   }
 `;
 
 const ButtonContainer = styled(motion.div)`
-  width: 60rem;
+  width: 70rem;
   max-width: 80%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
 
   @media (max-width: 768px) {
+    margin-top: 1.5rem;
     max-width: 90%;
   }
 `;
@@ -167,10 +136,12 @@ const Button = styled(motion.button)`
   background-color: ${({ theme }) => `${theme.primary0}80`};
   font-family: "Poppins", sans-serif;
   letter-spacing: 1px;
-  width: 18rem;
-  font-size: 1.2rem;
+  width: 20rem;
+  font-weight: 600;
+  font-size: 1.4rem;
   padding: 0.75rem 1.5rem;
   margin-top: 2rem;
+  border-radius: 0.2rem;
   border: solid 2px ${({ theme }) => theme.highlight0};
   cursor: pointer;
   transition: background-color 0.3s ease-in-out;
@@ -180,10 +151,10 @@ const Button = styled(motion.button)`
   }
 
   @media (max-width: 768px) {
-    width: 95%;
-    padding: 0.5rem 1rem;
+    width: 80%;
+    padding: 0.25rem 1rem;
     font-size: 1rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 `;
 
@@ -192,17 +163,19 @@ const SolidButton = styled(motion.button)`
   background-color: ${({ theme }) => `${theme.highlight0}`};
   font-family: "Poppins", sans-serif;
   width: 18rem;
-  font-size: 1.2rem;
+  font-weight: 600;
+  font-size: 1.5rem;
+  border-radius: 0.2rem;
   padding: 0.75rem 1.5rem;
   margin: 2rem 2rem 0 2rem;
   border: solid 2px ${({ theme }) => theme.highlight0};
   cursor: pointer;
 
   @media (max-width: 768px) {
-    width: 95%;
+    width: 85%;
     padding: 0.5rem 1rem;
     font-size: 1rem;
-    margin: 1rem 0 0 0;
+    margin: 0.5rem 0 0 0;
   }
 `;
 
