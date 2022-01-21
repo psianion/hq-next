@@ -13,7 +13,7 @@ function Events() {
 
   return (
     <>
-      <Heading head={"EVENTS"} highhead={"UPCOMING"} />
+      <Heading head={"Latest News"} />
       <Container>
         <Section1>
           {data.map((i) => (
@@ -24,7 +24,7 @@ function Events() {
               }}
             >
               <ImageBox1>
-                <img src='https://i.imgur.com/iI4cuP1.png' />
+                <img src="https://i.imgur.com/iI4cuP1.png" />
               </ImageBox1>
               <ContentBox1>
                 <h1>{i.name}</h1>
@@ -38,7 +38,8 @@ function Events() {
         </Section1>
         <Section2>
           <ImageBox2>
-            <img src={active.image}/>
+            <Game>{active.game}</Game>
+            <img src={active.image} />
           </ImageBox2>
           <ContentBox2>
             <div>
@@ -64,8 +65,6 @@ function Events() {
 const Container = styled(motion.div)`
   width: 70rem;
   height: 30rem;
-  border-radius: 0.5rem;
-  background-color: ${({ theme }) => theme.primary1};
   margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
@@ -80,9 +79,8 @@ const Container = styled(motion.div)`
 `;
 
 const Section1 = styled(motion.div)`
-  border-radius: 0.5rem;
-  width: 50%;
-  background-color: ${({ theme }) => theme.primary1};
+  border-radius: 0.25rem;
+  width: 55%;
   height: 30rem;
   overflow-y: auto;
 
@@ -92,12 +90,24 @@ const Section1 = styled(motion.div)`
   }
 `;
 
+const Section2 = styled(motion.div)`
+  border-radius: 0.25rem;
+  width: 45%;
+  overflow-y: auto;
+  background-color: ${({ theme }) => theme.primary1};
+
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 24rem;
+  }
+`;
+
 const Box = styled(motion.div)`
-  border-radius: 0.5rem;
+  border-radius: 0.25rem;
   width: 100%;
   background-color: ${({ theme }) => theme.primary1};
-  color: ${({ theme }) => theme.secondary0};
-  border-bottom: 1px solid ${({ theme }) => theme.primary2};
+  color: ${({ theme }) => theme.secondary1};
+  border-bottom: 1px solid ${({ theme }) => theme.primary0};
   height: 6rem;
   transition: all 0.2s ease-in-out;
   cursor: pointer;
@@ -106,8 +116,7 @@ const Box = styled(motion.div)`
   align-items: center;
 
   &:hover {
-    background-color: ${({ theme }) => theme.primary2};
-    border-left: ${({ theme }) => theme.highlight0} 0.5rem solid;
+    background-color: ${({ theme }) => theme.highlight0};
   }
 
   @media (max-width: 768px) {
@@ -127,15 +136,15 @@ const FlexBox = styled(motion.div)`
 `;
 
 const ImageBox1 = styled(motion.div)`
-  width: 5rem;
-  height: 5rem;
+  width: 5.5rem;
+  height: 5.5rem;
   background-color: ${({ theme }) => theme.primary2};
-  margin: 0.5rem;
-  border-radius: 0.5rem;
+  margin: 0.25rem;
+  border-radius: 0.25rem;
 
   img {
     width: 100%;
-  border-radius: 0.5rem;
+    border-radius: 0.25rem;
     height: 100%;
   }
 
@@ -146,15 +155,25 @@ const ImageBox1 = styled(motion.div)`
   }
 `;
 
+const Game = styled(motion.div)`
+  position: absolute;
+  background-color: ${({ theme }) => `${theme.highlight0}`};
+  transform: translateX(-0.25rem) translateY(2rem);
+  padding: 0.25rem 1rem;
+  border-radius: 0rem 0.25rem 0.25rem 0rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+`;
+
 const ImageBox2 = styled(motion.div)`
-  width: 97.5%;
-  height: 20rem;
-  background-color: ${({ theme }) => theme.primary2};
-  margin: 0.5rem;
-  border-radius: 0.5rem;
+  width: 98.5%;
+  height: auto;
+  margin: 0.25rem;
+  border-radius: 0.25rem;
 
   img {
-  border-radius: 0.5rem;
+    border-radius: 0.25rem;
     width: 100%;
     height: 100%;
   }
@@ -172,8 +191,9 @@ const Button = styled(motion.button)`
   height: 2rem;
   font-weight: 600;
   font-size: 1rem;
+  font-family: "Poppins", sans-serif;
   border: none;
-  border-radius: 0.2rem;
+  border-radius: 0.25rem;
   cursor: pointer;
   transition: all 0.1s ease-in-out;
 
@@ -188,27 +208,29 @@ const ContentBox1 = styled(motion.div)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin-top: 1rem;
+  margin-left: 0.5rem;
+  margin-top: 0.5rem;
 
   h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
     font-size: 1.5rem;
+    letter-spacing: 0.05rem;
     color: ${({ theme }) => theme.secondary0};
   }
 
   h5 {
-    font-size: 1rem;
-    font-family: "Roboto", sans-serif;
+    font-size: 0.85rem;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
-    letter-spacing: 0.2px;
-    margin-top: 0.2rem;
     color: ${({ theme }) => theme.secondary1};
   }
 
   p {
     font-size: 0.9rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
     color: ${({ theme }) => theme.secondary1};
-    margin-top: 0.8rem;
+    margin-top: 0.25rem;
   }
 
   @media (max-width: 768px) {
@@ -238,14 +260,18 @@ const ContentBox2 = styled(motion.div)`
   margin-top: 0.5rem;
 
   h1 {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    margin-left: 0.5rem;
     font-size: 1.5rem;
-    color: ${({ theme }) => `${theme.secondary0}`};
-    margin: 0.5rem;
+    letter-spacing: 0.05rem;
+    color: ${({ theme }) => theme.secondary0};
   }
 
   h5 {
     font-size: 1rem;
-    font-family: "Roboto", sans-serif;
+    line-height: 1.2rem;
+    font-family: "Poppins", sans-serif;
     font-weight: 400;
     letter-spacing: 0.2px;
     margin: 0 0.5rem 0.5rem 0.5rem;
@@ -254,7 +280,7 @@ const ContentBox2 = styled(motion.div)`
 
   p {
     font-size: 1rem;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
     color: ${({ theme }) => theme.secondary2};
     margin-left: 0.5rem;
   }
@@ -285,18 +311,8 @@ const Section2Footer = styled(motion.div)`
   align-items: center;
   justify-content: space-between;
   width: 97%;
-  margin: 0 0 0 0.5rem;
-`;
-
-const Section2 = styled(motion.div)`
-  border-radius: 0.5rem;
-  width: 50%;
-  background-color: ${({ theme }) => theme.primary1};
-
-  @media (max-width: 768px) {
-    width: 100%;
-    height: 24rem;
-  }
+  margin: 0.5rem 0.5rem;
+  padding-bottom: 0.5rem;
 `;
 
 export default Events;

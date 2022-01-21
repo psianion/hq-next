@@ -5,37 +5,61 @@ function Heading({ highhead, head }) {
   return (
     <>
       <HeadingContainer>
-        <Head>
-          <Highlight>{highhead}</Highlight> {head}
-        </Head>
+        <Head>{head}</Head>
       </HeadingContainer>
     </>
   );
 }
 
 const HeadingContainer = styled(motion.div)`
-  margin-top: 3rem;
-  margin-bottom: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+
   @media (max-width: 768px) {
-    margin-top: 3rem;
-    margin-bottom: 1rem;
+    margin-top: 2rem;
   }
 `;
 
 const Head = styled(motion.h1)`
-  font-size: 2rem;
-  color: ${({ theme }) => theme.secondary1};
+  position: relative;
+  font-family: "Poppins", sans-serif;
+  color: ${({ theme }) => theme.secondary0};
+  font-size: 2.25rem;
+  font-weight: 500;
+  text-align: center;
+  margin: auto;
+  white-space: nowrap;
+  padding-bottom: 1.25rem;
+
+  &::before {
+    background-color: ${({ theme }) => theme.highlight0};
+    content: "";
+    display: block;
+    height: 0.25rem;
+    width: 10rem;
+    transform: translateX(-2.5rem);
+  }
+
+  &::after {
+    background-color: ${({ theme }) => theme.highlight0};
+    content: "";
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 0.25rem;
+    width: 10rem;
+    transform: translateX(2.5rem) translateY(-0.75rem);
+  }
 
   @media (max-width: 768px) {
-    font-size: 1.25rem;
+    margin-left: 0rem;
+    font-weight: 500;
+    font-size: 1.5rem;
   }
-`;
-
-const Highlight = styled.span`
-  color: ${({ theme }) => theme.highlight0};
 `;
 
 export default Heading;

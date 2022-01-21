@@ -3,10 +3,10 @@ import { createGlobalStyle } from "styled-components";
 export const darkTheme = {
   primary0: "#222629",
   primary1: "#303438",
-  primary2: "#474b4f",
+  primary2: "#696969",
   secondary0: "#efefef",
-  secondary1: "#e0e0e0",
-  secondary2: "#c0c0c0",
+  secondary1: "#d0d0d0",
+  secondary2: "#b2b2b2",
   highlight0: "#9147FF",
   logo: "/logo/hqlogo_white.png",
   logohq: "/logo/hqlogo.png",
@@ -14,11 +14,11 @@ export const darkTheme = {
 
 export const lightTheme = {
   primary0: "#efefef",
-  primary1: "#e0e0e0",
-  primary2: "#c0c0c0",
+  primary1: "#D0D0D0",
+  primary2: "#B8B8B8",
   secondary0: "#222629",
   secondary1: "#303438",
-  secondary2: "#474b4f",
+  secondary2: "#696969",
   highlight0: "#9147FF",
   logo: "/logo/hqlogo_black.png",
   logohq: "/logo/hqlogob.png",

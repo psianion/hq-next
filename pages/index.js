@@ -8,6 +8,8 @@ import Tournaments from "../src/components/Home/Tournaments";
 import Footer from "../src/components/Footer";
 
 import Head from "next/head";
+import Formats from "../src/components/Home/Formats";
+import Teams from "../src/components/Home/Teams";
 
 export default function Home() {
   return (
@@ -16,7 +18,7 @@ export default function Home() {
         <title>Home | PvP HQ</title>
       </Head>
       <Hero />
-      <Tournaments />
+      <Formats />
       <Footer />
     </HomeContainer>
   );

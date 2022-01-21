@@ -30,7 +30,7 @@ function Tournaments() {
 
   return (
     <>
-      <Heading head={"TOURNAMENTS"} highhead={"FEATURED"} />
+      <Heading head={"Featured Tournaments"} />
       <Container>
         {tournamentData
           .slice(0)
@@ -112,7 +112,6 @@ const Container = styled(motion.div)`
   height: 24rem;
   border-radius: 0.5rem;
   background-color: ${({ theme }) => theme.primary0};
-  margin-bottom: 2rem;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
