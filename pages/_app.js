@@ -24,6 +24,14 @@ function MyApp({ Component, pageProps }) {
       <QueryClientProvider client={queryClient}>
         <Head>
           <title>PvP HQ</title>
+          <meta
+            name="description"
+            content="India's largest Pokémon PvP community"
+          />
+          <meta
+            name="keywords"
+            content="Pokémon, Pokemon, Pokémon GO, Pokemon GO, Pokémon GO PvP, Pokémon GO India, Pokémon Unite, Pokémon Unite India, Pokémon Esports"
+          />
           <link rel="icon" type="image/png" href="/logo/icon.png" />
           <meta
             name="viewport"

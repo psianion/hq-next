@@ -16,6 +16,10 @@ export default function Home() {
     <HomeContainer>
       <Head>
         <title>Home | PvP HQ</title>
+        <meta
+          name="description"
+          content="India's largest Pokémon PvP community"
+        />
       </Head>
       <Hero />
       <Formats />
