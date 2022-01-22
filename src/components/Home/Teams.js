@@ -66,6 +66,13 @@ const Section = styled(motion.div)`
   align-items: center;
   justify-content: center;
   transform: skew(-2deg);
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 1.5rem;
+  }
 `;
 
 const BGSection = styled(motion.div)`
@@ -97,6 +104,13 @@ const ImageSection = styled(motion.div)`
     width: 22rem;
     height: 22rem;
     border-radius: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    img {
+      width: 21rem;
+      height: auto;
+    }
   }
 `;
 

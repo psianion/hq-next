@@ -19,6 +19,7 @@ export default function Home() {
       </Head>
       <Hero />
       <Formats />
+      <Teams />
       <Footer />
     </HomeContainer>
   );
