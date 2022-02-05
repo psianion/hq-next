@@ -65,6 +65,7 @@ function Navbar({ toggleTheme, theme }) {
             <FontAwesomeIcon icon={faBars} />
           )}
         </NavButton>
+        {/* */}
         {isAuth ? (
           <NavButton
             onClick={toggleSettings}
@@ -82,6 +83,7 @@ function Navbar({ toggleTheme, theme }) {
                   alignItems: "center",
                   fontFamily: "Poppins",
                   fontSize: "1rem",
+                  marginRight: "5rem",
                 }}
               >
                 {me.ign || "Profile"}{" "}

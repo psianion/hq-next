@@ -20,6 +20,10 @@ export default function Home() {
           name="description"
           content="India's largest Pokémon PvP community"
         />
+        <meta
+          name="keywords"
+          content="Pokémon, Pokemon, Pokémon GO, Pokemon GO, Pokémon GO PvP, Pokémon GO India, Pokémon Unite, Pokémon Unite India, Pokémon Esports"
+        />
       </Head>
       <Hero />
       <Formats />
