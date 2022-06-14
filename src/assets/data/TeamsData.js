@@ -9,15 +9,6 @@ module.exports = [
     buttonLink: "/team/dewsngongs",
   },
   {
-    id: 2,
-    name: "HQ Metal Raptors",
-    bg: "/Images/Home/raptorsBG.png",
-    logo: "/Images/Home/raptorsLogo.png",
-    game: "Pokémon GO",
-    format: "Silph Factions",
-    buttonLink: "/team/metalraptors",
-  },
-  {
     id: 3,
     name: "Pika Blinders HQ",
     bg: "/Images/Home/pikaBG.png",

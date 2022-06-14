@@ -19,9 +19,11 @@ function Teams() {
               <h1>{i.name}</h1>
               <h5>{i.game}</h5>
               <h3>{i.format}</h3>
+              {/*
               <Link href={i.buttonLink}>
                 <Button>Go to team page</Button>
               </Link>
+              */}
             </DescSection>
             <BGSection>
               <img src={i.bg} />
