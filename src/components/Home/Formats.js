@@ -53,6 +53,7 @@ const Container = styled(motion.div)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin-bottom: 4rem;
 
   @media (max-width: 768px) {
     width: 98%;

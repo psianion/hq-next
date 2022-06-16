@@ -65,7 +65,7 @@ function Navbar({ toggleTheme, theme }) {
             <FontAwesomeIcon icon={faBars} />
           )}
         </NavButton>
-        {/* */}
+        {/* 
         {isAuth ? (
           <NavButton
             onClick={toggleSettings}
@@ -96,20 +96,27 @@ function Navbar({ toggleTheme, theme }) {
           </NavButton>
         ) : (
           <NavButton
-            onClick={toggleSettings}
+            onClick={toggleTheme}
             title="Dark Mode"
             variants={fadeInLeft}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
           >
-            {openSettings ? (
-              <FontAwesomeIcon icon={faChevronUp} />
-            ) : (
-              <FontAwesomeIcon icon={faUserCircle} />
-            )}
+            <FontAwesomeIcon icon={faAdjust} />
           </NavButton>
         )}
+        */}
+        <NavButton
+          onClick={toggleTheme}
+          title="Dark Mode"
+          variants={fadeInLeft}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <FontAwesomeIcon icon={faAdjust} />
+        </NavButton>
       </Nav>
+      {/*
       {openSettings ? (
         <RightSidebar variants={fadeInBottom}>
           <RightSideBarItems variants={stagger1}>
@@ -204,6 +211,7 @@ function Navbar({ toggleTheme, theme }) {
       ) : (
         <></>
       )}
+      */}
       {openMenu ? (
         <Sidebar variants={fadeInRight}>
           <SideBarItems variants={stagger1}>
