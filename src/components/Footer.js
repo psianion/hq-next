@@ -45,7 +45,7 @@ function Footer() {
         </DonateLink>
       </a>
       <Copyrights>
-        ©2021 by PvP HQ. All Rights Reserved By Their Respective Owners.
+        ©2022 by PvP HQ. All Rights Reserved By Their Respective Owners.
         <br /> PVP HQ is NOT affiliated with Niantic Inc., The Pokémon Company,
         Nintendo, Creatures Inc. <br /> or GAME FREAK inc., The Silph Road LLC
         or any other entity reported upon. Pokémon and its <br />

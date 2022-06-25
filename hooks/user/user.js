@@ -2,39 +2,44 @@ import { useQuery, useQueryClient } from "react-query";
 import axios from "axios";
 
 export const useUser = () => {
-  const id = typeof window !== "undefined" ? localStorage.getItem("me") : null;
-
-  const meQuery = async () => {
-    const some = await axios.get(`/user/${id}`);
-    return some.data.data;
+  const fetchUser = async () => {
+    const res = await axios.get("http://localhost:3001/profile", {
+      withCredentials: true,
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Credentials": true,
+      },
+    });
+    return res.data;
   };
 
-  const { data: data, isLoading, isError } = useQuery("me", meQuery);
+  const { data: data, isError, isLoading } = useQuery("user", fetchUser);
 
   return {
-    me: data || [],
-    isLoading,
+    data,
     isError,
+    isLoading,
   };
 };
 
 export const useSetupProfile = () => {
   const queryClient = useQueryClient();
-  const id = typeof window !== "undefined" ? localStorage.getItem("me") : null;
 
-  const setupProfile = async (data) => {
+  const setupProfile = async (id, data) => {
     try {
-      await axios.post(`/user/setup`, {
+      const res = await axios.post(`http://localhost:3001/profile/setup`, {
         id: id,
         data: data,
       });
-      queryClient.invalidateQueries("me");
+      queryClient.invalidateQueries("user");
+      console.log(res);
       return { isSuccess: true };
     } catch (e) {
+      console.log(e);
       return {
         isSuccess: false,
-        errorMessage:
-          e.response?.data?.error || "Something went wrong. Please try again!",
+        errorMessage: "Something went wrong. Please try again!",
       };
     }
   };

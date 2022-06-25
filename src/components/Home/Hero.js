@@ -6,8 +6,6 @@ import {
   stagger2,
   stagger3,
 } from "../../animations/animations";
-import Head from "next/head";
-import Link from "next/link";
 import Image from "next/image";
 
 function Hero() {
@@ -44,7 +42,14 @@ function Hero() {
             >
               JOIN THE DISCORD
             </Button1>
-            <Button2 variants={fadeInTop}>LOGIN TO HQ</Button2>
+            <Button2
+              onClick={() => {
+                window.open(process.env.NEXT_PUBLIC_API_URL + "/auth/discord", "_self");
+              }}
+              variants={fadeInTop}
+            >
+              LOGIN TO HQ
+            </Button2>
           </ButtonSection>
         </TextSection>
         <ImageSection variants={fadeInBottom}>

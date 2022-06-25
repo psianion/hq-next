@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useAuth } from "../../hooks/auth/login";
 
 import {
   fadeInLeft,
@@ -26,12 +25,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useUser } from "../../hooks/user/user";
 
 function Navbar({ toggleTheme, theme }) {
   const router = useRouter();
-  const { isAuth, setIsAuth } = useAuth();
-  const { me } = useUser();
   const [openMenu, setOpenMenu] = useState(false);
   const [openSettings, setOpenSettings] = useState(false);
 

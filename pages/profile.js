@@ -2,59 +2,72 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import { useRouter } from "next/router";
-// import { useAuth } from "../hooks/auth/login";
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
-import { useSetupProfile, useUser } from "../hooks/user/user";
-import { useQuery, useQueryClient } from "react-query";
+import { useUser, useSetupProfile } from "../hooks/user/user";
+import Loading from "../src/components/Loading";
 
 export default function Profile() {
-  const { register, handleSubmit, errors } = useForm();
-  const queryClient = useQueryClient();
-
-  const setupProfile = useSetupProfile();
-  const [stage, setStage] = useState("IGN-NOT-SET");
   const router = useRouter();
-  const { me } = useUser();
+
+  const [stage, setStage] = useState("IGN-NOT-SET");
+  const [id, setID] = useState("");
+
+  const { register, handleSubmit, errors } = useForm();
+  const { data, isError, isLoading } = useUser();
+  const setupProfile = useSetupProfile();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading && !data.data) {
+      router.push("/login");
+    } else if (!isLoading && !data.data.ign) {
+      setStage("IGN-NOT-SET");
+      setID(data.data._id);
+    } else if (!isLoading && data.data.ign) {
+      setStage("IGN-SET");
+      setID(data.data._id);
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, [isLoading]);
 
   const onSubmit = async (data) => {
-    const { isSuccess } = await setupProfile(data);
+    const { isSuccess } = await setupProfile(id, data);
     if (isSuccess) {
-      setStage("IGN-SET");
+      router.reload();
     } else {
-      console.log("No");
+      console.log("No setup, try again.");
     }
   };
 
-  useEffect(() => {
-    me.ign && setStage("IGN-SET");
-    queryClient.invalidateQueries("me");
-  }, [me]);
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <Container>
       <Head>
         <title>Profile | PvP HQ</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Arvo&display=swap"
-          rel="stylesheet"
-        />
       </Head>
 
       {stage === "IGN-SET" ? (
-        <Content>
+        <Content1>
           <Cover></Cover>
           <FlexBox>
             <Avatar></Avatar>
             <FlexBox2>
-              <IGN>{me.ign}</IGN>
-              <Role>{me.role === "USER" ? "Trainer" : "HQ Staff"}</Role>
+              <IGN>{data?.data?.discordName || "IGN"}</IGN>
+              <Role>
+                {data?.data?.role === "USER" ? "Trainer" : "HQ Staff"}
+              </Role>
             </FlexBox2>
           </FlexBox>
-        </Content>
+        </Content1>
       ) : (
-        <Content>
+        <Content2>
           <ProfileForm onSubmit={handleSubmit(onSubmit)}>
             <ProfileFormDiv className="form-control">
               <label>In Game Name</label>
@@ -82,7 +95,7 @@ export default function Profile() {
               <button type="submit">Set Up</button>
             </ProfileFormDiv>
           </ProfileForm>
-        </Content>
+        </Content2>
       )}
     </Container>
   );
@@ -102,7 +115,25 @@ const Container = styled(motion.div)`
   }
 `;
 
-const Content = styled(motion.div)`
+const Content1 = styled(motion.div)`
+  background-color: ${({ theme }) => theme.primary0};
+  border: solid 2px ${({ theme }) => theme.primary1};
+  border-radius: 0.5rem;
+  width: 90rem;
+  height: 50rem;
+
+  @media (max-width: 768px) {
+    width: 95%;
+    height: 98%;
+    margin-top: 3rem;
+  }
+`;
+
+const Content2 = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
   background-color: ${({ theme }) => theme.primary0};
   border: solid 2px ${({ theme }) => theme.primary1};
   border-radius: 0.5rem;
@@ -117,8 +148,6 @@ const Content = styled(motion.div)`
 `;
 
 const ProfileForm = styled(motion.form)`
-  width: 90rem;
-  height: 50rem;
   display: flex;
   align-items: center;
   flex-direction: column;

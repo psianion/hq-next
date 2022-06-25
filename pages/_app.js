@@ -2,7 +2,6 @@ import { useState } from "react";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme, GlobalStyles } from "../src/config/ThemeConfig";
 import Navbar from "../src/components/Navbar";
-import axios from "axios";
 import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
 
@@ -10,7 +9,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
 config.autoAddCss = false;
-axios.defaults.baseURL = process.env.NEXT_PUBLIC_API_URL;
 
 function MyApp({ Component, pageProps }) {
   const [theme, setTheme] = useState("dark");

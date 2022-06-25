@@ -3,11 +3,27 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Head from "next/head";
 import { faDiscord } from "@fortawesome/free-brands-svg-icons";
-import { useAuth } from "../hooks/auth/login";
+import { useUser } from "../hooks/user/user";
+import { useState, useEffect } from "react";
+import Loading from "../src/components/Loading";
 
 export default function Login() {
-  const { isAuth, user, setIsAuth } = useAuth();
+  const { data, isError, isLoading } = useUser();
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, [isLoading]);
+
   const LOGurl = process.env.NEXT_PUBLIC_API_URL;
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <Container>
       <Head>
@@ -19,16 +35,16 @@ export default function Login() {
       </Head>
       <ImageDiv></ImageDiv>
       <ContentDiv>
-        {isAuth ? (
-          <h1>Hello, {user.discordName}</h1>
+        {data?.data?.discordName ? (
+          <h1>Hello, {data?.data?.discordName}</h1>
         ) : (
           <h1>Authorize yourself to join HQ</h1>
         )}
         <p>Squirtle welcomes you to the squad!</p>
-        {isAuth == false ? (
+        {!isLoading && !data.data ? (
           <button
             onClick={() => {
-              window.open(LOGurl + "/auth", "_self");
+              window.open(LOGurl + "/auth/discord", "_self");
             }}
           >
             Login thorugh Discord{" "}
@@ -41,7 +57,6 @@ export default function Login() {
           <button
             onClick={() => {
               window.open(LOGurl + "/auth/logout", "_self");
-              setIsAuth(false);
             }}
           >
             Logout
