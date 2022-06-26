@@ -2,8 +2,9 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Profile({ stage, data }) {
@@ -23,7 +24,9 @@ function Profile({ stage, data }) {
         <Section>
           <WelcomeText>Welcome to PvP HQ</WelcomeText>
           <NameText>{data.data.discordName}</NameText>
-          <SetupButton>SETUP YOUR PROFILE</SetupButton>
+          <Link href="/profile">
+            <SetupButton>SETUP YOUR PROFILE</SetupButton>
+          </Link>
         </Section>
       )}
       {stage === "PROFILE-SET" && (
@@ -43,7 +46,9 @@ function Profile({ stage, data }) {
             />
           </FriendCode>
 
-          <EditButton>EDIT PROFILE</EditButton>
+          <Link href="/profile">
+            <SetupButton>VIEW FULL PROFILE</SetupButton>
+          </Link>
         </Section>
       )}
     </Container>
