@@ -247,8 +247,8 @@ const Button1 = styled(motion.button)`
   font-weight: 500;
 
   @media (max-width: 768px) {
-    padding: 0.5rem 1rem;
-    width: 100%;
+    padding: 0.25rem 1rem;
+    width: 80%;
   }
 `;
 

@@ -7,6 +7,16 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function Profile({ stage, data }) {
+  const notify = () => {
+    toast.success("Trainer Code Copied!", {
+      theme: "dark",
+      style: {
+        fontSize: "1rem",
+        fontFamily: `"Poppins", sans-serif`,
+        width: "250px",
+      },
+    });
+  };
   return (
     <Container>
       {stage === "PROFILE-NOT-SET" && (
@@ -23,13 +33,7 @@ function Profile({ stage, data }) {
           <FriendCode
             onClick={() => {
               navigator.clipboard.writeText(data.data.trainerCode);
-              toast.success("Trainer Code Copied!", {
-                theme: "dark",
-                style: {
-                  fontSize: "1rem",
-                  fontFamily: `"Poppins", sans-serif`,
-                },
-              });
+              notify();
             }}
           >
             <div>{data.data.trainerCode}</div>
@@ -38,17 +42,7 @@ function Profile({ stage, data }) {
               icon={faCopy}
             />
           </FriendCode>
-          <ToastContainer
-            position="top-center"
-            autoClose={2000}
-            hideProgressBar
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-          />
+
           <EditButton>EDIT PROFILE</EditButton>
         </Section>
       )}
