@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 import Heading from "../Heading";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import GymLeaderPokemon from "./GLPokemon";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
+import GymLeaderPokemon from "./GLPokemon";
 
 function GymLeaders({
   gymLeaders,

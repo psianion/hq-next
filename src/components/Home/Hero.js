@@ -8,7 +8,7 @@ import {
 } from "../../animations/animations";
 import Image from "next/image";
 
-function Hero() {
+function Hero({ stage }) {
   return (
     <>
       <HeroContainer
@@ -42,14 +42,31 @@ function Hero() {
             >
               JOIN THE DISCORD
             </Button1>
-            <Button2
-              onClick={() => {
-                window.open(process.env.NEXT_PUBLIC_API_URL + "/auth/discord", "_self");
-              }}
-              variants={fadeInTop}
-            >
-              LOGIN TO HQ
-            </Button2>
+            {stage === "NOT-LOGGED-IN" ? (
+              <Button2
+                onClick={() => {
+                  window.open(
+                    process.env.NEXT_PUBLIC_API_URL + "/auth/discord",
+                    "_self"
+                  );
+                }}
+                variants={fadeInTop}
+              >
+                LOGIN TO HQ
+              </Button2>
+            ) : (
+              <Button2
+                onClick={() => {
+                  window.open(
+                    process.env.NEXT_PUBLIC_API_URL + "/auth/logout",
+                    "_self"
+                  );
+                }}
+                variants={fadeInTop}
+              >
+                LOGOUT
+              </Button2>
+            )}
           </ButtonSection>
         </TextSection>
         <ImageSection variants={fadeInBottom}>
@@ -188,7 +205,7 @@ const ButtonSection = styled(motion.div)`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-
+  width: "100%";
   @media (max-width: 768px) {
     margin-top: 2rem;
   }
@@ -209,10 +226,10 @@ const Button2 = styled(motion.button)`
   margin-top: 0px;
 
   @media (max-width: 768px) {
-    padding: 0.5rem 2rem;
+    padding: 0.25rem 1rem;
     margin-top: 10px;
     margin-left: 0px;
-    width: 90%;
+    width: 80%;
   }
 `;
 
@@ -230,8 +247,8 @@ const Button1 = styled(motion.button)`
   font-weight: 500;
 
   @media (max-width: 768px) {
-    padding: 0.5rem 2rem;
-    width: 90%;
+    padding: 0.5rem 1rem;
+    width: 100%;
   }
 `;
 

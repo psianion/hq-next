@@ -20,7 +20,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    if (!isLoading && !data.data) {
+    if (!isLoading && !data?.data) {
       router.push("/login");
     } else if (!isLoading && !data.data.ign) {
       setStage("IGN-NOT-SET");

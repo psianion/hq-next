@@ -11,7 +11,33 @@ import Head from "next/head";
 import Formats from "../src/components/Home/Formats";
 import Teams from "../src/components/Home/Teams";
 
+import { useUser } from "../hooks/user/user";
+import { useState, useEffect } from "react";
+import Loading from "../src/components/Loading";
+import Profile from "../src/components/Home/Profile";
+
 export default function Home() {
+  const { data, isError, isLoading } = useUser();
+  const [stage, setStage] = useState("NOT-LOGGED-IN");
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!isLoading && !data?.data) {
+      return;
+    } else if (!isLoading && !data?.data?.ign) {
+      setStage("PROFILE-NOT-SET");
+    } else if (!isLoading && data.data.ign) {
+      setStage("PROFILE-SET");
+    }
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [isLoading]);
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <HomeContainer>
       <Head>
@@ -25,7 +51,8 @@ export default function Home() {
           content="Pokémon, Pokemon, Pokémon GO, Pokemon GO, Pokémon GO PvP, Pokémon GO India, Pokémon Unite, Pokémon Unite India, Pokémon Esports"
         />
       </Head>
-      <Hero />
+      <Hero stage={stage} />
+      <Profile stage={stage} data={data} />
       <Formats />
       <Teams />
       <Footer />
