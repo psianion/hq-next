@@ -9,6 +9,6 @@ module.exports = {
     return config;
   },
   images: {
-    domains: ["localhost", "herokuapp"],
+    domains: ["localhost", "pvphq-server.herokuapp.com/"],
   },
 };
