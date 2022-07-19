@@ -4,27 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
 function Profile({ stage, data }) {
-  const notify = () => {
-    toast.success("Trainer Code Copied!", {
-      theme: "dark",
-      style: {
-        fontSize: "1rem",
-        fontFamily: `"Poppins", sans-serif`,
-        width: "250px",
-      },
-    });
-  };
   return (
     <Container>
       {stage === "PROFILE-NOT-SET" && (
         <Section>
           <WelcomeText>Welcome to PvP HQ</WelcomeText>
           <NameText>{data.data.discordName}</NameText>
-          <Link href="/profile">
+          <Link href="/profile/setup">
             <SetupButton>SETUP YOUR PROFILE</SetupButton>
           </Link>
         </Section>
@@ -32,14 +19,15 @@ function Profile({ stage, data }) {
       {stage === "PROFILE-SET" && (
         <Section>
           <WelcomeText>Welcome to PvP HQ</WelcomeText>
-          <NameText>{data.data.ign}</NameText>
+          <NameText>{data.data.game.pokemongo.ign}</NameText>
           <FriendCode
             onClick={() => {
-              navigator.clipboard.writeText(data.data.trainerCode);
-              notify();
+              navigator.clipboard.writeText(
+                data.data.game.pokemongo.trainerCode
+              );
             }}
           >
-            <div>{data.data.trainerCode}</div>
+            <div>{data.data.game.pokemongo.trainerCode}</div>
             <FontAwesomeIcon
               style={{ marginLeft: "0.5rem", fontSize: "1rem" }}
               icon={faCopy}
@@ -81,7 +69,6 @@ const Section = styled(motion.div)`
   align-items: center;
   justify-content: center;
   padding: 2rem 2rem;
-  transform: skew(-2deg);
 
   @media (max-width: 768px) {
     width: 90%;
@@ -185,9 +172,9 @@ const FriendCode = styled(motion.div)`
   }
 
   @media (max-width: 768px) {
-    width: 90%;
+    width: 80%;
     border-radius: 0.1rem;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     color: ${({ theme }) => theme.secondary1};
     background-color: ${({ theme }) => theme.primary1};
     border-right: 0.5rem solid ${({ theme }) => theme.highlight0};

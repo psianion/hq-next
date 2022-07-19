@@ -30,12 +30,12 @@ export const useSetupProfile = () => {
 
   const setupProfile = async (id, data) => {
     try {
+      console.log(data);
       const res = await axios.post(URL + "/profile/setup", {
         id: id,
         data: data,
       });
       queryClient.invalidateQueries("user");
-      console.log(res);
       return { isSuccess: true };
     } catch (e) {
       console.log(e);
@@ -47,4 +47,27 @@ export const useSetupProfile = () => {
   };
 
   return setupProfile;
+};
+
+export const useSetGBL = () => {
+  const queryClient = useQueryClient();
+
+  const setGBL = async (id, data) => {
+    try {
+      const res = await axios.post(URL + "/profile/set/gbl", {
+        id: id,
+        mmr: data.rating,
+      });
+      queryClient.invalidateQueries("user");
+      return { isSuccess: true };
+    } catch (e) {
+      console.log(e);
+      return {
+        isSuccess: false,
+        errorMessage: "Something went wrong. Please try again!",
+      };
+    }
+  };
+
+  return setGBL;
 };

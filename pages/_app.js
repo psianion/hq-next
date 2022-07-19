@@ -6,7 +6,6 @@ import Head from "next/head";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import "@fortawesome/fontawesome-svg-core/styles.css";
-import { ToastContainer } from "react-toastify";
 import { config } from "@fortawesome/fontawesome-svg-core";
 
 config.autoAddCss = false;
@@ -40,16 +39,6 @@ function MyApp({ Component, pageProps }) {
         <GlobalStyles />
         <Navbar toggleTheme={toggleTheme} theme={theme} />
         <Component theme={theme} {...pageProps} />
-        <ToastContainer
-          position="top-center"
-          autoClose={1000}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </QueryClientProvider>
     </ThemeProvider>
   );

@@ -24,9 +24,9 @@ export default function Home() {
   useEffect(() => {
     if (!isLoading && !data?.data) {
       return;
-    } else if (!isLoading && !data?.data?.ign) {
+    } else if (!isLoading && !data?.data?.game?.pokemongo?.ign) {
       setStage("PROFILE-NOT-SET");
-    } else if (!isLoading && data.data.ign) {
+    } else if (!isLoading && data.data.game.pokemongo.ign) {
       setStage("PROFILE-SET");
     }
     setTimeout(() => {
