@@ -13,7 +13,11 @@ export default function ProfileSetup() {
 
   const [id, setID] = useState("");
 
-  const { register, handleSubmit, errors } = useForm({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       nationality: {},
     },
@@ -25,6 +29,7 @@ export default function ProfileSetup() {
 
   const onSubmit = async (data) => {
     const { isSuccess } = await setupProfile(id, data);
+
     if (isSuccess) {
       router.push("/profile");
     } else {
@@ -48,32 +53,60 @@ export default function ProfileSetup() {
         <ProfileForm onSubmit={handleSubmit(onSubmit)}>
           <ProfileFormDiv className="form-control">
             <label>In Game Name</label>
-            <input type="text" {...register("ign")} />
+            <input
+              type="text"
+              {...register("ign", { required: "IGN is required!" })}
+            />
+            <Error>{errors.ign?.message}</Error>
           </ProfileFormDiv>
           <ProfileFormDiv className="form-control">
             <label>Trainer Code</label>
-            <input type="text" {...register("trainerCode")} />
+            <input
+              type="number"
+              {...register("trainerCode", {
+                required: "Trainer Code is required!",
+                maxLength: {
+                  value: 12,
+                  message: "Enter your 12 digit Trainer Code",
+                },
+                minLength: {
+                  value: 12,
+                  message: "Enter your 12 digit Trainer Code",
+                },
+              })}
+            />
+            <Error>{errors.trainerCode?.message}</Error>
           </ProfileFormDiv>
           <ProfileDivHori>
             <ProfileFormDiv className="form-control">
               <label>Team</label>
-              <select {...register("trainerTeam")}>
+              <select
+                {...register("trainerTeam", {
+                  required: "Trainer Team is required!",
+                })}
+              >
                 {["Valor", "Mystic", "Instinct"].map((value) => (
                   <option key={value} value={value}>
                     {value}
                   </option>
                 ))}
               </select>
+              <Error>{errors.trainerTeam?.message}</Error>
             </ProfileFormDiv>
             <NationalityFormDiv className="form-control">
               <label>Nationality</label>
-              <select {...register("nationality")}>
+              <select
+                {...register("nationality", {
+                  required: "Nationality is required!",
+                })}
+              >
                 {CountryData.map((value) => (
                   <option key={value.code} value={value.code.toLowerCase()}>
                     {value.name}
                   </option>
                 ))}
               </select>
+              <Error>{errors.nationality?.message}</Error>
             </NationalityFormDiv>
           </ProfileDivHori>
 
@@ -98,6 +131,18 @@ const Container = styled(motion.div)`
   @media (max-width: 768px) {
     height: 95vh;
     margin-top: 1rem;
+  }
+`;
+
+const Error = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.secondary1};
+  font-weight: 400;
+  color: #ff3131;
+
+  @media (max-width: 768px) {
+    font-size: 0.5rem;
   }
 `;
 
@@ -179,12 +224,6 @@ const NationalityFormDiv = styled(motion.div)`
       outline: none;
     }
   }
-`;
-
-const CountryDiv = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 const ProfileFormDiv = styled(motion.div)`

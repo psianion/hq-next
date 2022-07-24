@@ -14,7 +14,11 @@ export default function Profile() {
   const router = useRouter();
   const { data, isError, isLoading } = useUser();
 
-  const { register, handleSubmit, errors } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const setGBL = useSetGBL();
 
@@ -143,15 +147,30 @@ export default function Profile() {
               <SetMMRSection onSubmit={handleSubmit(onSubmit)}>
                 <MMRInput className="form-control">
                   <input
-                    type="text"
-                    autocomplete="off"
-                    {...register("rating")}
+                    type="number"
+                    autoComplete="off"
+                    {...register("rating", {
+                      required: "ELO is required!",
+                      maxLength: {
+                        value: 4,
+                        message: "Enter your 4 digit GBL ELO",
+                      },
+                      minLength: {
+                        value: 4,
+                        message: "Enter your 4 digit GBL ELO",
+                      },
+                      min: {
+                        value: 0,
+                        message: "Positive ELO when?",
+                      },
+                    })}
                   />
                 </MMRInput>
                 <MMRInput className="form-control">
                   <button type="submit">Update MMR</button>
                 </MMRInput>
               </SetMMRSection>
+              <Error>{errors.rating?.message}</Error>
             </GBL>
 
             <Faction></Faction>
@@ -188,6 +207,18 @@ const ProfileContainer = styled(motion.div)`
     width: 95%;
     min-height: 98%;
     margin-top: 3rem;
+  }
+`;
+
+const Error = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
+  color: ${({ theme }) => theme.secondary1};
+  font-weight: 400;
+  color: #ff3131;
+
+  @media (max-width: 768px) {
+    font-size: 0.5rem;
   }
 `;
 

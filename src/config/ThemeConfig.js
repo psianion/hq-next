@@ -35,6 +35,14 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Open Sans', sans-serif;
     // font-family: 'Poppins', sans-serif;
   }
+  
+  input[type=number]::-webkit-inner-spin-button, 
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+  }
 
   ::-webkit-scrollbar {
   width: 5px;
