@@ -220,13 +220,13 @@ function Navbar({ toggleTheme, theme }) {
                 HOME
               </SideBarItem>
             </Link>
-            <Link href="/tournaments">
+            <Link href="/frontier">
               <SideBarItem
                 variants={fadeInRight}
                 whileHover={{ scale: 1.2 }}
                 onClick={toggleMenu}
               >
-                TOURNAMENTS
+                BATTLE FRONTIER
               </SideBarItem>
             </Link>
             <Link href="/tom">
@@ -238,22 +238,14 @@ function Navbar({ toggleTheme, theme }) {
                 TOWER OF MASTERY
               </SideBarItem>
             </Link>
-            <Link href="/frontier">
+
+            <Link href="/profile">
               <SideBarItem
                 variants={fadeInRight}
                 whileHover={{ scale: 1.2 }}
                 onClick={toggleMenu}
               >
-                BATTLE FRONTIER
-              </SideBarItem>
-            </Link>
-            <Link href="/about">
-              <SideBarItem
-                variants={fadeInRight}
-                whileHover={{ scale: 1.2 }}
-                onClick={toggleMenu}
-              >
-                ABOUT
+                PROFILE
               </SideBarItem>
             </Link>
           </SideBarItems>

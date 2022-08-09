@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import Heading from "../Heading";
-import Link from "next/link";
 
 const data = require("../../assets/data/FrontierS5/Roles");
 

@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { fadeInTop, stagger2, stagger3 } from "../../animations/animations";
+import {
+  fadeInBottom,
+  fadeInTop,
+  stagger2,
+  stagger3,
+} from "../../animations/animations";
+import Image from "next/image";
 
 function Hero() {
   return (
@@ -11,10 +17,54 @@ function Hero() {
         initial="initial"
         animate="animate"
       >
-        <h5>Battle Frontier : Season 5</h5>
-        <h3>Dungeons & Dragons Edition</h3>
+        <SmallImageSection>
+          <Image
+            src="/Images/battle.png"
+            width="75px"
+            height="75px"
+            placeholder="blur"
+            loading="eager"
+          ></Image>
+        </SmallImageSection>
+        <TextSection variants={fadeInBottom}>
+          <Heading>Battle Frontier : Season 6</Heading>
+          <Text>
+            <b>Battle Frontier</b> is a multi-stage City vs City team tournament
+            format in Pokémon GO and has been running for over 2 years to battle
+            it out for the title of the best PvP city in India.
+            <br />
+            <br /> To know more:
+          </Text>
+          <ButtonSection variants={stagger2}>
+            <Button1
+              onClick={() =>
+                window.open("https://discord.gg/QEFTu9J", "_blank").focus()
+              }
+              variants={fadeInTop}
+            >
+              JOIN THE DISCORD
+            </Button1>
+          </ButtonSection>
+        </TextSection>
+        <ImageSection variants={fadeInBottom}>
+          <Image
+            src="/Images/frontierLogo.png"
+            width="480px"
+            height="480px"
+            placeholder="blur"
+            loading="eager"
+          ></Image>
+        </ImageSection>
+        {/*
+        <h1>
+          India's largest Pokémon PvP community
+        </h1>
         <ButtonContainer variants={stagger2}>
-          <Button
+          <Link href="/tournaments">
+            <Button variants={fadeInTop}>FIND TOURNAMENTS</Button>
+          </Link> 
+
+<Button
             variants={fadeInTop}
             onClick={() =>
               window.open("https://discord.gg/QEFTu9J", "_blank").focus()
@@ -22,132 +72,138 @@ function Hero() {
           >
             JOIN THE DISCORD
           </Button>
+
+          <Link href="/tom">
+            <Button variants={fadeInTop}>TOWER OF MASTERY</Button>
+          </Link>
         </ButtonContainer>
+        */}
       </HeroContainer>
     </>
   );
 }
 
 const HeroContainer = styled(motion.div)`
-  height: 35rem;
-  width: 100% !important;
-  background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-    url("/Images/BFS5/bg.png") no-repeat center center fixed;
-  background-size: cover;
+  height: 90vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+    height: fit-content;
+    width: 100%;
+    padding: 2rem 0rem;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+  }
+`;
+
+const TextSection = styled(motion.div)`
+  width: 35rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+
+  @media (max-width: 1024px) {
+    width: 45rem;
+    align-items: center;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    height: auto;
+  }
+`;
+
+const SmallImageSection = styled(motion.div)`
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+`;
+
+const ImageSection = styled(motion.div)`
+  display: flex;
   align-items: center;
   justify-content: flex-end;
-  text-align: center;
-
-  h5 {
-    font-weight: 500;
-    font-family: "Poppins", sans-serif;
-    color: ${({ theme }) => theme.secondary1};
-    transition: all 0.2s ease-in-out;
-    font-size: 3rem;
-    line-height: 3rem;
-    cursor: default;
-  }
-
-  h3 {
-    font-weight: 400;
-    font-family: "Poppins", sans-serif;
-    color: ${({ theme }) => theme.secondary1};
-    transition: all 0.2s ease-in-out;
-    font-size: 1.25rem;
-    text-transform: uppercase;
-    cursor: default;
-  }
-
-  h5:hover {
-    color: ${({ theme }) => theme.secondary0};
-  }
-
-  @media (max-width: 1024px) {
-    background: linear-gradient(transparent, ${({ theme }) => theme.primary0}),
-      url("/Images/hqbgmob.png") no-repeat center center fixed;
-    background-size: cover;
-    height: 80vh;
-
-    h5 {
-      font-size: 2rem;
-      line-height: 2.25rem;
-
-      br {
-        display: block;
-      }
-    }
-  }
+  width: 30rem;
+  height: 30rem;
+  margin-top: 0;
 
   @media (max-width: 768px) {
-    background-size: cover;
-    height: 90vh;
-    h5 {
-      font-size: 1.5rem;
-      color: ${({ theme }) => theme.highlight0};
-      line-height: 1.8rem;
-      font-weight: 600;
-
-      br {
-        display: block;
-      }
-    }
+    width: 90%;
+    height: auto;
+    justify-content: center;
+    margin-top: 1rem;
   }
 `;
 
-const ButtonContainer = styled(motion.div)`
-  width: 70rem;
-  max-width: 80%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  box-shadow: 0px 10px 7px -8px rgba(15, 15, 15, 0.36);
-  margin-bottom: 1rem;
-  padding-bottom: 2rem;
-
-  @media (max-width: 1024px) {
-    max-width: 95%;
-    margin-top: 1.5rem;
-  }
+const Heading = styled(motion.h1)`
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: 3.5rem;
+  line-height: 3.75rem;
+  color: ${({ theme }) => `${theme.highlight0}`};
+  letter-spacing: 0.02rem;
 
   @media (max-width: 768px) {
-    margin-top: 1.5rem;
-    max-width: 90%;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 `;
 
-const Button = styled(motion.button)`
-  color: ${({ theme }) => theme.secondary2};
-  background-color: ${({ theme }) => `${theme.primary0}80`};
-  font-family: "Poppins", sans-serif;
-  letter-spacing: 1px;
-  width: 20rem;
-  font-weight: 600;
-  font-size: 1.25rem;
+const Text = styled.p`
   margin-top: 1rem;
-  border-radius: 0.2rem;
-  padding: 0.5rem 1rem;
-  border: solid 2px ${({ theme }) => theme.secondary1};
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-
-  &:hover {
-    border: solid 2px ${({ theme }) => theme.highlight0};
-    color: ${({ theme }) => theme.highlight0};
-    background-color: ${({ theme }) => `${theme.primary0}`};
-  }
-
-  @media (max-width: 1024px) {
-    width: 15rem;
-    font-size: 1.2rem;
-    margin-top: 0.5rem;
-  }
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: ${({ theme }) => `${theme.secondary2}`};
+  font-weight: 400;
+  font-size: 1.3rem;
+  line-height: 1.9rem;
 
   @media (max-width: 768px) {
-    width: 80%;
     font-size: 1rem;
-    margin-top: 0.5rem;
+    line-height: 1.3rem;
+  }
+`;
+
+const ButtonSection = styled(motion.div)`
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: "100%";
+  @media (max-width: 768px) {
+    margin-top: 2rem;
+  }
+`;
+
+const Button1 = styled(motion.button)`
+  background-color: ${({ theme }) => `${theme.highlight0}`};
+  border: 1px solid ${({ theme }) => `${theme.highlight0}`};
+
+  color: #fff;
+  cursor: pointer;
+  padding: 0.5rem 1.5rem;
+  font-size: 1.3rem;
+  font-family: "Poppins";
+  font-style: normal;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+
+  @media (max-width: 768px) {
+    padding: 0.25rem 1rem;
+    width: 80%;
   }
 `;
 

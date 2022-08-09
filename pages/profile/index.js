@@ -175,7 +175,9 @@ export default function Profile() {
 
             <Faction></Faction>
           </ProfileSection>
-          <FrontierSection></FrontierSection>
+          <FrontierSection
+            background={`${process.env.NEXT_PUBLIC_API_URL}/images/bfbg.png`}
+          ></FrontierSection>
         </DetailsSection>
       </ProfileContainer>
     </Container>
@@ -519,6 +521,10 @@ const FrontierSection = styled(motion.div)`
   height: fit-content;
   min-height: 15rem;
   padding: 1rem;
+  background-image: url(${({ background }) => background});
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -526,6 +532,8 @@ const FrontierSection = styled(motion.div)`
     margin-left: 0rem;
     width: 95%;
     margin-bottom: 1rem;
+    background-position: bottom right;
+    background-size: 10rem;
   }
 `;
 
