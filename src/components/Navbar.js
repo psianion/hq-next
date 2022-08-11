@@ -239,6 +239,16 @@ function Navbar({ toggleTheme, theme }) {
               </SideBarItem>
             </Link>
 
+            <Link href="/lb/gbl/india">
+              <SideBarItem
+                variants={fadeInRight}
+                whileHover={{ scale: 1.2 }}
+                onClick={toggleMenu}
+              >
+                GBL LEADERBOARD
+              </SideBarItem>
+            </Link>
+
             <Link href="/profile">
               <SideBarItem
                 variants={fadeInRight}

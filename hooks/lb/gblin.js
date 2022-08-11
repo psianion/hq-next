@@ -16,10 +16,14 @@ export const useGBLIndia = () => {
     return res.data;
   };
 
-  const { data: data, isError, isLoading } = useQuery("gblin", fetchGBLIndiaLB);
+  const {
+    data: gbllbindata,
+    isError,
+    isLoading,
+  } = useQuery("gblin", fetchGBLIndiaLB);
 
   return {
-    data,
+    gbllbindata,
     isError,
     isLoading,
   };
