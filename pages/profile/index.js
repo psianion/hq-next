@@ -80,7 +80,8 @@ export default function Profile() {
               <Image
                 src={`${process.env.NEXT_PUBLIC_API_URL}/trainer/sprites/${data.data.sprites.activeAvatar}.png`}
                 layout="fill"
-                unoptimized="true"
+                unoptimized={true}
+                priority={true}
               />
             </Sprite>
           </Avatar>
