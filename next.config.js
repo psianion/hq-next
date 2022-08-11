@@ -13,9 +13,4 @@ module.exports = withImages({
   images: {
     domains: ["localhost", "pvphq-server.herokuapp.com"],
   },
-  experimental: {
-    images: {
-      unoptimized: true,
-    },
-  },
 });
