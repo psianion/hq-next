@@ -55,6 +55,17 @@ function Profile({ stage, data }) {
     <Container>
       <Section>
         <WelcomeText>Welcome to PvP HQ</WelcomeText>
+        {stage === "NOT-LOGGED-IN" && (
+          <>
+            <WelcomeText>Top 5 Indian GBL Leaderboard</WelcomeText>
+            <GBLLB />
+            <span style={{ marginTop: "1rem" }}>
+              <Link href="/lb/gbl/india">
+                <SetupButton>VIEW INDIAN GBL LB</SetupButton>
+              </Link>
+            </span>
+          </>
+        )}
         {stage === "PROFILE-NOT-SET" && (
           <>
             <NameText>{data.data.discordName}</NameText>
@@ -122,6 +133,10 @@ const LBContainer = styled(motion.div)`
     background-color: ${({ theme }) => theme.highlight0};
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 98%;
+  }
 `;
 
 const Section = styled(motion.div)`
@@ -150,7 +165,7 @@ const WelcomeText = styled.h1`
   font-family: "Poppins", sans-serif;
 
   @media (max-width: 768px) {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 `;
 
@@ -177,9 +192,8 @@ const Avatar = styled(motion.div)`
   margin-left: 0.5rem;
 
   @media (max-width: 768px) {
-    width: 7rem;
-    border: solid 0.3rem ${({ team }) => team};
-    height: 7rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 `;
 
@@ -193,8 +207,8 @@ const Sprite = styled(motion.div)`
   height: 2rem;
 
   @media (max-width: 768px) {
-    width: 5rem;
-    height: 5rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 `;
 
@@ -206,8 +220,7 @@ const IGN = styled(motion.h1)`
   color: ${({ theme }) => theme.secondary0};
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-left: 0rem;
+    font-size: 1rem;
   }
 `;
 
@@ -220,8 +233,9 @@ const Rank = styled(motion.div)`
   color: ${({ theme }) => theme.secondary0};
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-left: 0rem;
+    font-size: 0.8rem;
+    width: 1.5rem;
+    margin-left: 0.25rem;
   }
 `;
 
@@ -230,6 +244,10 @@ const MMRSection2 = styled(motion.div)`
   align-items: center;
   justify-content: space-between;
   width: 15rem;
+
+  @media (max-width: 768px) {
+    width: 10rem;
+  }
 `;
 
 const MMR2 = styled(motion.div)`
@@ -240,8 +258,7 @@ const MMR2 = styled(motion.div)`
   color: ${({ theme }) => theme.secondary0};
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-left: 0rem;
+    font-size: 1.15rem;
   }
 `;
 

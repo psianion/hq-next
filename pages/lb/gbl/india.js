@@ -184,6 +184,12 @@ const LBContainer = styled(motion.div)`
     background-color: ${({ theme }) => theme.highlight0};
     cursor: pointer;
   }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    height: 2rem;
+    background-size: 2.5rem;
+  }
 `;
 
 const Heading = styled(motion.h1)`
@@ -195,7 +201,7 @@ const Heading = styled(motion.h1)`
   margin-top: 2rem;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     margin-left: 0rem;
   }
 `;
@@ -209,7 +215,7 @@ const SubHeading = styled(motion.h1)`
   margin-top: 2rem;
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     margin-left: 0rem;
   }
 `;
@@ -222,8 +228,8 @@ const IGN = styled(motion.h1)`
   color: ${({ theme }) => theme.secondary0};
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-left: 0rem;
+    font-size: 1rem;
+    margin-left: 0.25rem;
   }
 `;
 
@@ -236,8 +242,9 @@ const Rank = styled(motion.div)`
   color: ${({ theme }) => theme.secondary0};
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-left: 0rem;
+    font-size: 1.1rem;
+    margin-left: 0.25rem;
+    width: 2rem;
   }
 `;
 
@@ -258,6 +265,9 @@ const MMRSection2 = styled(motion.div)`
   align-items: center;
   justify-content: space-between;
   width: 22rem;
+  @media (max-width: 768px) {
+    width: 12rem;
+  }
 `;
 
 const MMR2 = styled(motion.div)`
@@ -268,8 +278,8 @@ const MMR2 = styled(motion.div)`
   color: ${({ theme }) => theme.secondary0};
 
   @media (max-width: 768px) {
-    font-size: 1.5rem;
-    margin-left: 0rem;
+    font-size: 1.1rem;
+    margin-left: 0.25rem;
   }
 `;
 
@@ -448,9 +458,8 @@ const Avatar = styled(motion.div)`
   margin-left: 0.5rem;
 
   @media (max-width: 768px) {
-    width: 7rem;
-    border: solid 0.3rem ${({ team }) => team};
-    height: 7rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 `;
 
@@ -478,8 +487,8 @@ const Sprite = styled(motion.div)`
   height: 2.5rem;
 
   @media (max-width: 768px) {
-    width: 5rem;
-    height: 5rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 `;
 
