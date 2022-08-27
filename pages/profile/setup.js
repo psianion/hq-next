@@ -66,7 +66,7 @@ export default function ProfileSetup() {
               {...register("trainerCode", {
                 required: "Trainer Code is required!",
                 maxLength: {
-                  value: 12,
+                  value: 14,
                   message: "Enter your 12 digit Trainer Code",
                 },
                 minLength: {
