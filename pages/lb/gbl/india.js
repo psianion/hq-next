@@ -67,24 +67,26 @@ function GBLLBIndia() {
       {stage === "PROFILE-SETUP" && (
         <GBL>
           <Heading>{data.data.game.pokemongo.ign}</Heading>
-          <MMRSection>
-            <RankIcon>
-              <Image
-                src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s11.rank}.png`}
-                layout="fill"
-              />
-            </RankIcon>
-            <MMR>
-              <CurrentMMR>
-                {data.data.game.pokemongo.gbl.s11.currentMMR}{" "}
-                <span>Current MMR</span>
-              </CurrentMMR>
-              <HighestMMR>
-                {data.data.game.pokemongo.gbl.s11.highestMMR}{" "}
-                <span>Highest MMR</span>
-              </HighestMMR>
-            </MMR>
-          </MMRSection>
+          {data.data.game.pokemongo.gbl?.s11 && (
+            <MMRSection>
+              <RankIcon>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s11.rank}.png`}
+                  layout="fill"
+                />
+              </RankIcon>
+              <MMR>
+                <CurrentMMR>
+                  {data.data.game.pokemongo.gbl.s11.currentMMR}{" "}
+                  <span>Current MMR</span>
+                </CurrentMMR>
+                <HighestMMR>
+                  {data.data.game.pokemongo.gbl.s11.highestMMR}{" "}
+                  <span>Highest MMR</span>
+                </HighestMMR>
+              </MMR>
+            </MMRSection>
+          )}
           <SetMMRSection onSubmit={handleSubmit(onSubmit)}>
             <MMRInput className="form-control">
               <input

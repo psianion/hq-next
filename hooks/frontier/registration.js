@@ -26,3 +26,12 @@ export const useRegisterTeam = () => {
 
   return registerTeam;
 };
+
+export const useFetchTeam = () => {
+  const fetchTeam = async (teamName) => {
+    const res = await axios.get(URL + `/frontier/team?team=${teamName}`);
+    return res.data;
+  };
+
+  return fetchTeam;
+};

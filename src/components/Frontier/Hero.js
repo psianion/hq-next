@@ -203,7 +203,9 @@ const Button1 = styled(motion.button)`
 
   @media (max-width: 768px) {
     padding: 0.25rem 1rem;
-    width: 80%;
+    letter-spacing: 0.05rem;
+    font-size: 1rem;
+    width: 100%;
   }
 `;
 

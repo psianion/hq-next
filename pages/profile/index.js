@@ -179,7 +179,9 @@ export default function Profile() {
           </ProfileSection>
           <FrontierSection
             background={`${process.env.NEXT_PUBLIC_API_URL}/images/bfbg.png`}
-          ></FrontierSection>
+          >
+            {}
+          </FrontierSection>
         </DetailsSection>
       </ProfileContainer>
     </Container>

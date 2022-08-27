@@ -7,10 +7,12 @@ import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useRegisterTeam } from "../../../hooks/frontier/registration";
 import { useRouter } from "next/router";
+import { useAcceptInvite } from "../../../hooks/frontier/invite";
 
 function Register({ stage, info }) {
   const [regStage, setRegStage] = useState("DEFAULT");
   const registerTeam = useRegisterTeam();
+  const acceptInvite = useAcceptInvite();
 
   const router = useRouter();
 
@@ -20,13 +22,24 @@ function Register({ stage, info }) {
     formState: { errors },
   } = useForm();
 
+  const onAcceptInvite = async (data) => {
+    const { isSuccess, errorMessage } = await acceptInvite(info.data._id, data);
+
+    if (isSuccess) {
+      router.push("/frontier/team");
+    } else {
+      console.log(errorMessage);
+      router.reload();
+    }
+  };
+
   const onSubmit = async (data) => {
     const { isSuccess } = await registerTeam(info.data._id, data);
 
     if (isSuccess) {
-      console.log("Team Created");
+      router.push("/frontier/team");
     } else {
-      console.log("No setup, try again.");
+      router.reload();
     }
   };
 
@@ -65,7 +78,13 @@ function Register({ stage, info }) {
 
               <ButtonSection>
                 {info.data.game.pokemongo.bf?.s6?.invite && (
-                  <Button1>ACCEPT INVITE</Button1>
+                  <Button1
+                    onClick={() => {
+                      onAcceptInvite(info.data.game.pokemongo.bf?.s6?.invite);
+                    }}
+                  >
+                    ACCEPT INVITE
+                  </Button1>
                 )}
                 {!info.data.game.pokemongo.bf?.s6?.team ? (
                   <Button2
@@ -136,8 +155,7 @@ const Section = styled(motion.div)`
 
   @media (max-width: 768px) {
     width: 90%;
-    flex-direction: column;
-    justify-content: center;
+    text-align: center;
     height: fit-content;
   }
 `;
@@ -147,9 +165,12 @@ const WelcomeText = styled.h1`
   color: ${({ theme }) => `${theme.secondary1}`};
   font-weight: 500;
   font-family: "Poppins", sans-serif;
+  margin-bottom: 0rem;
 
   @media (max-width: 768px) {
     font-size: 1.3rem;
+    line-height: 1.3rem;
+    margin-bottom: 0.5rem;
   }
 `;
 
@@ -232,8 +253,8 @@ const RegisterInput = styled(motion.div)`
 
   @media (max-width: 768px) {
     input {
-      height: 1.5rem;
-      width: 4rem;
+      height: 1.75rem;
+      width: 100%;
       font-size: 0.75rem;
     }
   }
@@ -269,7 +290,8 @@ const Button2 = styled(motion.button)`
     padding: 0.25rem 1rem;
     margin-top: 10px;
     margin-left: 0px;
-    width: 80%;
+    font-size: 1rem;
+    width: 100%;
   }
 `;
 
@@ -287,8 +309,10 @@ const Button1 = styled(motion.button)`
   font-weight: 500;
 
   @media (max-width: 768px) {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
     padding: 0.25rem 1rem;
-    width: 80%;
+    width: 100%;
   }
 `;
 
