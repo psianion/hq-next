@@ -19,6 +19,7 @@ const GBLLB = () => {
       {gbllbindata.slice(0, 5).map((player, index) => (
         <LBContainer
           background={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${player.game.pokemongo.gbl.s11.rank}.png`}
+          key={index}
         >
           <Rank>#{index + 1}</Rank>
           <p>●</p>

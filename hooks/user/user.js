@@ -5,15 +5,24 @@ const URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const useUser = () => {
   const fetchUser = async () => {
-    const res = await axios.get(URL + "/profile", {
-      withCredentials: true,
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true,
-      },
-    });
-    return res.data;
+    if (window.localStorage.getItem("server-cache")) {
+      const res = await axios.get(
+        URL + `/profile?id=${window.localStorage.getItem("server-cache")}`
+      );
+
+      return res.data;
+    } else {
+      const res = await axios.get(URL + "/profile", {
+        withCredentials: true,
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true,
+        },
+      });
+
+      return res.data;
+    }
   };
 
   const { data: data, isError, isLoading } = useQuery("user", fetchUser);
