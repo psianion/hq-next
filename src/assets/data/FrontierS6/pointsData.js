@@ -1152,7 +1152,7 @@ module.exports = [
   {
     pokemonName: "Tentacruel",
     pokemonSprite: "73.png",
-    points: 0,
+    points: 2,
   },
   {
     pokemonName: "Geodude",
@@ -3902,7 +3902,7 @@ module.exports = [
   {
     pokemonName: "Buzzwole",
     pokemonSprite: "794.png",
-    points: 0,
+    points: 4,
   },
   {
     pokemonName: "Pheromosa",
