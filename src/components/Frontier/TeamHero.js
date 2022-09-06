@@ -125,7 +125,7 @@ function TeamHero() {
                 <Invited>{p.game.pokemongo.ign} invited!</Invited>
               ))}
             </InvitedSection>
-            {teamData.players.length + teamData.invitedPlayers.length < 7 ? (
+            {teamData.players.length + teamData.invitedPlayers.length < 8 ? (
               data.data.game.pokemongo.bf.s6.isCaptain ? (
                 <InviteSection onSubmit={handleSubmit(onSubmit)}>
                   <IGN>Enter IGN to Invite Player</IGN>
