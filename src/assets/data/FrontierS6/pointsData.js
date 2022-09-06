@@ -6,7 +6,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Ninetales",
-    pokemonSprite: "38-1.png",
+    pokemonSprite: "10104.png",
     points: 8,
   },
   {
@@ -86,7 +86,7 @@ module.exports = [
   },
   {
     pokemonName: "Stunfisk Galar",
-    pokemonSprite: "618-1.png",
+    pokemonSprite: "10180.png",
     points: 8,
   },
   {
@@ -131,12 +131,12 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Sandshrew",
-    pokemonSprite: "27-1.png",
+    pokemonSprite: "10101.png",
     points: 4,
   },
   {
     pokemonName: "Alolan Sandslash",
-    pokemonSprite: "28-1.png",
+    pokemonSprite: "10102.png",
     points: 4,
   },
   {
@@ -171,7 +171,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Grimer",
-    pokemonSprite: "88-1.png",
+    pokemonSprite: "10112.png",
     points: 4,
   },
   {
@@ -181,7 +181,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Marowak",
-    pokemonSprite: "105-1.png",
+    pokemonSprite: "10115.png",
     points: 4,
   },
   {
@@ -362,7 +362,7 @@ module.exports = [
   {
     pokemonName: "Vullaby",
     pokemonSprite: "629.png",
-    points: 4,
+    points: 2,
   },
   {
     pokemonName: "Zweilous",
@@ -436,7 +436,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Raichu",
-    pokemonSprite: "26-1.png",
+    pokemonSprite: "10100.png",
     points: 2,
   },
   {
@@ -457,21 +457,21 @@ module.exports = [
   {
     pokemonName: "Tentacool",
     pokemonSprite: "72.png",
-    points: 2,
+    points: 0,
   },
   {
     pokemonName: "Alolan Graveler",
-    pokemonSprite: "75-1.png",
+    pokemonSprite: "10110.png",
     points: 2,
   },
   {
     pokemonName: "Alolan Golem",
-    pokemonSprite: "76-1.png",
+    pokemonSprite: "10111.png",
     points: 2,
   },
   {
     pokemonName: "Alolan Muk",
-    pokemonSprite: "89-1.png",
+    pokemonSprite: "10113.png",
     points: 2,
   },
   {
@@ -501,7 +501,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Weezing",
-    pokemonSprite: "110-1.png",
+    pokemonSprite: "10167.png",
     points: 2,
   },
   {
@@ -616,17 +616,17 @@ module.exports = [
   },
   {
     pokemonName: "Castform (Rainy)",
-    pokemonSprite: "351-1.png",
+    pokemonSprite: "10014.png",
     points: 2,
   },
   {
     pokemonName: "Castform (Snowy)",
-    pokemonSprite: "351-2.png",
+    pokemonSprite: "10015.png",
     points: 2,
   },
   {
     pokemonName: "Castform (Sunny)",
-    pokemonSprite: "351-3.png",
+    pokemonSprite: "10013.png",
     points: 2,
   },
   {
@@ -651,7 +651,7 @@ module.exports = [
   },
   {
     pokemonName: "Wormadam (T)",
-    pokemonSprite: "10005.png",
+    pokemonSprite: "413-trash.png",
     points: 2,
   },
   {
@@ -692,7 +692,7 @@ module.exports = [
   {
     pokemonName: "Gliscor",
     pokemonSprite: "472.png",
-    points: 2,
+    points: 4,
   },
   {
     pokemonName: "Probopass",
@@ -760,9 +760,24 @@ module.exports = [
     points: 2,
   },
   {
+    pokemonName: "Gourgeist(Large)",
+    pokemonSprite: "711-large.png",
+    points: 2,
+  },
+  {
+    pokemonName: "Gourgeist(Small)",
+    pokemonSprite: "711-small.png",
+    points: 2,
+  },
+  {
+    pokemonName: "Gourgeist(Super)",
+    pokemonSprite: "711-super.png",
+    points: 2,
+  },
+  {
     pokemonName: "Charjabug",
     pokemonSprite: "737.png",
-    points: 2,
+    points: 0,
   },
   {
     pokemonName: "Bewear",
@@ -871,7 +886,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Rattata",
-    pokemonSprite: "19-1.png",
+    pokemonSprite: "10091.png",
     points: 0,
   },
   {
@@ -881,7 +896,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Raticate",
-    pokemonSprite: "20-1.png",
+    pokemonSprite: "10093.png",
     points: 0,
   },
   {
@@ -961,7 +976,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Vulpix",
-    pokemonSprite: "37-1.png",
+    pokemonSprite: "10103.png",
     points: 0,
   },
   {
@@ -1016,7 +1031,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Diglett",
-    pokemonSprite: "50-1.png",
+    pokemonSprite: "10105.png",
     points: 0,
   },
   {
@@ -1026,7 +1041,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Dugtrio",
-    pokemonSprite: "51-1.png",
+    pokemonSprite: "10106.png",
     points: 0,
   },
   {
@@ -1036,12 +1051,12 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Meowth",
-    pokemonSprite: "52-2.png",
+    pokemonSprite: "10107.png",
     points: 0,
   },
   {
     pokemonName: "Galarian Meowth",
-    pokemonSprite: "52-3.png",
+    pokemonSprite: "10161.png",
     points: 0,
   },
   {
@@ -1051,7 +1066,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Persian",
-    pokemonSprite: "53-1.png",
+    pokemonSprite: "10108.png",
     points: 0,
   },
   {
@@ -1146,7 +1161,7 @@ module.exports = [
   },
   {
     pokemonName: "Alolan Geodude",
-    pokemonSprite: "74-1.png",
+    pokemonSprite: "10109.png",
     points: 0,
   },
   {
@@ -1166,7 +1181,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Ponyta",
-    pokemonSprite: "77-1.png",
+    pokemonSprite: "10162.png",
     points: 0,
   },
   {
@@ -1176,7 +1191,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Rapidash",
-    pokemonSprite: "78-1.png",
+    pokemonSprite: "10163.png",
     points: 0,
   },
   {
@@ -1186,7 +1201,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Slowpoke",
-    pokemonSprite: "79-1.png",
+    pokemonSprite: "10164.png",
     points: 0,
   },
   {
@@ -1196,7 +1211,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Slowbro",
-    pokemonSprite: "80-1.png",
+    pokemonSprite: "10172.png",
     points: 0,
   },
   {
@@ -1216,7 +1231,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Farfetch'd",
-    pokemonSprite: "83-1.png",
+    pokemonSprite: "10166.png",
     points: 0,
   },
   {
@@ -1295,18 +1310,13 @@ module.exports = [
     points: 0,
   },
   {
-    pokemonName: "Alolan Exeggcute",
-    pokemonSprite: "102-1.png",
-    points: 0,
-  },
-  {
     pokemonName: "Exeggutor",
     pokemonSprite: "103.png",
     points: 0,
   },
   {
     pokemonName: "Alolan Exeggutor",
-    pokemonSprite: "103-1.png",
+    pokemonSprite: "10114.png",
     points: 0,
   },
   {
@@ -1931,7 +1941,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Zigzagoon",
-    pokemonSprite: "263-1.png",
+    pokemonSprite: "10174.png",
     points: 0,
   },
   {
@@ -1941,7 +1951,7 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Linoone",
-    pokemonSprite: "264-1.png",
+    pokemonSprite: "10175.png",
     points: 0,
   },
   {
@@ -2566,12 +2576,12 @@ module.exports = [
   },
   {
     pokemonName: "Wormadam (P)",
-    pokemonSprite: "413.png",
+    pokemonSprite: "413-plant.png",
     points: 0,
   },
   {
     pokemonName: "Wormadam (S)",
-    pokemonSprite: "10004.png",
+    pokemonSprite: "413-sandy.png",
     points: 0,
   },
   {
@@ -2610,13 +2620,28 @@ module.exports = [
     points: 0,
   },
   {
-    pokemonName: "Shellos",
-    pokemonSprite: "422.png",
+    pokemonName: "Shellos(E)",
+    pokemonSprite: "422-east.png",
+    points: 0,
+  },
+  {
+    pokemonName: "Shellos(W)",
+    pokemonSprite: "422-west.png",
     points: 0,
   },
   {
     pokemonName: "Gastrodon",
     pokemonSprite: "423.png",
+    points: 0,
+  },
+  {
+    pokemonName: "Gastrodon(E)",
+    pokemonSprite: "423-east.png",
+    points: 0,
+  },
+  {
+    pokemonName: "Gastrodon(W)",
+    pokemonSprite: "423-west.png",
     points: 0,
   },
   {
@@ -2826,12 +2851,12 @@ module.exports = [
   },
   {
     pokemonName: "Rotom (Wash)",
-    pokemonSprite: "479.2.png",
+    pokemonSprite: "479-wash.png",
     points: 0,
   },
   {
-    pokemonName: "Rotom (Cut)",
-    pokemonSprite: "479.5.png",
+    pokemonName: "Rotom (Mow)",
+    pokemonSprite: "479-mow.png",
     points: 0,
   },
   {
@@ -2856,7 +2881,7 @@ module.exports = [
   },
   {
     pokemonName: "Shaymin (S)",
-    pokemonSprite: "10006.png",
+    pokemonSprite: "492-sky.png",
     points: 0,
   },
   {
@@ -3146,7 +3171,7 @@ module.exports = [
   },
   {
     pokemonName: "Darumaka (Galar)",
-    pokemonSprite: "554-1.png",
+    pokemonSprite: "10176.png",
     points: 0,
   },
   {
@@ -3156,12 +3181,12 @@ module.exports = [
   },
   {
     pokemonName: "Darmanitan (Z)",
-    pokemonSprite: "555.1.png",
+    pokemonSprite: "10178.png",
     points: 0,
   },
   {
     pokemonName: "Darmanitan (Galar)",
-    pokemonSprite: "555-2.png",
+    pokemonSprite: "10177.png",
     points: 0,
   },
   {
@@ -3935,23 +3960,13 @@ module.exports = [
     points: null,
   },
   {
-    pokemonName: "Rotom",
-    pokemonSprite: "479.png",
-    points: null,
-  },
-  {
     pokemonName: "Rotom (Heat)",
-    pokemonSprite: "479.1.png",
+    pokemonSprite: "479-heat.png",
     points: null,
   },
   {
     pokemonName: "Rotom (Frost)",
-    pokemonSprite: "479.3.png",
-    points: null,
-  },
-  {
-    pokemonName: "Rotom (Spin)",
-    pokemonSprite: "479.4.png",
+    pokemonSprite: "479-frost.png",
     points: null,
   },
   {
@@ -4066,12 +4081,12 @@ module.exports = [
   },
   {
     pokemonName: "Meloetta (A)",
-    pokemonSprite: "648.png",
+    pokemonSprite: "648-aria.png",
     points: null,
   },
   {
     pokemonName: "Meloetta (P)",
-    pokemonSprite: "648.1.png",
+    pokemonSprite: "648-pirouette.png",
     points: null,
   },
   {

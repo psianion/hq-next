@@ -4,79 +4,59 @@ import CliffhangerPokemon from "../../src/assets/data/FrontierS6/pointsData";
 import Image from "next/image";
 
 function Cliffhanger() {
-  {
-    /*
-.filter(function (el) {
-          return el.points == 8;
-        })
-
-*/
-  }
-
   return (
     <Box>
+      <Heading>Cliffhangger Meta Points List</Heading>
+      <Header>8 Points Pokémon</Header>
       <Container>
         {CliffhangerPokemon.filter(function (el) {
           return el.points == 8;
         }).map((p) => (
-          <PokemonSpriteEight>
+          <PokemonSpriteEight key={p}>
             <Image
               src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${p.pokemonSprite}`}
               layout="fill"
             />
-            <p>{p.pokemonName}</p>
           </PokemonSpriteEight>
         ))}
       </Container>
+      <Header>4 Points Pokémon</Header>
       <Container>
         {CliffhangerPokemon.filter(function (el) {
           return el.points == 4;
         }).map((p) => (
-          <PokemonSpriteFour>
+          <PokemonSpriteFour key={p}>
             <Image
               src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${p.pokemonSprite}`}
               layout="fill"
             />
-            <p>{p.pokemonName}</p>
           </PokemonSpriteFour>
         ))}
       </Container>
+      <Header>2 Points Pokémon</Header>
       <Container>
         {CliffhangerPokemon.filter(function (el) {
           return el.points == 2;
         }).map((p) => (
-          <PokemonSpriteTwo>
+          <PokemonSpriteTwo key={p}>
             <Image
               src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${p.pokemonSprite}`}
               layout="fill"
             />
-            <p>{p.pokemonName}</p>
           </PokemonSpriteTwo>
         ))}
       </Container>
-      <Container>
-        {CliffhangerPokemon.filter(function (el) {
-          return el.points == 0;
-        }).map((p) => (
-          <PokemonSpriteZero>
-            <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${p.pokemonSprite}`}
-              layout="fill"
-            />
-            <p>{p.pokemonName}</p>
-          </PokemonSpriteZero>
-        ))}
-      </Container>
+      <Header>Everything else is 0 points!</Header>
     </Box>
   );
 }
 
 const Box = styled(motion.div)`
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 4rem 0rem;
 `;
 
 const Container = styled(motion.div)`
@@ -87,11 +67,28 @@ const Container = styled(motion.div)`
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin: 1rem 0;
+  margin-bottom: 3rem;
 
   @media (max-width: 768px) {
     width: 90%;
   }
+`;
+
+const Header = styled(motion.div)`
+  font-size: 1.8rem;
+  color: ${({ theme }) => `${theme.secondary1}`};
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+`;
+
+const Heading = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  color: ${({ theme }) => theme.secondary0};
+  font-size: 2.25rem;
+  font-weight: 500;
+  text-align: center;
+  border-bottom: solid 2px ${({ theme }) => theme.highlight0};
+  margin-bottom: 2rem;
 `;
 
 const PokemonSpriteEight = styled(motion.div)`
@@ -102,6 +99,12 @@ const PokemonSpriteEight = styled(motion.div)`
   position: relative;
   width: 8rem;
   height: 8rem;
+
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: ${({ theme }) => `${theme.highlight0}`};
+    cursor: pointer;
+  }
 
   @media (max-width: 768px) {
     width: 5rem;
@@ -118,6 +121,12 @@ const PokemonSpriteFour = styled(motion.div)`
   width: 6rem;
   height: 6rem;
 
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: ${({ theme }) => `${theme.highlight0}`};
+    cursor: pointer;
+  }
+
   @media (max-width: 768px) {
     width: 5rem;
     height: 5rem;
@@ -133,20 +142,11 @@ const PokemonSpriteTwo = styled(motion.div)`
   width: 5rem;
   height: 5rem;
 
-  @media (max-width: 768px) {
-    width: 5rem;
-    height: 5rem;
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: ${({ theme }) => `${theme.highlight0}`};
+    cursor: pointer;
   }
-`;
-
-const PokemonSpriteZero = styled(motion.div)`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  position: relative;
-  width: 4rem;
-  height: 4rem;
 
   @media (max-width: 768px) {
     width: 5rem;
