@@ -10,6 +10,7 @@ import { useState, useEffect } from "react";
 import Loading from "../../src/components/Loading";
 import Register from "../../src/components/Frontier/Register";
 import { useForm } from "react-hook-form";
+import Teams from "../../src/components/Frontier/TeamsRegistered";
 
 export default function FrontierHome() {
   const { data, isError, isLoading } = useUser();
@@ -38,6 +39,7 @@ export default function FrontierHome() {
       </Head>
       <Hero />
       <Register stage={stage} info={data} />
+      <Teams />
       <Footer />
     </FrontierContainer>
   );
