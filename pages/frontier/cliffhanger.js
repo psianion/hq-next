@@ -46,7 +46,19 @@ function Cliffhanger() {
           </PokemonSpriteTwo>
         ))}
       </Container>
-      <Header>Everything else is 0 points!</Header>
+      <Header>0 Points Pokémon</Header>
+      <Container>
+        {CliffhangerPokemon.filter(function (el) {
+          return el.points == 0;
+        }).map((p) => (
+          <PokemonSpriteZero key={p}>
+            <Image
+              src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${p.pokemonSprite}`}
+              layout="fill"
+            />
+          </PokemonSpriteZero>
+        ))}
+      </Container>
     </Box>
   );
 }
@@ -141,6 +153,27 @@ const PokemonSpriteTwo = styled(motion.div)`
   position: relative;
   width: 5rem;
   height: 5rem;
+
+  transition: all 0.2s ease-in-out;
+  &:hover {
+    background-color: ${({ theme }) => `${theme.highlight0}`};
+    cursor: pointer;
+  }
+
+  @media (max-width: 768px) {
+    width: 5rem;
+    height: 5rem;
+  }
+`;
+
+const PokemonSpriteZero = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
 
   transition: all 0.2s ease-in-out;
   &:hover {
