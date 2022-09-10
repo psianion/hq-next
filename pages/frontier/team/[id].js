@@ -17,7 +17,7 @@ const URL = process.env.NEXT_PUBLIC_API_URL;
 
 export const getStaticPaths = async () => {
   const res = await axios.get(`${URL}/frontier`);
-  const data = await res.json();
+  const data = await res.data;
 
   const paths = data.map((team) => {
     return { params: { id: team.logo.toString() } };
@@ -32,7 +32,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const id = context.params.id;
   const res = await axios.get(`${URL}/frontier/` + id);
-  const data = await res.json();
+  const data = await res.data;
 
   return { props: { team: data } };
 };
