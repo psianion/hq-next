@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import Head from "next/head";
 import { motion } from "framer-motion";
-import Footer from "../../src/components/Footer";
-import TeamHero from "../../src/components/Frontier/TeamHero";
+import Footer from "../../../src/components/Footer";
+import TeamHero from "../../../src/components/Frontier/TeamHero";
 
-import { useUser } from "../../hooks/user/user";
+import { useUser } from "../../../hooks/user/user";
 import { useState, useEffect } from "react";
-import Loading from "../../src/components/Loading";
+import Loading from "../../../src/components/Loading";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useGetTeam } from "../../hooks/frontier/registration";
+import { useGetTeam } from "../../../hooks/frontier/registration";
 import axios from "axios";
 const URL = process.env.NEXT_PUBLIC_API_URL;
 
@@ -46,7 +46,6 @@ export default function FrontierHome() {
         <title>{data.data.game.pokemongo.bf.s6.team} | Battle Frontier</title>
       </Head>
       <TeamHero />
-
       <Footer />
     </FrontierContainer>
   );

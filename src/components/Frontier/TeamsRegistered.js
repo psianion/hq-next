@@ -10,6 +10,7 @@ import Image from "next/image";
 import { useFrontierData } from "../../../hooks/frontier/registration";
 import Loading from "../Loading";
 import Heading from "../Heading";
+import Link from "next/link";
 
 function Teams() {
   const { frontierTeamsData, isError, isLoading } = useFrontierData();
@@ -29,13 +30,15 @@ function Teams() {
       >
         {frontierTeamsData.map((team) => (
           <FrontierTeam key={team._id}>
-            <Image
-              src={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${team.logo}.png`}
-              width="200px"
-              height="200px"
-              placeholder="blur"
-              loading="eager"
-            ></Image>
+            <Link href={`/frontier/team/${team.logo}`}>
+              <Image
+                src={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${team.logo}.png`}
+                width="200px"
+                height="200px"
+                placeholder="blur"
+                loading="eager"
+              ></Image>
+            </Link>
           </FrontierTeam>
         ))}
       </HeroContainer>
@@ -67,6 +70,7 @@ const FrontierTeam = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 export default Teams;
