@@ -54,7 +54,9 @@ function Cliffhanger() {
             </PokemonSpriteFour>
           ))}
         </Selected>
-        <NewHeader>{points} Points</NewHeader>
+        <NewHeader color={points > 14 ? "red" : "#9147FF"}>
+          {points} Points
+        </NewHeader>
       </SubmitBox>
       <Heading>Cliffhangger Meta Points List</Heading>
       <Header>8 Points Pokémon</Header>
@@ -223,7 +225,8 @@ const Header = styled(motion.div)`
 
 const NewHeader = styled(motion.div)`
   font-size: 1.8rem;
-  color: ${({ theme }) => `${theme.highlight0}`};
+  color: ${({ color }) => `${color}`};
+
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   padding: 0.1rem 1rem;
