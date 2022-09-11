@@ -54,7 +54,7 @@ function PublicTeamPage({ teamData }) {
       </HeroContainer>
       <PlayerSection>
         {teamData.players.map((p) => (
-          <PlayerBox>
+          <PlayerBox key={p.game.pokemongo.ign}>
             <Avatar
               team={
                 p.game.pokemongo.trainerTeam === "Valor"

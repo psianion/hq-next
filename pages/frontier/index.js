@@ -38,7 +38,7 @@ export default function FrontierHome() {
         <title>Battle Frontier | PvP HQ</title>
       </Head>
       <Hero />
-      <Register stage={stage} info={data} />
+      {/* <Register stage={stage} info={data} /> */}
       <Teams />
       <Footer />
     </FrontierContainer>
