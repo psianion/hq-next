@@ -24,6 +24,7 @@ function PublicTeamPage({ teamData }) {
         exit={{ opacity: 0 }}
         initial="initial"
         animate="animate"
+        background={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${teamData.teamData.logo}.png`}
       >
         <SmallImageSection>
           <Image
@@ -46,45 +47,44 @@ function PublicTeamPage({ teamData }) {
               ></Image>
             </ImageSection>
             <TextSection variants={fadeInBottom}>
-              <Heading>Team {teamData.teamData.team}</Heading>
+              <Heading>{teamData.teamData.team}</Heading>
             </TextSection>
-
-            <PlayerSection>
-              {teamData.players.map((p) => (
-                <PlayerBox>
-                  <Avatar
-                    team={
-                      p.game.pokemongo.trainerTeam === "Valor"
-                        ? "#FF0000"
-                        : p.game.pokemongo.trainerTeam === "Mystic"
-                        ? "#0000FF"
-                        : p.game.pokemongo.trainerTeam === "Instinct"
-                        ? "#FFFF00"
-                        : "none"
-                    }
-                  >
-                    <Sprite>
-                      <Image
-                        src={`${process.env.NEXT_PUBLIC_API_URL}/trainer/sprites/${p.sprites.activeAvatar}.png`}
-                        layout="fill"
-                      />
-                    </Sprite>
-                  </Avatar>
-                  <IGN>
-                    {p.game.pokemongo.bf.s6.isCaptain && (
-                      <FontAwesomeIcon
-                        style={{ fontSize: "0.8rem", marginBottom: "0.2rem" }}
-                        icon={faCrown}
-                      />
-                    )}{" "}
-                    {p.game.pokemongo.ign}
-                  </IGN>
-                </PlayerBox>
-              ))}
-            </PlayerSection>
           </>
         )}
       </HeroContainer>
+      <PlayerSection>
+        {teamData.players.map((p) => (
+          <PlayerBox>
+            <Avatar
+              team={
+                p.game.pokemongo.trainerTeam === "Valor"
+                  ? "#FF0000"
+                  : p.game.pokemongo.trainerTeam === "Mystic"
+                  ? "#0000FF"
+                  : p.game.pokemongo.trainerTeam === "Instinct"
+                  ? "#FFFF00"
+                  : "none"
+              }
+            >
+              <Sprite>
+                <Image
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/trainer/sprites/${p.sprites.activeAvatar}.png`}
+                  layout="fill"
+                />
+              </Sprite>
+            </Avatar>
+            <IGN>
+              {p.game.pokemongo.bf.s6.isCaptain && (
+                <FontAwesomeIcon
+                  style={{ fontSize: "0.8rem", marginBottom: "0.2rem" }}
+                  icon={faCrown}
+                />
+              )}{" "}
+              {p.game.pokemongo.ign}
+            </IGN>
+          </PlayerBox>
+        ))}
+      </PlayerSection>
     </>
   );
 }
@@ -96,6 +96,23 @@ const HeroContainer = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  z-index: 1;
+
+  &::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: -1;
+    background-image: url(${({ background }) => background});
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
   @media (max-width: 1024px) {
     padding: 2rem 0rem;
@@ -107,7 +124,7 @@ const TextSection = styled(motion.div)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 1rem;
+  margin-bottom: 1rem;
 
   @media (max-width: 1024px) {
     width: 45rem;
