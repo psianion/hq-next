@@ -2616,7 +2616,12 @@ module.exports = [
   },
   {
     pokemonName: "Cherrim",
-    pokemonSprite: "421.png",
+    pokemonSprite: "421-overcast.png",
+    points: 0,
+  },
+  {
+    pokemonName: "Cherrim (Sunshine)",
+    pokemonSprite: "421-sunshine.png",
     points: 0,
   },
   {
