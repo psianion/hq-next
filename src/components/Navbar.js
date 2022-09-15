@@ -278,7 +278,7 @@ const Nav = styled(motion.div)`
   justify-content: space-between;
   padding: 0rem 1rem;
   background-color: transparent;
-  z-index: 2;
+  z-index: 3;
 
   @media (max-width: 768px) {
     padding: 0.7rem 0.7rem;
@@ -296,7 +296,7 @@ const Sidebar = styled(motion.div)`
   align-items: center;
   background-color: ${({ theme }) => theme.primary0};
   justify-content: space-between;
-  z-index: 1;
+  z-index: 2;
   padding: 0rem 1rem;
   box-shadow: 3px 0px 10px rgba(0, 0, 0, 0.3);
 

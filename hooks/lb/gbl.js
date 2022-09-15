@@ -3,8 +3,8 @@ import axios from "axios";
 
 const URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const useGBLIndia = () => {
-  const fetchGBLIndiaLB = async () => {
+export const useGBL = () => {
+  const fetchGBLLB = async () => {
     const res = await axios.get(URL + "/trainer", {
       withCredentials: true,
       headers: {
@@ -16,14 +16,10 @@ export const useGBLIndia = () => {
     return res.data;
   };
 
-  const {
-    data: gbllbindata,
-    isError,
-    isLoading,
-  } = useQuery("gblin", fetchGBLIndiaLB);
+  const { data: gbllbdata, isError, isLoading } = useQuery("gbl", fetchGBLLB);
 
   return {
-    gbllbindata,
+    gbllbdata,
     isError,
     isLoading,
   };

@@ -3,12 +3,14 @@ import { motion } from "framer-motion";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCopy } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { useGBLIndia } from "../../../hooks/lb/gblin";
+import { useGBL } from "../../../hooks/lb/gbl";
 import Loading from "../Loading";
 import Image from "next/image";
 
 const GBLLB = () => {
-  const { gbllbindata, isError, isLoading } = useGBLIndia();
+  const { gbllbdata, isError, isLoading } = useGBL();
+
+  console.log(gbllbdata);
 
   if (isLoading) {
     return <Loading />;
@@ -16,9 +18,9 @@ const GBLLB = () => {
 
   return (
     <>
-      {gbllbindata.slice(0, 5).map((player, index) => (
+      {gbllbdata.slice(0, 5).map((player, index) => (
         <LBContainer
-          background={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${player.game.pokemongo.gbl.s11.rank}.png`}
+          background={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${player.game.pokemongo.gbl.s12.rank}.png`}
           key={index}
         >
           <Rank>#{index + 1}</Rank>
@@ -43,7 +45,7 @@ const GBLLB = () => {
           </Avatar>
           <MMRSection2>
             <IGN>{player.game.pokemongo.ign}</IGN>
-            <MMR2>{player.game.pokemongo.gbl.s11.currentMMR}</MMR2>
+            <MMR2>{player.game.pokemongo.gbl.s12.currentMMR}</MMR2>
           </MMRSection2>
         </LBContainer>
       ))}
@@ -61,7 +63,7 @@ function Profile({ stage, data }) {
             <WelcomeText>Top 5 Indian GBL Leaderboard</WelcomeText>
             <GBLLB />
             <span style={{ marginTop: "1rem" }}>
-              <Link href="/lb/gbl/india">
+              <Link href="/lb/gbl">
                 <SetupButton>VIEW INDIAN GBL LB</SetupButton>
               </Link>
             </span>
@@ -73,7 +75,7 @@ function Profile({ stage, data }) {
             <Link href="/profile">
               <SetupButton>SETUP YOUR PROFILE</SetupButton>
             </Link>
-            <Link href="/lb/gbl/india">
+            <Link href="/lb/gbl/">
               <SetupButton>Indian GBL LB</SetupButton>
             </Link>
           </>
@@ -87,7 +89,7 @@ function Profile({ stage, data }) {
               <Link href="/profile">
                 <SetupButton>VIEW FULL PROFILE</SetupButton>
               </Link>
-              <Link href="/lb/gbl/india">
+              <Link href="/lb/gbl/">
                 <SetupButton>VIEW INDIAN GBL LB</SetupButton>
               </Link>
             </span>

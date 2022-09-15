@@ -1211,6 +1211,11 @@ module.exports = [
   },
   {
     pokemonName: "Galarian Slowbro",
+    pokemonSprite: "10165.png",
+    points: 0,
+  },
+  {
+    pokemonName: "Galarian Slowking",
     pokemonSprite: "10172.png",
     points: 0,
   },

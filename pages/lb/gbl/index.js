@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useGBLIndia } from "../../../hooks/lb/gblin";
+import { useGBL } from "../../../hooks/lb/gbl";
 import Image from "next/image";
 import Loading from "../../../src/components/Loading";
 import { useSetGBL, useUser } from "../../../hooks/user/user";
@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 import Link from "next/link";
 
 function GBLLBIndia() {
-  const { gbllbindata, isError, isLoading } = useGBLIndia();
+  const { gbllbdata, isError, isLoading } = useGBL();
   const { data } = useUser();
 
   const {
@@ -67,21 +67,21 @@ function GBLLBIndia() {
       {stage === "PROFILE-SETUP" && (
         <GBL>
           <Heading>{data.data.game.pokemongo.ign}</Heading>
-          {data.data.game.pokemongo.gbl?.s11 && (
+          {data.data.game.pokemongo.gbl?.s12 && (
             <MMRSection>
               <RankIcon>
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s11.rank}.png`}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s12.rank}.png`}
                   layout="fill"
                 />
               </RankIcon>
               <MMR>
                 <CurrentMMR>
-                  {data.data.game.pokemongo.gbl.s11.currentMMR}{" "}
+                  {data.data.game.pokemongo.gbl.s12.currentMMR}{" "}
                   <span>Current MMR</span>
                 </CurrentMMR>
                 <HighestMMR>
-                  {data.data.game.pokemongo.gbl.s11.highestMMR}{" "}
+                  {data.data.game.pokemongo.gbl.s12.highestMMR}{" "}
                   <span>Highest MMR</span>
                 </HighestMMR>
               </MMR>
@@ -117,11 +117,12 @@ function GBLLBIndia() {
         </GBL>
       )}
 
-      <Heading>GBL Leaderboards India</Heading>
+      <Heading>GBL Leaderboards S12</Heading>
 
-      {gbllbindata.map((player, index) => (
+      {gbllbdata.map((player, index) => (
         <LBContainer
-          background={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${player.game.pokemongo.gbl.s11.rank}.png`}
+          key={index}
+          background={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${player.game.pokemongo.gbl.s12.rank}.png`}
         >
           <Rank>#{index + 1}</Rank>
           <p>●</p>
@@ -145,7 +146,7 @@ function GBLLBIndia() {
           </Avatar>
           <MMRSection2>
             <IGN>{player.game.pokemongo.ign}</IGN>
-            <MMR2>{player.game.pokemongo.gbl.s11.currentMMR}</MMR2>
+            <MMR2>{player.game.pokemongo.gbl.s12.currentMMR}</MMR2>
           </MMRSection2>
         </LBContainer>
       ))}

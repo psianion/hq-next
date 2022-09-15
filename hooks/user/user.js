@@ -68,7 +68,7 @@ export const useSetGBL = () => {
         mmr: data.rating,
       });
       queryClient.invalidateQueries("user");
-      queryClient.invalidateQueries("gblin");
+      queryClient.invalidateQueries("gbl");
       return { isSuccess: true };
     } catch (e) {
       console.log(e);
