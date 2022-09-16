@@ -29,7 +29,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
+export const getServerSideProps = async (context) => {
   const id = context.params.id;
   const res = await axios.get(`${URL}/frontier/` + id);
   const data = await res.data;
