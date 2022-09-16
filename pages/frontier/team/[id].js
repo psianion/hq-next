@@ -33,7 +33,7 @@ export const getServerSideProps = async (context) => {
   const id = context.params.id;
   const res = await axios.get(`${URL}/frontier/` + id);
   const data = await res.data;
-
+  console.log(data);
   return { props: { team: data } };
 };
 
