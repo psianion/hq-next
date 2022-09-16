@@ -48,6 +48,13 @@ function PublicTeamPage({ teamData }) {
             </ImageSection>
             <TextSection variants={fadeInBottom}>
               <Heading>{teamData.teamData.team}</Heading>
+              <ScoreSection>
+                <Text>GROUP STAGES SCORE</Text>
+                <Heading>
+                  {teamData.teamData.groupWins} -{" "}
+                  {teamData.teamData.groupMatches}
+                </Heading>
+              </ScoreSection>
             </TextSection>
           </>
         )}
@@ -55,7 +62,7 @@ function PublicTeamPage({ teamData }) {
       <PlayerSection>
         {teamData.players.map((p) => (
           <PlayerBox key={p.game.pokemongo.ign}>
-            <Avatar
+            <Sprite
               team={
                 p.game.pokemongo.trainerTeam === "Valor"
                   ? "#FF0000"
@@ -66,13 +73,11 @@ function PublicTeamPage({ teamData }) {
                   : "none"
               }
             >
-              <Sprite>
-                <Image
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/trainer/sprites/${p.sprites.activeAvatar}.png`}
-                  layout="fill"
-                />
-              </Sprite>
-            </Avatar>
+              <Image
+                src={`${process.env.NEXT_PUBLIC_API_URL}/trainer/sprites/${p.sprites.activeAvatar}.png`}
+                layout="fill"
+              />
+            </Sprite>
             <IGN>
               {p.game.pokemongo.bf.s6.isCaptain && (
                 <FontAwesomeIcon
@@ -82,6 +87,28 @@ function PublicTeamPage({ teamData }) {
               )}{" "}
               {p.game.pokemongo.ign}
             </IGN>
+            <PokemonsBox>
+              {p.game.pokemongo.bf.s6.groupPokemon.map((pokemon) => (
+                <PokemonBox key={pokemon._id}>
+                  <PokemonSprite>
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${pokemon.sprite}`}
+                      layout="fill"
+                    />
+                  </PokemonSprite>
+                  <ShadowBox>
+                    {pokemon.isShadow && (
+                      <Image
+                        src={`${process.env.NEXT_PUBLIC_API_URL}/icons/shadow.png`}
+                        width="30px"
+                        height="30px"
+                      />
+                    )}
+                  </ShadowBox>
+                  <PokemonName>{pokemon.name}</PokemonName>
+                </PokemonBox>
+              ))}
+            </PokemonsBox>
           </PlayerBox>
         ))}
       </PlayerSection>
@@ -138,11 +165,79 @@ const TextSection = styled(motion.div)`
 
 const PlayerSection = styled(motion.div)`
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
   margin-top: 1rem;
+  width: 100%;
+`;
+
+const ShadowBox = styled(motion.div)`
+  position: absolute;
+  transform: translateX(-1rem) translateY(1rem);
+`;
+
+const PokemonsBox = styled(motion.div)`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  width: 45rem;
+  margin-top: 1rem;
+`;
+
+const PokemonBox = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+const PokemonSprite = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  width: 6rem;
+  height: 6rem;
+  background-color: rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+  }
+`;
+
+const ScoreSection = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 1rem;
+  background-color: rgba(0, 0, 0, 0.3);
+`;
+
+const PokemonName = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  color: ${({ theme }) => `${theme.secondary0}`};
+  font-weight: 400;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-transform: uppercase;
+  padding: 0rem 0.5rem;
+  background-color: ${({ theme }) => `${theme.primary1}`}; ;
+`;
+
+const Text = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  color: ${({ theme }) => `${theme.secondary0}`};
+  font-weight: 400;
+  font-size: 1.2rem;
+  margin-top: 0.5rem;
 `;
 
 const SmallImageSection = styled(motion.div)`
@@ -195,6 +290,8 @@ const Sprite = styled(motion.div)`
   position: relative;
   width: 5rem;
   height: 5rem;
+  background-color: ${({ theme }) => theme.primary1};
+  border: 2px solid ${({ team }) => `${team}`};
 
   @media (max-width: 768px) {
     width: 3rem;
@@ -226,11 +323,12 @@ const PlayerBox = styled(motion.div)`
   padding: 1rem;
   margin: 0.5rem;
   border-radius: 0.5rem;
-  min-width: 10rem;
+  width: 50rem;
   background-color: ${({ theme }) => `${theme.primary2}20`};
 
   @media (max-width: 768px) {
     padding: 0.75rem;
+    width: 90%;
   }
 `;
 
@@ -238,8 +336,8 @@ const IGN = styled(motion.div)`
   font-family: "Poppins", sans-serif;
   font-style: normal;
   color: ${({ theme }) => `${theme.secondary0}`};
-  font-weight: 400;
-  font-size: 1.15rem;
+  font-weight: 500;
+  font-size: 1.2rem;
   margin-top: 0.5rem;
 `;
 

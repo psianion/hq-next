@@ -36,6 +36,25 @@ export const useFetchTeam = () => {
   return fetchTeam;
 };
 
+export const useTeamData = (id) => {
+  const fetchTeamData = async () => {
+    const res = await axios.get(URL + `/frontier/${id}`);
+    return res.data;
+  };
+
+  const {
+    data: frontierTeamData,
+    isError,
+    isLoading,
+  } = useQuery("bfteam", fetchTeamData);
+
+  return {
+    frontierTeamData,
+    isError,
+    isLoading,
+  };
+};
+
 export const useFrontierData = () => {
   const fetchFrontierData = async () => {
     const res = await axios.get(URL + "/frontier");

@@ -15,7 +15,8 @@ import { faTelegramPlane } from "@fortawesome/free-brands-svg-icons";
 import PublicTeamPage from "../../../src/components/Frontier/PublicTeamPage";
 const URL = process.env.NEXT_PUBLIC_API_URL;
 
-export const getStaticPaths = async () => {
+{
+  /* export const getStaticPaths = async () => {
   const res = await axios.get(`${URL}/frontier`);
   const data = await res.data;
 
@@ -29,19 +30,28 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getServerSideProps = async (context) => {
+export const getStaticProps = async (context) => {
   const id = context.params.id;
   const res = await axios.get(`${URL}/frontier/` + id);
   const data = await res.data;
-  console.log(data);
   return { props: { team: data } };
-};
+}; */
+}
+
+export async function getServerSideProps(context) {
+  const { params } = context;
+  const { id } = params;
+  const res = await axios.get(`${URL}/frontier/team?id=${id}`);
+  const data = await res.data;
+
+  return { props: { team: data } };
+}
 
 export default function FrontierTeam({ team }) {
   return (
     <FrontierContainer>
       <Head>
-        <title>HQ | Battle Frontier</title>
+        <title>{team.teamData.team} | Battle Frontier</title>
       </Head>
       <PublicTeamPage teamData={team} />
       <Footer />
