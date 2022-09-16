@@ -184,6 +184,11 @@ const PokemonsBox = styled(motion.div)`
   justify-content: space-around;
   width: 45rem;
   margin-top: 1rem;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    flex-wrap: wrap;
+  }
 `;
 
 const PokemonBox = styled(motion.div)`
@@ -202,10 +207,12 @@ const PokemonSprite = styled(motion.div)`
   width: 6rem;
   height: 6rem;
   background-color: rgba(0, 0, 0, 0.1);
+  margin: 0rem;
 
   @media (max-width: 768px) {
-    width: 3rem;
-    height: 3rem;
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem 1rem;
   }
 `;
 
@@ -228,7 +235,13 @@ const PokemonName = styled(motion.div)`
   margin-top: 0.5rem;
   text-transform: uppercase;
   padding: 0rem 0.5rem;
-  background-color: ${({ theme }) => `${theme.primary1}`}; ;
+  background-color: ${({ theme }) => `${theme.primary1}`};
+
+  @media (max-width: 768px) {
+    padding: 0rem 0.25rem;
+    font-size: 0.75rem;
+    margin-top: 0rem;
+  }
 `;
 
 const Text = styled(motion.div)`
