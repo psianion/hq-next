@@ -6,6 +6,7 @@ import {
   stagger2,
   stagger3,
 } from "../../animations/animations";
+import GenButton from "../Button";
 import Image from "next/image";
 
 function Hero() {
@@ -79,17 +80,18 @@ function Hero() {
         </ButtonContainer>
         */}
       </HeroContainer>
+      <GenButton text={"Tournament Format"} path={"/frontier/cliffhanger"} />
     </>
   );
 }
 
 const HeroContainer = styled(motion.div)`
-  height: 90vh;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-top: 5rem;
 
   @media (max-width: 1024px) {
     height: fit-content;

@@ -3,25 +3,25 @@ import Head from "next/head";
 import { motion } from "framer-motion";
 import Footer from "../../../src/components/Footer";
 import axios from "axios";
-import PublicTeamPage from "../../../src/components/Frontier/PublicTeamPage";
+import GroupPage from "../../../src/components/Frontier/GroupPage";
 const URL = process.env.NEXT_PUBLIC_API_URL;
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  const { id } = params;
-  const res = await axios.get(`${URL}/frontier/team?id=${id}`);
+  const { group } = params;
+  const res = await axios.get(`${URL}/frontier/group?group=${group}`);
   const data = await res.data;
 
-  return { props: { team: data } };
+  return { props: { groupData: data } };
 }
 
-export default function FrontierTeam({ team }) {
+export default function FrontierTeam({ groupData }) {
   return (
     <FrontierContainer>
       <Head>
-        <title>{team.teamData.team} | Battle Frontier</title>
+        <title>{groupData.group} | Battle Frontier</title>
       </Head>
-      <PublicTeamPage teamData={team} />
+      <GroupPage groupData={groupData} />
       <Footer />
     </FrontierContainer>
   );

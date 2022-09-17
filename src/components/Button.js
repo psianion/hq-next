@@ -4,18 +4,12 @@ import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-function BackButton({ text, path }) {
+function GenButton({ text, path }) {
   return (
     <>
       <HeadingContainer>
         <Link href={path}>
-          <Button>
-            <FontAwesomeIcon
-              icon={faArrowLeft}
-              style={{ marginRight: "0.5rem", fontSize: "0.7rem" }}
-            />
-            {text}
-          </Button>
+          <Button>{text}</Button>
         </Link>
       </HeadingContainer>
     </>
@@ -61,4 +55,4 @@ const Button = styled(motion.div)`
   }
 `;
 
-export default BackButton;
+export default GenButton;

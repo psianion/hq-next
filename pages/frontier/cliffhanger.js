@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import CliffhangerPokemon from "../../src/assets/data/FrontierS6/pointsData";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import BackButton from "../../src/components/BackButton";
 
 function Cliffhanger() {
   const [selectedPokemon, setSelectedPokemon] = useState([]);
@@ -34,6 +35,7 @@ function Cliffhanger() {
   return (
     <Box>
       <SubmitBox>
+        <BackButton text={"Frontier Home"} path={"/frontier"} />
         <NewHeading>Pokémon Points Calculator</NewHeading>
         <Text>
           Click on the Pokémon below to add them to calculator, click on them
