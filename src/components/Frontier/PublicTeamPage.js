@@ -51,7 +51,7 @@ function PublicTeamPage({ teamData }) {
               <ScoreSection>
                 <Text>GROUP STAGES SCORE</Text>
                 <Heading>
-                  {teamData.teamData.groupWins} -{" "}
+                  {teamData.teamData.groupWins} /{" "}
                   {teamData.teamData.groupMatches}
                 </Heading>
               </ScoreSection>
