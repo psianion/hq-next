@@ -21,7 +21,7 @@ function Teams() {
 
   return (
     <>
-      <Heading head={"Registered Teams"} />
+      <Heading head={"Group Stage Leaderboards"} />
       <HeroContainer
         variants={stagger3}
         exit={{ opacity: 0 }}
@@ -29,17 +29,26 @@ function Teams() {
         animate="animate"
       >
         {frontierTeamsData.map((team) => (
-          <FrontierTeam key={team._id}>
-            <Link href={`/frontier/team/${team.logo}`}>
-              <Image
-                src={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${team.logo}.png`}
-                width="200px"
-                height="200px"
-                placeholder="blur"
-                loading="eager"
-              ></Image>
-            </Link>
-          </FrontierTeam>
+          <Link href={`/frontier/team/${team.logo}`}>
+            <Team
+              key={team._id}
+              background={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${team.logo}.png`}
+            >
+              <TeamName>
+                <FrontierTeam>
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${team.logo}.png`}
+                    layout="fill"
+                  ></Image>
+                </FrontierTeam>
+                <Name>{team.team}</Name>
+              </TeamName>
+              <TeamScore>
+                <Score>{team.groupWins}</Score>/
+                <Score>{team.groupMatches}</Score>
+              </TeamScore>
+            </Team>
+          </Link>
         ))}
       </HeroContainer>
     </>
@@ -50,10 +59,9 @@ const HeroContainer = styled(motion.div)`
   height: fit-content;
   width: 70rem;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: center;
   margin-bottom: 2rem;
 
   @media (max-width: 1024px) {
@@ -66,11 +74,78 @@ const HeroContainer = styled(motion.div)`
   }
 `;
 
+const Team = styled(motion.div)`
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 1;
+  height: 4rem;
+  margin-bottom: 1rem;
+  padding: 0rem 1rem;
+  background-color: ${({ theme }) => `${theme.primary1}50`};
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  &::before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60%;
+    height: 100%;
+    opacity: 0.1;
+    z-index: -1;
+    background-image: url(${({ background }) => background});
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => `${theme.primary1}`};
+  }
+`;
+
+const TeamName = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Name = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  color: ${({ theme }) => `${theme.secondary0}`};
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin-left: 0.5rem;
+`;
+
+const Score = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  color: ${({ theme }) => `${theme.secondary0}`};
+  font-weight: 500;
+  font-size: 2rem;
+`;
+
+const TeamScore = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Poppins", sans-serif;
+  color: ${({ theme }) => `${theme.secondary1}`};
+  font-weight: 400;
+  font-size: 1.5rem;
+`;
+
 const FrontierTeam = styled(motion.div)`
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  position: relative;
+  height: 6rem;
+  width: 6rem;
 `;
 
 export default Teams;
