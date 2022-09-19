@@ -21,7 +21,7 @@ function Teams() {
 
   return (
     <>
-      <Heading head={"Group Stage Leaderboards"} />
+      <Heading head={"Group Stage Leaderboard"} />
       <HeroContainer
         variants={stagger3}
         exit={{ opacity: 0 }}
@@ -29,9 +29,8 @@ function Teams() {
         animate="animate"
       >
         {frontierTeamsData.map((team) => (
-          <Link href={`/frontier/team/${team.logo}`}>
+          <Link href={`/frontier/team/${team.logo}`} key={team._id}>
             <Team
-              key={team._id}
               background={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${team.logo}.png`}
             >
               <TeamName>
@@ -64,10 +63,9 @@ const HeroContainer = styled(motion.div)`
   justify-content: center;
   margin-bottom: 2rem;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 768px) {
     height: fit-content;
     width: 100%;
-    padding: 2rem 0rem;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -105,6 +103,13 @@ const Team = styled(motion.div)`
   &:hover {
     background-color: ${({ theme }) => `${theme.primary1}`};
   }
+
+  @media (max-width: 1024px) {
+    width: 98%;
+    height: 2rem;
+    margin-bottom: 0.5rem;
+    padding: 0rem 0.5rem;
+  }
 `;
 
 const TeamName = styled(motion.div)`
@@ -119,6 +124,11 @@ const Name = styled(motion.div)`
   font-weight: 500;
   font-size: 1.5rem;
   margin-left: 0.5rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+  }
 `;
 
 const Score = styled(motion.div)`
@@ -126,6 +136,10 @@ const Score = styled(motion.div)`
   color: ${({ theme }) => `${theme.secondary0}`};
   font-weight: 500;
   font-size: 2rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const TeamScore = styled(motion.div)`
@@ -136,6 +150,10 @@ const TeamScore = styled(motion.div)`
   color: ${({ theme }) => `${theme.secondary1}`};
   font-weight: 400;
   font-size: 1.5rem;
+
+  @media (max-width: 1024px) {
+    font-size: 1rem;
+  }
 `;
 
 const FrontierTeam = styled(motion.div)`
@@ -146,6 +164,11 @@ const FrontierTeam = styled(motion.div)`
   position: relative;
   height: 6rem;
   width: 6rem;
+
+  @media (max-width: 1024px) {
+    height: 3rem;
+    width: 3rem;
+  }
 `;
 
 export default Teams;
