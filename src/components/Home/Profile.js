@@ -10,8 +10,6 @@ import Image from "next/image";
 const GBLLB = () => {
   const { gbllbdata, isError, isLoading } = useGBL();
 
-  console.log(gbllbdata);
-
   if (isLoading) {
     return <Loading />;
   }

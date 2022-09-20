@@ -125,22 +125,22 @@ export default function Profile() {
             </TrainerCodeSection>
 
             <GBL>
-              <SideHeading>GBL Season 11</SideHeading>
-              {data?.data?.game.pokemongo.gbl?.s11 && (
+              <SideHeading>GBL Season 12</SideHeading>
+              {data?.data?.game.pokemongo.gbl?.s12 && (
                 <MMRSection>
                   <RankIcon>
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s11.rank}.png`}
+                      src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s12.rank}.png`}
                       layout="fill"
                     />
                   </RankIcon>
                   <MMR>
                     <CurrentMMR>
-                      {data.data.game.pokemongo.gbl.s11.currentMMR}{" "}
+                      {data.data.game.pokemongo.gbl.s12.currentMMR}{" "}
                       <span>Current MMR</span>
                     </CurrentMMR>
                     <HighestMMR>
-                      {data.data.game.pokemongo.gbl.s11.highestMMR}{" "}
+                      {data.data.game.pokemongo.gbl.s12.highestMMR}{" "}
                       <span>Highest MMR</span>
                     </HighestMMR>
                   </MMR>
