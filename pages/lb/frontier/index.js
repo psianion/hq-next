@@ -24,7 +24,10 @@ function GBLLBIndia() {
           key={index}
           background={`${
             process.env.NEXT_PUBLIC_API_URL
-          }/images/frontier/${player.game.pokemongo.bf.s6.team.trim()}.png`}
+          }/images/frontier/${player.game.pokemongo.bf.s6.team.replace(
+            / /g,
+            ""
+          )}.png`}
         >
           <Rank>#{index + 1}</Rank>
           <p>●</p>
