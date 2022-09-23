@@ -22,7 +22,9 @@ function GBLLBIndia() {
       {bflbdata.map((player, index) => (
         <LBContainer
           key={index}
-          background={`${process.env.NEXT_PUBLIC_API_URL}/images/frontier/${player.game.pokemongo.bf.s6.team}.png`}
+          background={`${
+            process.env.NEXT_PUBLIC_API_URL
+          }/images/frontier/${player.game.pokemongo.bf.s6.team.trim()}.png`}
         >
           <Rank>#{index + 1}</Rank>
           <p>●</p>
