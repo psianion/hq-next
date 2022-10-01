@@ -80,7 +80,7 @@ function Hero() {
         </ButtonContainer>
         */}
       </HeroContainer>
-      <GenButton text={"Tournament Format"} path={"/frontier/cliffhanger"} />
+      <GenButton text={"Tournament Format"} path={"/frontier/cliff"} />
     </>
   );
 }
