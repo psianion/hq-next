@@ -60,7 +60,7 @@ function Cliffhanger() {
           {points} Points
         </NewHeader>
       </SubmitBox>
-      <Heading>Cliffhangger Meta Points List</Heading>
+      <Heading>Cliff Meta Points List</Heading>
       <Header>8 Points Pokémon</Header>
       <Container>
         {CliffhangerPokemon.filter(function (el) {
