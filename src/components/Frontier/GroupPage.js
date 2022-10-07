@@ -44,7 +44,13 @@ function GroupPage({ groupData }) {
               </Sprite>
               <TextBox>
                 <IGN>{p.game.pokemongo.ign}</IGN>
-                <Team>{p.game.pokemongo.bf.s6.team}</Team>
+                <Team>
+                  {p.game.pokemongo.bf.s6.team}{" "}
+                  <b>
+                    {p.game.pokemongo.bf.s6.groupWins}/
+                    {p.game.pokemongo.bf.s6.groupMatches}
+                  </b>
+                </Team>
               </TextBox>
             </Player>
             <PokemonsBox>
