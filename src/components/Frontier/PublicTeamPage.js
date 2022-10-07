@@ -85,7 +85,11 @@ function PublicTeamPage({ teamData }) {
                   icon={faCrown}
                 />
               )}{" "}
-              {p.game.pokemongo.ign}
+              {p.game.pokemongo.ign}{" "}
+              <b>
+                {p.game.pokemongo.bf.s6.groupWins}/
+                {p.game.pokemongo.bf.s6.groupMatches}
+              </b>
             </IGN>
             <PokemonsBox>
               {p.game.pokemongo.bf.s6.groupPokemon.map((pokemon) => (
