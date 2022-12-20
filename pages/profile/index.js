@@ -180,7 +180,87 @@ export default function Profile() {
           <FrontierSection
             background={`${process.env.NEXT_PUBLIC_API_URL}/images/bfbg.png`}
           >
-            {}
+            <Season6Container>
+              <SideHeading>
+                BATTLE FRONTIER SEASON 6{" "}
+                {data.data.game.pokemongo.bf.s6.winner
+                  ? "WINNER"
+                  : data.data.game.pokemongo.bf.s6.finals
+                  ? "FINALIST"
+                  : data.data.game.pokemongo.bf.s6.sf
+                  ? "SEMI FINALIST"
+                  : data.data.game.pokemongo.bf.s6.qf
+                  ? "QUARTER FINALIST"
+                  : ""}
+              </SideHeading>
+              <TrainerCode>
+                {data.data.game.pokemongo.bf.s6.team}{" "}
+                {data.data.game.pokemongo.bf.s6.isCaptain ? "(c)" : ""}
+              </TrainerCode>
+              <PokemonS6Container>
+                <PokemonS6Box>
+                  <SmallHeading>
+                    Group Stage: {data.data.game.pokemongo.bf.s6.groupWins}⁄
+                    {data.data.game.pokemongo.bf.s6.groupMatches}
+                  </SmallHeading>
+                  <PokemonsBox>
+                    {data.data.game.pokemongo.bf.s6.groupPokemon.map(
+                      (pokemon) => (
+                        <PokemonBox key={pokemon._id}>
+                          <PokemonSprite>
+                            <Image
+                              src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${pokemon.sprite}`}
+                              layout="fill"
+                            />
+                          </PokemonSprite>
+                          <ShadowBox>
+                            {pokemon.isShadow && (
+                              <Image
+                                src={`${process.env.NEXT_PUBLIC_API_URL}/icons/shadow.png`}
+                                width="30px"
+                                height="30px"
+                              />
+                            )}
+                          </ShadowBox>
+                        </PokemonBox>
+                      )
+                    )}
+                  </PokemonsBox>
+                </PokemonS6Box>
+                {data.data.game.pokemongo.bf.s6.qf && (
+                  <PokemonS6Box>
+                    <SmallHeading>
+                      Knockouts Stage:{" "}
+                      {data.data.game.pokemongo.bf.s6.knockoutWins}⁄
+                      {data.data.game.pokemongo.bf.s6.knockoutMatches}
+                    </SmallHeading>
+                    <PokemonsBox>
+                      {data.data.game.pokemongo.bf.s6.knockoutPokemon.map(
+                        (pokemon) => (
+                          <PokemonBox key={pokemon._id}>
+                            <PokemonSprite>
+                              <Image
+                                src={`${process.env.NEXT_PUBLIC_API_URL}/pokemonsprites/${pokemon.sprite}`}
+                                layout="fill"
+                              />
+                            </PokemonSprite>
+                            <ShadowBox>
+                              {pokemon.isShadow && (
+                                <Image
+                                  src={`${process.env.NEXT_PUBLIC_API_URL}/icons/shadow.png`}
+                                  width="30px"
+                                  height="30px"
+                                />
+                              )}
+                            </ShadowBox>
+                          </PokemonBox>
+                        )
+                      )}
+                    </PokemonsBox>
+                  </PokemonS6Box>
+                )}
+              </PokemonS6Container>
+            </Season6Container>
           </FrontierSection>
         </DetailsSection>
       </ProfileContainer>
@@ -313,6 +393,18 @@ const TrainerCodeSection = styled(motion.div)`
 const SideHeading = styled(motion.div)`
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
+  color: ${({ theme }) => theme.secondary1};
+  font-weight: 400;
+  text-transform: uppercase;
+
+  @media (max-width: 768px) {
+    font-size: 0.75rem;
+  }
+`;
+
+const SmallHeading = styled(motion.div)`
+  font-family: "Poppins", sans-serif;
+  font-size: 0.8rem;
   color: ${({ theme }) => theme.secondary1};
   font-weight: 400;
   text-transform: uppercase;
@@ -492,6 +584,70 @@ const MMRInput = styled(motion.div)`
 `;
 
 const Faction = styled(motion.div)``;
+const Season6Container = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+`;
+
+const PokemonS6Container = styled(motion.div)`
+  display: flex;
+  flex-direction: row;
+  width: 55rem;
+  justify-content: space-between;
+`;
+
+const PokemonS6Box = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+`;
+
+const PokemonsBox = styled(motion.div)`
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  width: 25rem;
+  margin-top: 0.5rem;
+
+  @media (max-width: 768px) {
+    width: 90%;
+    flex-wrap: wrap;
+  }
+`;
+
+const PokemonBox = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  max-width: 5rem;
+`;
+
+const ShadowBox = styled(motion.div)`
+  position: absolute;
+  transform: translateX(-1rem) translateY(1.5rem);
+  width: 1.5rem;
+  height: 1.5rem;
+`;
+
+const PokemonSprite = styled(motion.div)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0rem;
+
+  @media (max-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    margin: 0.5rem 1rem;
+  }
+`;
 
 const ProfileSection = styled(motion.div)`
   display: flex;
@@ -517,8 +673,9 @@ const ProfileSection = styled(motion.div)`
 const FrontierSection = styled(motion.div)`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
+  padding: 1rem;
   border: solid 2px ${({ theme }) => theme.primary1};
   border-radius: 0.5rem;
   width: 58rem;

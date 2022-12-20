@@ -11,6 +11,6 @@ module.exports = withImages({
     return config;
   },
   images: {
-    domains: ["localhost", "pvphq-server.herokuapp.com"],
+    domains: ["localhost", "odd-lime-hare-fez.cyclic.app"],
   },
 });
