@@ -67,21 +67,21 @@ function GBLLBIndia() {
       {stage === "PROFILE-SETUP" && (
         <GBL>
           <Heading>{data.data.game.pokemongo.ign}</Heading>
-          {data.data.game.pokemongo.gbl?.s12 && (
+          {data.data.game.pokemongo.gbl?.s13 && (
             <MMRSection>
               <RankIcon>
                 <Image
-                  src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s12.rank}.png`}
+                  src={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${data.data.game.pokemongo.gbl.s13.rank}.png`}
                   layout="fill"
                 />
               </RankIcon>
               <MMR>
                 <CurrentMMR>
-                  {data.data.game.pokemongo.gbl.s12.currentMMR}{" "}
+                  {data.data.game.pokemongo.gbl.s13.currentMMR}{" "}
                   <span>Current MMR</span>
                 </CurrentMMR>
                 <HighestMMR>
-                  {data.data.game.pokemongo.gbl.s12.highestMMR}{" "}
+                  {data.data.game.pokemongo.gbl.s13.highestMMR}{" "}
                   <span>Highest MMR</span>
                 </HighestMMR>
               </MMR>
@@ -117,12 +117,12 @@ function GBLLBIndia() {
         </GBL>
       )}
 
-      <Heading>GBL Leaderboards S12</Heading>
+      <Heading>GBL Leaderboards S13</Heading>
 
       {gbllbdata.map((player, index) => (
         <LBContainer
           key={index}
-          background={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${player.game.pokemongo.gbl.s12.rank}.png`}
+          background={`${process.env.NEXT_PUBLIC_API_URL}/icons/gbl/${player.game.pokemongo.gbl.s13.rank}.png`}
         >
           <Rank>#{index + 1}</Rank>
           <p>●</p>
@@ -146,7 +146,7 @@ function GBLLBIndia() {
           </Avatar>
           <MMRSection2>
             <IGN>{player.game.pokemongo.ign}</IGN>
-            <MMR2>{player.game.pokemongo.gbl.s12.currentMMR}</MMR2>
+            <MMR2>{player.game.pokemongo.gbl.s13.currentMMR}</MMR2>
           </MMRSection2>
         </LBContainer>
       ))}
